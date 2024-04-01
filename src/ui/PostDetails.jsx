@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const PostDetails = () => {
   return (
-    <div className="flex flex-wrap gap-5 items-center text-stone-600 text-sm mt-3">
+    <div className="flex flex-wrap gap-5 items-center text-stone-600  text-sm mt-3">
       <span className="flex gap-1 items-center">
         <HiOutlineUser className="text-sky-600" />
         <p className="mt-1">Ebuka</p>

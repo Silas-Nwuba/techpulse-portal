@@ -1,19 +1,33 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { QueryClient, useInfiniteQuery } from "@tanstack/react-query";
 import { getPost } from "../../service/apiPost";
-
+import { Page_Size } from "../../utils/constant";
+const queryClient = new QueryClient();
 export const usePost = () => {
-  const queryClient = useQueryClient();
   const {
+    data,
     isError,
     isLoading,
-    data: post,
-  } = useQuery({
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useInfiniteQuery({
     queryKey: ["post"],
     queryFn: getPost,
+    getNextPageParam: (lastPage, allPage) => {
+      if (lastPage.length < Page_Size) return;
+      return allPage.length + 1;
+    },
+    initialData: () => {
+      return null;
+    },
   });
-  queryClient.setQueryData("post", post);
 
-  const postData = queryClient.getQueryData("post") || [];
-
-  return { isError, isLoading, postData };
+  return {
+    data,
+    isError,
+    isLoading,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+  };
 };

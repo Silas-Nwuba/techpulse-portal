@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 import FullPageLoaderSpinner from "./FullPageLoaderSpinner";
 
 const ProtectedRoute = ({ children }) => {
-  // const navigate = useNavigate();
-  // const { user, isLoading, isAuthenticated } = useUser();
-  // useEffect(() => {
-  //   if (!isAuthenticated && !isLoading) navigate("/admin/login");
-  // }, [isAuthenticated, navigate, isLoading]);
+  const navigate = useNavigate();
+  const { user, isLoading, isAuthenticated } = useUser();
+  useEffect(() => {
+    if (!isAuthenticated && !isLoading) navigate("/admin/login");
+  }, [isAuthenticated, navigate, isLoading]);
 
-  // if (isLoading) return <FullPageLoaderSpinner />;
-  // if (isAuthenticated && user.user_metadata.role === "Administrator")
-  return children;
+  if (isLoading) return <FullPageLoaderSpinner />;
+  if (isAuthenticated && user.user_metadata.role === "Administrator")
+    return children;
 };
 
 export default ProtectedRoute;

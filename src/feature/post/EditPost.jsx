@@ -42,7 +42,9 @@ const EditPost = () => {
   return (
     <div className="md:mt-10  mt-[120px] mb-10">
       <div className="flex items-center justify-between mb-5">
-        <h1 className="text-[18px] text-stone-600 font-semibold">Edit Post</h1>
+        <h1 className="text-[18px] text-stone-600 font-semibold dark:text-[#CBD5E0]">
+          Edit Post
+        </h1>
         <span
           className="flex items-center gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
           onClick={() => navigate("/admin/post")}
@@ -52,7 +54,7 @@ const EditPost = () => {
       </div>
       <form
         onSubmit={handleSubmit(onsubmit, onerror)}
-        className="bg-white px-4 py-5 rounded-md shadow-sm"
+        className="bg-white px-4 py-5 rounded-md shadow-sm dark:bg-[#2D3748]"
       >
         <FormRow label="Blog Title" error={errors?.title?.message}>
           <input
@@ -66,7 +68,7 @@ const EditPost = () => {
               errors?.title
                 ? "border-red-400 focus:border-red-400 focus:border"
                 : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none focus:border-2 border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            } disabled:bg-gray-100 disabled:cursor-wait disabled:border  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none focus:border-2 border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Image" error={errors?.image?.message}>
@@ -82,7 +84,7 @@ const EditPost = () => {
               errors?.image
                 ? "border-red-400 focus:border-red-400 focus:border"
                 : ""
-            }  file:text-[#007bff] file:font-semibold file:rounded-full file:py-2 file:px-4  file:border-0 file:text-sm file: disabled:opacity-50 focus:border-2 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[55px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            }  file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm file: disabled:opacity-50 focus:border-2 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[55px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Category" error={errors?.category?.message}>
@@ -96,7 +98,7 @@ const EditPost = () => {
               errors?.category
                 ? "border-red-400 focus:border-red-400 focus:border"
                 : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[50px] focus:border-2 text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px] focus:border-2 text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           >
             <option value="">Select</option>
             <option value="Technology">Technology</option>
@@ -116,7 +118,7 @@ const EditPost = () => {
               errors?.createdDate
                 ? "border-red-400 focus:border-red-400 focus:border"
                 : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[50px]  focus:border-2 text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px]  focus:border-2 text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Author" error={errors?.author?.message}>
@@ -132,7 +134,7 @@ const EditPost = () => {
               errors?.author
                 ? "border-red-400 focus:border-red-400 focus:border"
                 : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:border-2 disabled:border-gray-200 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Content" error={errors?.content?.message}>
@@ -148,7 +150,7 @@ const EditPost = () => {
               errors?.content
                 ? "border-red-400 focus:border-red-400 focus:border"
                 : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <div className="flex gap-3">

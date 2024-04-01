@@ -69,28 +69,43 @@ const CommentTable = () => {
   if (isLoading) return <TableSkeletonSpinner />;
   if (error) return <Error />;
   return (
-    <div className="mt-40 md:mt-10 bg-white shadow-sm rounded-sm  p-4 mb-10 w-full overflow-x-auto">
+    <div className="mt-40 md:mt-10 bg-white dark:bg-[#2D3748] shadow-sm rounded-sm  p-4 mb-10 w-full overflow-x-auto">
       <TableOperation />
       <Table>
         <Table.Header>
           <Table.Row>
-            <th scope="col" className="px-6 py-3 text-[#333333]">
+            <th
+              scope="col"
+              className="px-6 py-3 text-[#333333] dark:text-[#E2E8F0]"
+            >
               Id
             </th>
-            <th scope="col" className="px-6 py-3 text-[#333333]">
+            <th
+              scope="col"
+              className="px-6 py-3 text-[#333333] dark:text-[#E2E8F0]"
+            >
               Username
             </th>
-            <th scope="col" className="px-6 py-3 text-[#333333]">
+            <th
+              scope="col"
+              className="px-6 py-3 text-[#333333] dark:text-[#E2E8F0]"
+            >
               Email
             </th>
 
-            <th scope="col" className="px-6 py-3 text-[#333333]">
+            <th
+              scope="col"
+              className="px-6 py-3 text-[#333333] dark:text-[#E2E8F0]"
+            >
               Comment Date
             </th>
-            <th scope="col" className="px-6 py-3 text-[#333333]">
+            <th
+              scope="col"
+              className="px-6 py-3 text-[#333333] dark:text-[#E2E8F0]"
+            >
               Status
             </th>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-3 dark:text-[#E2E8F0]">
               Action
             </th>
           </Table.Row>

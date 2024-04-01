@@ -7,7 +7,7 @@ const TableOperation = () => {
   const status = searchParam.get("status");
   return (
     <div className="block xl:flex xl:items-center xl:justify-between w-full py-2 px-3 rounded-sm">
-      <h1 className="text-[18px] font-semibold text-stone-600 ">
+      <h1 className="text-[18px] font-semibold text-stone-600 dark:text-[#E2E8F0]">
         {status === null && "All Comment"}
         {status === "All" && "All Comment"}
         {status === "Pending" && "Pending Comment"}

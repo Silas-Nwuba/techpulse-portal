@@ -1,36 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PostContent from "./PostContent";
-import { usePost } from "./usePost";
+// import { usePost } from "./usePost";
 import Button from "../../ui/Button";
 import { useNavigate } from "react-router-dom";
 import PostLoaderSpinner from "../../ui/PostLoaderSpinner";
 import { useUserDropdown } from "../../context/UserDropdownContextApi";
 import Error from "../../ui/Error";
+import { usePost } from "./usePost";
+import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
+import { useInView } from "react-intersection-observer";
 const Post = () => {
   const navigate = useNavigate();
-  let { isError, isLoading, postData } = usePost();
-  const [isComponentMountLoading, setIsComponentMountLoading] = useState(false);
+  const { data, isError, isLoading, fetchNextPage, hasNextPage } = usePost();
+  const { ref, inView } = useInView();
   const { dispatch } = useUserDropdown();
+  console.log(data);
+
   useEffect(() => {
-    setIsComponentMountLoading(true);
-    if (Array.isArray(postData)) {
-      setIsComponentMountLoading(false);
-    }
     document.title = "Post - TechPulse";
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
     return () => {
       document.title = "Post - TechPulse";
     };
-  }, [postData]);
+  }, [inView, hasNextPage, fetchNextPage]);
 
-  if (isLoading || isComponentMountLoading) {
+  if (isLoading) {
     return <PostLoaderSpinner />;
   }
   if (isError) return <Error />;
-  if (postData.length === 0) return;
+
+  if (!data.pages.length) return;
+
   const handleAddPost = () => {
     navigate("/admin/post/create");
     dispatch({ type: "closeUserDropdown", payload: false });
   };
+
   return (
     <div className="mt-[100px] md:mt-10">
       <Button
@@ -41,13 +48,26 @@ const Post = () => {
         hover="hover:bg-sky-500"
         marginBottom="mb-10"
       />
-
-      <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-6 mb-10 mt-2 md:mt-0">
-        {Array.isArray(postData) &&
-          postData.map((post) => <PostContent post={post} key={post.id} />)}
-      </div>
+      {data &&
+        data.pages.map((pages, index) => (
+          <div
+            className="grid sm:grid-cols-2 grid-cols-1  md:grid-cols-3 w-full gap-6 mb-10 mt-2 md:mt-0"
+            key={index}
+          >
+            {pages.map((post) => (
+              <PostContent post={post} key={post.id} />
+            ))}
+          </div>
+        ))}
+      {hasNextPage && (
+        <div className="flex justify-center" ref={ref}>
+          <MiniLoaderSpinner
+            borderRight="border-r-[#007bff]"
+            borderTop="border-t-[#007bff]"
+          />
+        </div>
+      )}
     </div>
   );
 };
-
 export default Post;

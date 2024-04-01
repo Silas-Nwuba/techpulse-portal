@@ -23,8 +23,8 @@ const Pagination = ({ count }) => {
   return (
     <>
       {count > Page_Size && (
-        <div className="mt-10 flex justify-between items-center mx-3">
-          <p className="text-[15px] text-stone-600">
+        <div className="mt-10 flex justify-between items-center mx-3 flex-wrap">
+          <p className="text-sm text-stone-600 dark:text-white">
             Showing
             <span>
               {" "}
@@ -35,14 +35,14 @@ const Pagination = ({ count }) => {
           </p>
           <div className="flex gap-3 items-center cursor-pointer justify-center ">
             <button
-              className="disabled:cursor-default flex items-center text-sm transition duration-300 ease-out  hover:text-sky-600 text-stone-600 py-2 pr-3 pl-2 font-semibold rounded-md"
+              className="disabled:cursor-default  dark:text-white dark:hover:text-sky-600 flex items-center text-sm transition duration-300 ease-out  hover:text-sky-600 text-stone-600 py-2 pr-3 pl-2 font-semibold rounded-md"
               onClick={prevPage}
             >
               <HiChevronLeft className="text-[16px]" />
               Previous
             </button>
             <button
-              className="flex items-center justify-around text-sm  text-sky-600 hover:text-sky-600 py-2 pr-4 pl-4 font-semibold rounded-md"
+              className="flex items-center justify-around text-sm   text-sky-600 hover:text-sky-600 py-2 pr-4 pl-4 font-semibold rounded-md"
               onClick={nextPage}
             >
               Next

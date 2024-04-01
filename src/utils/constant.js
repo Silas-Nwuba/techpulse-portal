@@ -1,2 +1,2 @@
-export const Page_Size = 10;
+export const Page_Size = 6;
 export const Limit = 9;

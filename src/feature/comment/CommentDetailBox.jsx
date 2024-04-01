@@ -28,53 +28,53 @@ const CommentDetailBox = () => {
   return (
     <div className="mt-10 mb-5">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl font-semibold text-stone-500">
+        <h1 className="text-xl font-semibold text-stone-500 dark:text-[#E2E8F0]">
           Comment Id #{String(comment?.id).padStart(3, "00")}
         </h1>
         <span
-          className="flex items-center gap-2 mr-2 text-[#007bff] cursor-pointer"
+          className="flex items-center gap-2 mr-2 text-[#007bff] dark:text-[#4299E1] cursor-pointer"
           onClick={() => navigate(`/admin/comment`)}
         >
           <p>Back</p>
           <HiArrowRight />
         </span>
       </div>
-      <div className="bg-white rounded-md mt-5 pb-5">
-        <div className="bg-[#007bff] py-3 rounded-t-md px-5">
-          <h1 className="text-[18px] font-semibold text-white">
+      <div className="bg-white dark:bg-[#2D3748] rounded-md mt-5 pb-5">
+        <div className="bg-[#007bff] dark:bg-[#4299E1] py-3 rounded-t-md px-5">
+          <h1 className="text-[18px] font-semibold text-white dark:text-[#E2E8F0]">
             Verify Comment
           </h1>
         </div>
         <div className="flex justify-between mx-4 items-center mt-10">
           <div className="space-y-2">
-            <h3 className="text-[20px] font-semibold text-stone-500">
+            <h3 className="text-[20px] font-semibold text-stone-500 dark:text-[#E2E8F0]">
               {comment?.post.title.charAt(0).toUpperCase() +
                 comment?.post.title.slice(1)}
             </h3>
           </div>
           <div className="flex items-center gap-4 mr-3">
-            <span className="text-[15px] text-stone-500">
+            <span className="text-[15px] text-stone-500 dark:text-[#E2E8F0]">
               Date: {formatDate(comment?.date)}
             </span>
-            <span>
+            <span className="dark:text-[#E2E8F0]">
               Time: {hours === 0 ? 12 : hours}: {minute} : {second} {preiod}
             </span>
           </div>
         </div>
         <div className="flex justify-between items-center mx-4">
-          <span className="text-[16px] text-stone-500 mt-2">
+          <span className="text-[16px] text-stone-500 mt-2 dark:text-[#E2E8F0]">
             Category - {comment?.post.category}
           </span>
-          <span className="mr-5">
+          <span className="mr-5 dark:text-[#E2E8F0]">
             Status -{" "}
             {comment?.status.charAt(0).toUpperCase() + comment?.status.slice(1)}
           </span>
         </div>
-        <div className="mx-4 bg-gray-50 rounded-sm mt-10 py-10 px-5 space-y-3">
-          <h3 className="text-xl font-semibold">Message</h3>
-          <p>{comment?.comment}</p>
+        <div className="mx-4 bg-gray-50 dark:bg-[#4A5568] rounded-sm mt-10 py-10 px-5 space-y-3">
+          <h3 className="text-xl font-semibold dark:text-[#E2E8F0]">Message</h3>
+          <p className="dark:text-[#E2E8F0]">{comment?.comment}</p>
         </div>
-        <div className="border-t border-stone-200 mt-10">
+        <div className="border-t border-stone-200 mt-10 dark:border-[#4A5568]">
           <span className="mt-4 mb-2  ml-4 flex justify-end items-center gap-5 mr-10">
             <Button
               name="Back"
@@ -86,6 +86,7 @@ const CommentDetailBox = () => {
               marginBottom="mb-0"
               hover="hover:bg-slate-200"
               hoverBorder="hover:border-slate-200"
+              padding="p-2"
               onClick={() => navigate("/admin/comment")}
             />
             {comment?.status === "Pending" && (
@@ -93,13 +94,14 @@ const CommentDetailBox = () => {
                 disable={isEditingComment}
                 name={"Approve"}
                 width={"w-[100px]"}
-                borderColor="border-[#007bff]"
-                backgroundColor="bg-[#007bff]"
+                borderColor="border-[#48BB78]"
+                backgroundColor="bg-[#48BB78]"
                 color="text-white"
                 marginBottom="mb-0"
-                hover="hover:bg-sky-500"
+                hover="hover:bg-[#48BB78]"
                 hoverBorder="border-sky-500"
                 loading={isEditingComment}
+                padding="p-2"
                 onClick={() => editComment(comment.id)}
               >
                 <MiniLoaderSpinner />
@@ -112,11 +114,12 @@ const CommentDetailBox = () => {
                   name="Delete"
                   width={"w-[90px]"}
                   borderColor={"border-red-500"}
-                  backgroundColor="bg-red-500"
-                  color="text-white"
+                  backgroundColor="bg-[#E53E3E]"
+                  color="text-[#E2E8F0]"
                   marginBottom="mb-0"
                   hover="hover:bg-red-600"
                   hoverBorder="hover:border-red-600"
+                  padding="p-2"
                 />
               </Modal.Open>
               <Modal.Window name="comment-delete">

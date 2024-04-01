@@ -5,14 +5,14 @@ import MiniLoaderSpinner from "../ui/MiniLoaderSpinner";
 const ConfirmDelete = ({ isDeleting, closeModal, onConfirm }) => {
   return (
     <div className="py-3">
-      <span className="bg-red-100 w-12 h-12 rounded-full flex flex-col justify-center items-center mx-auto">
+      <span className="bg-red-100 dark:bg-[#2D3748] w-12 h-12 rounded-full flex flex-col justify-center items-center mx-auto">
         <HiOutlineExclamationTriangle className="text-red-700 font-semibold text-2xl text-center" />
       </span>
       <div className="mt-5">
-        <h2 className="text-2xl font-semibold text-stone-700 text-center">
+        <h2 className="text-2xl font-semibold text-stone-700 text-center dark:text-[#E2E8F0]">
           Are you sure?
         </h2>
-        <p className="text-stone-700 text-center mt-4 text-sm">
+        <p className="text-stone-700 text-center mt-4 text-sm dark:text-[#E2E8F0]">
           Are you sure you want to delete this item?
         </p>
       </div>
@@ -21,14 +21,13 @@ const ConfirmDelete = ({ isDeleting, closeModal, onConfirm }) => {
         <Button
           name="Cancel"
           width="w-[130px]"
-          backgroundColor="bg-white"
+          backgroundColor="bg-gray-100"
           hover="hover:bg-gray-100"
-          hoverBorder="bg-gray-[#d1d5db]"
+          hoverBorder="bg-gray-100"
           color="text-stone-600"
           marginBottom="mb-0"
           marginTop="mt-0"
           borderColor="border-gray-100"
-          border="border"
           onClick={closeModal}
         />
         <Button

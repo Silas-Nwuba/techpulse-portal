@@ -21,11 +21,11 @@ const UpdateUserPassword = () => {
   const onerror = (error) => {};
   return (
     <>
-      <h1 className="text-[20px] text-stone-[#333333] font-semibold mb-2 mt-10">
+      <h1 className="text-[20px] text-stone-[#333333] font-semibold mb-2 mt-10  dark:text-[#E2E8F0] ">
         Update Password
       </h1>
 
-      <div className="bg-white px-4 py-5 rounded-md shadow-sm mt-5 mb-5">
+      <div className="bg-white px-4 py-5 rounded-md shadow-sm mt-5 mb-5 dark:bg-[#2D3748]">
         <form onSubmit={handleSubmit(onsubmit, onerror)}>
           <FormRow label={"New Password"} error={errors?.password?.message}>
             <input
@@ -43,7 +43,7 @@ const UpdateUserPassword = () => {
                 errors?.password
                   ? "border-red-400 focus:border-red-400 focus:border"
                   : "focus:border-sky-400 focus:border-2"
-              } disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none  border h-[50px] text-sm border-gray-300 rounded-md px-3 py-2 mt-1 w-full`}
+              } disabled:bg-gray-100  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none  border h-[50px] text-sm border-gray-300 rounded-md px-3 py-2 mt-1 w-full`}
             />
           </FormRow>
           <FormRow
@@ -62,7 +62,7 @@ const UpdateUserPassword = () => {
                 errors?.confirmPassword
                   ? "border-red-400 focus:border-red-400 focus:border"
                   : "focus:border-sky-400 focus:border-2"
-              } disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none  border h-[50px] text-sm border-gray-300 rounded-md px-3 py-2 mt-1 w-full`}
+              } disabled:bg-gray-100 disabled:cursor-wait dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border disabled:border-gray-200 focus:outline-none  border h-[50px] text-sm border-gray-300 rounded-md px-3 py-2 mt-1 w-full`}
             />
           </FormRow>
           <Button

@@ -32,12 +32,12 @@ const CommentRow = ({ comment }) => {
 
       <td className="px-6 py-4">
         {comment.status === "Pending" && (
-          <span className="py-[0.20em] bg-orange-300 px-[0.7em] rounded-full text-white font-semibold text-[11px]">
+          <span className="py-[0.20em] bg-[#F6E05E] px-[0.7em] rounded-full text-white font-semibold text-[11px]">
             Pending
           </span>
         )}
         {comment.status === "Approved" && (
-          <span className="bg-lime-400 py-[0.20em] px-[0.7em] rounded-full text-white font-semibold text-[11px]">
+          <span className="bg-[#48BB78] py-[0.20em] px-[0.7em] rounded-full text-white font-semibold text-[11px]">
             Approved
           </span>
         )}
@@ -45,15 +45,15 @@ const CommentRow = ({ comment }) => {
       <td className="px-6 py-4">
         <span className="flex items-center gap-3  cursor-pointer">
           <span
-            className="hover:bg-gray-100 p-1 rounded-full transition duration-300 ease-in-out"
+            className="hover:bg-gray-100 p-1 rounded-full transition duration-300 ease-in-out dark:hover:bg-[#4A5568]"
             onClick={() => navigate(`/admin/comment/${commentId}`)}
           >
-            <HiEye className="text-[16px] text-sky-400" />
+            <HiEye className="text-[16px] text-sky-400 dark:text-[#4299E1]" />
           </span>
           <Modal>
             <Modal.Open opens={"delete-comment"}>
-              <span className="hover:bg-gray-100 p-1 rounded-full transition  duration-300 ease-in-ou">
-                <HiTrash className="text-red-400 " />
+              <span className="hover:bg-gray-100 p-1 rounded-full transition  duration-300 ease-in-out dark:hover:bg-stone-500">
+                <HiTrash className="text-red-400" />
               </span>
             </Modal.Open>
             <Modal.Window name={"delete-comment"}>

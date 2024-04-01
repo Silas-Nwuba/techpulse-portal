@@ -8,24 +8,30 @@ const Table = ({ children }) => {
 };
 const Header = ({ children }) => {
   return (
-    <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#4A5568]">
       {children}
     </thead>
   );
 };
 const Row = ({ children }) => {
-  return <tr className="border border-stone-100 ">{children}</tr>;
+  return (
+    <tr className="border border-stone-100 dark:border-none dark:text-white dark:even:bg-[#4A5568]">
+      {children}
+    </tr>
+  );
 };
 const Body = ({ data, render }) => {
   if (!data?.length)
     return (
-      <tbody className="border border-stone-100 w-full">
+      <tbody className="border border-stone-100 dark:border-none w-full">
         <tr>
-          <td className="px-6 py-3">No data to show at the moment</td>
+          <td className="px-6 py-3 dark:text-white">
+            No data to show at the moment
+          </td>
         </tr>
       </tbody>
     );
-  return <tbody>{data.map(render)}</tbody>;
+  return <tbody className="dark:text-white">{data.map(render)}</tbody>;
 };
 Table.Header = Header;
 Table.Body = Body;

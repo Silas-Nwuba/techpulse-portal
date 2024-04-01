@@ -19,7 +19,7 @@ const Setting = () => {
   return (
     <>
       <div className="flex items-center justify-between mt-10 mx-2">
-        <span className="text-[20px] text-[#333333] font-semibold">
+        <span className="text-[20px] text-[#333333] font-semibold dark:text-[#E2E8F0] ">
           Admin Settings
         </span>
         <span

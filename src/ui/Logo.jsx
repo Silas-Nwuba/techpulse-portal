@@ -8,12 +8,13 @@ const Logo = ({ sidebarOpen, setIsSidebarOpen }) => {
   if (visible) {
     display = "block";
   }
+
   return (
     <div className="ml-5 flex items-center justify-between gap-4 mt-10 mx-5">
       <span>
         <Link
           to={"/"}
-          className="font-semibold text-2xl text-center text-[#007bff] py-5 md:ml-5 tracking-widest"
+          className="font-semibold text-2xl text-center text-[#007bff]  dark:text-[#4299E1] py-5 md:ml-5 tracking-widest"
         >
           TechPulse
         </Link>
@@ -22,7 +23,7 @@ const Logo = ({ sidebarOpen, setIsSidebarOpen }) => {
         className={`cursor-pointer hover:bg-gray-200 rounded-full p-1 md:${display}`}
         onClick={() => setIsSidebarOpen(false)}
       >
-        <HiXMark className="text-xl" />
+        <HiXMark className="text-xl dark:text-slate-50" />
       </span>
     </div>
   );

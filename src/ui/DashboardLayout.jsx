@@ -2,10 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import SideBar from "./SideBar";
 import { Outlet, useLocation } from "react-router-dom";
-import UserDropdown from "./UserDropdown";
-import { useUserDropdown } from "../context/UserDropdownContextApi";
 const DashboardLayout = () => {
-  const { isUserDropdown } = useUserDropdown();
   const { pathname } = useLocation();
   const mainContentRef = useRef(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -15,15 +12,14 @@ const DashboardLayout = () => {
     }
   }, [pathname]);
   return (
-    <div className="dashboard relative w-full h-screen">
+    <div className="dashboard w-full">
       <Header setSidebarOpen={setIsSidebarOpen} />
-      {isUserDropdown && <UserDropdown />}
       <SideBar
         sidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       />
       <main
-        className="overflow-y-auto overflow-x-hidden w-full main px-5 bg-gray-50 main h-full"
+        className="overflow-y-auto overflow-x-hidden w-full main px-5 bg-gray-50 dark:bg-[#1A202C]"
         ref={mainContentRef}
       >
         <Outlet />

@@ -5,7 +5,6 @@ export const useLocalStorageGoogleSignIn = (initalState, LOCAL_KEY, data) => {
     return item ? JSON.parse(item) : initalState;
   });
   localStorage.setItem(LOCAL_KEY, JSON.stringify(userData));
-
   useEffect(() => {
     localStorage.setItem(LOCAL_KEY, JSON.stringify(data));
   }, [LOCAL_KEY, data]);

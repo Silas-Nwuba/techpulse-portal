@@ -17,7 +17,9 @@ const Error = () => {
         className="w-[80px] mx-auto"
       />
 
-      <h2>No internet connection found check your connection</h2>
+      <h2 className="dark:text-white">
+        No internet connection found check your connection
+      </h2>
       <Button
         backgroundColor="bg-gradient-to-r from-cyan-500 to-blue-400"
         color="text-white"

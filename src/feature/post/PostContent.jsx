@@ -27,9 +27,9 @@ const PostContent = ({ post }) => {
       <img
         src={post.image}
         alt="postImage"
-        className="w-full rounded-md sm:h-[200px]"
+        className="w-full rounded-xl sm:h-[200px]"
       />
-      <h1 className="text-[18px] font-semibold text-stone-500 mt-1">
+      <h1 className="text-[16px] md:text-[18px] font-semibold text-stone-700 dark:text-[#eeeeee]">
         {(post.title.charAt(0).toUpperCase() + post.title.slice(1)).length >
         maxLength
           ? `${(
@@ -38,23 +38,26 @@ const PostContent = ({ post }) => {
           : `${post.title.charAt(0).toUpperCase() + post.title.slice(1)}`}
       </h1>
       <div className="mt-1 flex justify-between items-center">
-        <div className="flex flex-wrap gap-5 items-center text-stone-600 text-sm">
+        <div className="flex flex-wrap gap-5 items-center text-stone-600  dark:text-[#CBD5E0] text-sm">
           <span className="flex gap-1 items-center">
-            <HiOutlineUser className="text-sky-600" />
-            <p className="mt-1">{post.author}</p>
+            <HiOutlineUser className="text-stone-600 dark:text-[#CBD5E0]" />
+            <p className="mt-1 text-sm">{post.author}</p>
           </span>
           <span className="flex gap-1 items-center">
-            <HiOutlineCalendar className="text-sky-600" />
+            <HiOutlineCalendar className=" text-stone-600 dark:text-[#CBD5E0]" />
             <p className="mt-1">
               {day} {month} {year}
             </p>
           </span>
         </div>
         <div className="flex item-center gap-2 cursor-pointer">
-          <FaEdit className="text-sky-600 font-semibold" onClick={handleEdit} />
+          <FaEdit
+            className="text-sky-600 font-semibold dark:text-[#4299E1]"
+            onClick={handleEdit}
+          />
           <Modal>
             <Modal.Open opens="post-delete">
-              <FaTrash className="text-red-600" />
+              <FaTrash className="text-red-600 dark:text-[#E53E3E]" />
             </Modal.Open>
 
             <Modal.Window name="post-delete">

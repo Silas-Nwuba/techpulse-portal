@@ -14,13 +14,12 @@ const reducer = (state, action) => {
         ...state,
         isUserDropdown: action.payload,
       };
-
     default:
       throw new Error("unknown data passed");
   }
 };
 const UserContext = createContext();
-const UserDropdownContentApi = ({ children }) => {
+const UserDropdownProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { isUserDropdown } = state;
 
@@ -42,4 +41,4 @@ const useUserDropdown = () => {
   return context;
 };
 
-export { UserDropdownContentApi, useUserDropdown };
+export { UserDropdownProvider, useUserDropdown };

@@ -11,19 +11,16 @@ const SideBar = ({ sidebarOpen, setIsSidebarOpen }) => {
   }
   return (
     <div
-      className={`bg-white shadow-sm md:z-50 z-[10000] sidebar h-screen w-full ${display} md:block`}
+      className={`bg-white dark:bg-[#2D3748] shadow-sm md:z-50 z-[10000] sidebar min-h-[100vh] ${display} w-full md:block`}
     >
       <Logo sidebarOpen={sidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-      <MainNav sidebarOpen={sidebarOpen} />
-      <Footer>
-        <footer className="mx-10 absolute bottom-3">
-          <p className="text-stone-600 text-sm">
-            &copy; {new Date().getFullYear()} TechPulse
-          </p>
-        </footer>
-      </Footer>
+      <MainNav setIsSidebarOpen={setIsSidebarOpen} />
+      {/* <Footer>
+        <p className="dark:text-[#CBD5E0] text-sm text-stone-700 mx-10 fixed bottom-3">
+          &copy; {new Date().getFullYear()} TechPulse
+        </p>
+      </Footer> */}
     </div>
   );
 };
-
 export default SideBar;

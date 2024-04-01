@@ -65,33 +65,45 @@ a.active {
   width: 100%;
 }
 
-.navLink .active {
+/* .navLink .active {
   background-color: rgb(248 250 252);
   border-radius: 5px;
   color: #101010;
+} */
+
+/* .navLink .active .icon {
+  color: blue;
+} */
+
+/* .navLink .active {
+  background-color: #4a5568;
+  border-radius: 5px;
+  color: #ffff;
 }
 
 .navLink .active .icon {
-  color: blue;
-}
+  color:#CBD5E0
+} */
 
 /* Webkit (Chrome, Safari, newer versions of Opera) */
 .main::-webkit-scrollbar {
   width: 10px;
 }
-
 /* Track */
 .main::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #3333;
   border: none;
   border-radius: 3px;
 }
 
 /* Handle */
 .main::-webkit-scrollbar-thumb {
-  background: #dfdfdf;
+  background: #44444433;
   border-radius: 3px;
 }
+/* .main::-webkit-scrollbar-thumb:hover {
+  background: #eeee;
+} */
 table tbody tr:nth-child(even) {
   background-color: #f8fafc;
 }
