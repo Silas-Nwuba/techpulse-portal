@@ -28,15 +28,15 @@ const ResetPasswordForm = () => {
   });
   return (
     <div className="flex flex-col min-h-screen mx-auto">
-      <h1 className="font-semibold mb-5 mt-[100px] text-[22px]  text-stone-600 sm:text-[24px] text-center ">
+      <h1 className="font-semibold mb-5 mt-[100px] text-[22px] dark:text-white  text-stone-600 sm:text-[24px] text-center ">
         Reset Your Password
       </h1>
-      <div className="bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md mx-auto">
+      <div className=" dark:bg-[#2D3748] bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md mx-auto">
         <form
           className="flex flex-col justify-center mt-4"
           onSubmit={handleSubmit(onsubmit)}
         >
-          <p className="text-[16px] text-stone-500 text-center">
+          <p className="text-[16px] text-stone-500 text-center dark:text-stone-300">
             Enter the email address you registerd with.
           </p>
           <div>
@@ -46,7 +46,7 @@ const ResetPasswordForm = () => {
               disabled={isReseting}
               placeholder="Email address"
               {...register("email", { required: "Enter address is required" })}
-              className="disabled:opacity-50 disabled:bg-gray-100 disabled:cursor-wait  text-left mt-5 disabled:border disabled:border-gray-200  border text-sm border-slate-50 font-medium focus:border-2 focus:border-sky-500 w-full py-3 px-5 rounded-full bg-slate-50 placeholder:text-stone-400 placeholder:font-medium  outline-none focus:outline-none"
+              className="disabled:opacity-50 dark:text-stone-300 disabled:bg-gray-100  dark:bg-[#4A5568] disabled:cursor-wait text-left mt-5 dark:border-[#4A5568] disabled:border dark:focus:border disabled:border-gray-200 border text-sm border-slate-50 font-medium focus:border-2 focus:border-sky-500 w-full py-3 px-5 rounded-full bg-slate-50 placeholder:text-stone-400 placeholder:font-medium  outline-none focus:outline-none"
             />
             {errors?.email && (
               <small className="text-red-500 text-sm flex items-center gap-2 pt-1 ml-2">
@@ -72,8 +72,8 @@ const ResetPasswordForm = () => {
           </p>
         </Link>
       </div>
-      <div className=" w-full text-center border-stone-200 border-t mt-[160px]">
-        <p className="py-2 px-3 text-stone-600 text-sm pt-4">
+      <div className="w-full text-center dark:border-[#4A5568] border-stone-200 border-t mt-[160px]">
+        <p className="py-2 px-3 text-stone-600 dark:text-stone-300 text-sm pt-4">
           &copy; {new Date().getFullYear()} TechPulse. All right reserverd.
         </p>
       </div>

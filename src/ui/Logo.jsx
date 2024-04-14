@@ -12,7 +12,7 @@ const Logo = ({ sidebarOpen, setIsSidebarOpen }) => {
       <span>
         <Link
           to={"/"}
-          className="font-semibold text-2xl text-center text-[#007bff]  dark:text-[#4299E1] py-5 md:ml-5 tracking-widest"
+          className="font-semibold text-2xl text-center text-[#007bff] dark:text-stone-300 py-5 md:ml-5 tracking-widest"
         >
           TechPulse
         </Link>

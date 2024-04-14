@@ -13,7 +13,7 @@ const ProtectedRoute = ({ children }) => {
   if (isLoading)
     return (
       <FullPageLoaderSpinner>
-        <p className="mt-1">Loading...</p>
+        <p className="mt-1 dark:text-stone-300">Loading...</p>
       </FullPageLoaderSpinner>
     );
   if (isAuthenticated && user.user_metadata.role === "Administrator")

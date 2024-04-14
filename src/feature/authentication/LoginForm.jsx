@@ -38,11 +38,11 @@ const LoginForm = () => {
   }, [setPasswordType, isOpen]);
   return (
     <div className="flex flex-col min-h-screen mx-auto">
-      <h1 className="font-semibold text-[22px] text-[#33333] sm:text-[24px] mb-5 mt-[100px] text-center tracking-wider">
-        Log in to
-        <span className="ml-1 tracking-wider">TechPulse</span>
+      <h1 className="font-semibold text-[24px] text-[#333333] dark:text-white sm:text-[24px] mb-5 mt-[100px] text-center tracking-wider">
+        Log in
+        {/* <span className="ml-1 tracking-wider">TechPulse</span> */}
       </h1>
-      <div className="bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md mx-auto text-center">
+      <div className="dark:bg-[#2D3748] bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md mx-auto text-center">
         <div className="pt-4">
           <form
             onSubmit={handleSubmit(onsubmit, onerror)}
@@ -59,10 +59,10 @@ const LoginForm = () => {
                   required: "Email address field is required",
                   pattern: {
                     value: /^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\.[a-zA-Z]{2,4}$/,
-                    message: "Email  address provided is invalid",
+                    message: "Email address provided is invalid",
                   },
                 })}
-                className="disabled:opacity-50 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200  border text-sm mb-2 border-slate-50 bg-slate-50   font-medium focus:border-2 focus:border-sky-500 w-full py-3 px-5 rounded-full placeholder:text-stone-400 placeholder:font-medium  outline-none focus:outline-none"
+                className="disabled:opacity-50 dark:text-stone-300 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568]  dark:border-[#4A5568] dark:focus:none  disabled:border-gray-200 border text-sm mb-2 font-medium border-slate-50 bg-slate-50 rounded-full focus:border-2 dark:focus:border focus:border-sky-500 w-full  placeholder:text-stone-400 placeholder:font-medium  py-3 pl-5 outline-none focus:outline-none"
               />
               {errors?.email && (
                 <small className="text-red-500 text-sm flex items-center gap-2 ml-2">
@@ -85,17 +85,17 @@ const LoginForm = () => {
                     message: "Password must be atleast 8 characters",
                   },
                 })}
-                className="disabled:opacity-50 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 border text-sm mb-2 font-medium border-slate-50 bg-slate-50  rounded-full focus:border-2 focus:border-sky-500 w-full  placeholder:text-stone-400 placeholder:font-medium  py-3 pl-5 outline-none focus:outline-none"
+                className="disabled:opacity-50 dark:text-stone-300 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] disabled:border-gray-200 border text-sm mb-2 font-medium border-slate-50 dark:border-[#4A5568] dark:focus:border bg-slate-50 rounded-full focus:border-2 focus:border-sky-500 w-full  placeholder:text-stone-400 placeholder:font-medium  py-3 pl-5 outline-none focus:outline-none"
               />
 
               <span
-                className="absolute top-3 right-5 bg-gray-100 p-1 rounded-full cursor-pointer"
+                className="absolute top-3 right-5 bg-gray-100 dark:bg-[#1A202C] p-1 rounded-full cursor-pointer"
                 onClick={handleToggle}
               >
                 {isOpen ? (
-                  <HiOutlineEyeSlash className="text-stone-600" />
+                  <HiOutlineEyeSlash className="text-stone-600  dark:text-stone-400" />
                 ) : (
-                  <HiOutlineEye className="text-stone-600" />
+                  <HiOutlineEye className="text-stone-600 dark:text-stone-400" />
                 )}
               </span>
 
@@ -112,7 +112,7 @@ const LoginForm = () => {
               marginBottom="mb-0"
               name={"Log in"}
               backgroundColor="bg-[#007bff]"
-              hover="hover:bg-sky-500"
+              hover="hover:bg-sky-00"
               rounded="rounded-full"
               loading={isPending}
             >
@@ -127,13 +127,14 @@ const LoginForm = () => {
           </Link>
         </div>
       </div>
-      <div className="w-full text-center border-stone-200 border-t mt-[120px]">
-        <p className="py-2 px-3 text-stone-600 text-sm pt-4">
+      <div className="w-full dark:border-[#4A5568] text-center border border-stone-200 border-t mt-[120px]">
+        <p className="py-2 px-3 text-stone-600 dark:text-stone-300 text-sm pt-4">
           &copy; {new Date().getFullYear()} TechPulse. All right reserverd.
         </p>
       </div>
     </div>
   );
+  
 };
 
 export default LoginForm;
