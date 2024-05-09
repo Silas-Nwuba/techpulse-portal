@@ -1,15 +1,25 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+<<<<<<< HEAD
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import { UserDropdownProvider } from "./context/UserDropdownContextApi";
+=======
+import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 import AppLayout from "./ui/AppLayout";
 import News from "./Pages/main/News";
 import Contact from "./Pages/main/Contact";
 import DashboardLayout from "./ui/DashboardLayout";
 import Dashboard from "./Pages/admin/Dashboard";
 import Post from "./Pages/admin/PostPage";
+<<<<<<< HEAD
+=======
+import { UserDropdownProvider } from "./context/UserDropdownContextApi";
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 import CommentPage from "./Pages/admin/ComentPage";
 import CommentDetail from "./Pages/admin/CommentDetail";
 import CreatePostPage from "./Pages/admin/CreatePost";
@@ -21,6 +31,10 @@ import Home from "./Pages/main/Home";
 import Setting from "./Pages/admin/Setting";
 import ResetPassword from "./Pages/admin/ResetPassword";
 import UpdatePassword from "./Pages/admin/UpdatePassword";
+<<<<<<< HEAD
+=======
+import { DarkModeProvider } from "./context/DarkModeContext";
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -29,6 +43,7 @@ const queryClient = new QueryClient({
   },
 });
 const App = () => {
+<<<<<<< HEAD
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={true} />
@@ -82,6 +97,108 @@ const App = () => {
         </UserDropdownProvider>
       </DarkModeProvider>
     </QueryClientProvider>
+=======
+  const darkmode = document.documentElement.className;
+
+  return (
+    <>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={true} />
+        <DarkModeProvider>
+          <UserDropdownProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route element={<AppLayout />}>
+                  <Route index element={<Navigate replace to="home" />} />
+                  <Route path="home" element={<Home />} />
+                  <Route path="news/:name" element={<News />} />
+                  <Route path="contact" element={<Contact />} />
+                </Route>
+                <Route
+                  element={
+                    <ProtectedRoute>
+                      <DashboardLayout />
+                    </ProtectedRoute>
+                  }
+                >
+                  <Route path="admin/dashboard" element={<Dashboard />}></Route>
+                  <Route path="admin/post" element={<Post />}></Route>
+                  <Route
+                    path="admin/post/create"
+                    element={<CreatePostPage />}
+                  ></Route>
+                  <Route
+                    path="admin/post/edit/:id"
+                    element={<EditPostPage />}
+                  ></Route>
+                  <Route path="admin/comment" element={<CommentPage />}></Route>
+                  <Route
+                    path="admin/comment/:commentId"
+                    element={<CommentDetail />}
+                  ></Route>
+
+                  <Route path="admin/settings" element={<Setting />}></Route>
+                </Route>
+                <Route path="admin/login" element={<Login />}></Route>
+                <Route
+                  path="admin/resetpassword"
+                  element={<ResetPassword />}
+                ></Route>
+                <Route
+                  path="admin/updatepassword"
+                  element={<UpdatePassword />}
+                ></Route>
+                <Route path="*" element={<PageNotFound />}></Route>
+              </Routes>
+            </BrowserRouter>
+          </UserDropdownProvider>
+        </DarkModeProvider>
+      </QueryClientProvider>
+
+      {darkmode === "light" && (
+        <Toaster
+          position="top-center"
+          gutter={12}
+          containerStyle={{ margin: "8px" }}
+          toastOptions={{
+            success: {
+              duration: 3000,
+            },
+            error: {
+              duration: 5000,
+            },
+            style: {
+              fontSize: "15px",
+              padding: "16px 24px",
+              top: 0,
+            },
+          }}
+        />
+      )}
+      {darkmode === "dark" && (
+        <Toaster
+          position="top-center"
+          gutter={12}
+          containerStyle={{ margin: "8px" }}
+          toastOptions={{
+            success: {
+              duration: 3000,
+            },
+            error: {
+              duration: 5000,
+            },
+            style: {
+              fontSize: "15px",
+              padding: "16px 24px",
+              top: 0,
+              backgroundColor: "#2D3748",
+              color: "#E2E8F0",
+            },
+          }}
+        />
+      )}
+    </>
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
   );
 };
 export default App;

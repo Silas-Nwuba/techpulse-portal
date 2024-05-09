@@ -10,7 +10,12 @@ const useOutsideClick = (close, listenCapture = true) => {
       if (ref.current && !ref.current.contains(e.target)) {
         close();
       }
+<<<<<<< HEAD
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+=======
+      console.log(dropdownRef.current);
+      if (!dropdownRef.current.contains(e.target)) {
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
         dispatch({ type: "closeUserDropdown", payload: false });
       }
     };

@@ -15,11 +15,14 @@ const PostLoaderSpinner = () => {
         <SkeletonSpinner />
         <SkeletonSpinner />
       </div>
+<<<<<<< HEAD
       <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-5 mb-10 mt-5">
         <SkeletonSpinner />
         <SkeletonSpinner />
         <SkeletonSpinner />
       </div>
+=======
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
     </div>
   );
 };

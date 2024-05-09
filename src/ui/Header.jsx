@@ -2,18 +2,26 @@ import React from "react";
 import DarkModeToggle from "./DarkModeToggle";
 import Avatar from "./Avatar";
 import { HiOutlineBars3 } from "react-icons/hi2";
+<<<<<<< HEAD
 import toast from "react-hot-toast";
+=======
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 
 const Header = ({ setSidebarOpen }) => {
   const handleSidebar = () => {
     setSidebarOpen(true);
   };
   return (
+<<<<<<< HEAD
     <div className="bg-white dark:bg-[#1A202C] dark:border-b dark:border-[#2D3748] p-4 flex justify-between items-center px-2 shadow-sm z-[9999] md:z-50 header fixed top-0 md:px-5 md:sticky w-full">
       <h1
         className="text-stone-600 text-[16px] dark:text-[#E2E8F0] hidden font-medium md:block"
         onClick={() => toast.success("working")}
       >
+=======
+    <div className="bg-white dark:bg-[#1A202C] dark:border-b dark:border-[#2D3748] p-4 flex justify-between items-center px-2 shadow-sm z-[9999] md:z-50 header fixed top-0 md:px-5 md:sticky">
+      <h1 className="text-stone-600 text-[16px] dark:text-[#E2E8F0] hidden font-medium md:block">
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
         Welcome back admin!
       </h1>
       <div

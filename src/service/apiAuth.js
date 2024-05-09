@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import supabase, {supabaseUrl} from "./supabase";
+=======
+import supabase, { supabaseUrl } from "./supabase";
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 export const signup = async (email, password, fullname, role, avatar) => {
   const fileName = `avatar-${Math.random()}-${avatar.name}`;
   const avaterPath = `${supabaseUrl}/storage/v1/object/public/avatar/${fileName}`;

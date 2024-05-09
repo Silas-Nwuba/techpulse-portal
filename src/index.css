@@ -9,7 +9,19 @@
 }
 body {
   overflow-x: hidden;
+<<<<<<< HEAD
   overflow-y: auto;
+=======
+}
+.scrollBar::-webkit-scrollbar-thumb {
+  border: 2px solid #ddd;
+  background-color: red;
+  border-radius: 3px;
+}
+.scrollBar::-webkit-scrollbar-track {
+  border: 1px solid red;
+  background-color: red;
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 }
 .skeleton {
   animation: skeleton 1s alternate linear infinite;
@@ -24,22 +36,41 @@ body {
     background: hsl(200, 20%, 98%);
   }
 }
+<<<<<<< HEAD
+=======
+a:focus {
+  outline: none;
+}
+/* google sigin in button */
+button span {
+  color: black;
+}
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 
 /* Webkit (Chrome, Safari, newer versions of Opera) */
 .scrollBar::-webkit-scrollbar {
   width: 10px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 /* Track */
 .scrollBar::-webkit-scrollbar-track {
   background: #f1f1f1;
   border: none;
   border-radius: 3px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 /* Handle */
 .scrollBar::-webkit-scrollbar-thumb {
   background: #dfdfdf;
   border-radius: 3px;
 }
+<<<<<<< HEAD
 &.light{
   .react-datepicker {
     border: 1px solid #ccc;
@@ -107,6 +138,37 @@ body {
   color: #333;
 }
   /* Webkit (Chrome, Safari, newer versions of Opera) */
+=======
+a.active {
+  color: rgba(0, 0, 255, 0.753);
+}
+
+.header {
+  width: 100%;
+}
+
+/* .navLink .active {
+  background-color: rgb(248 250 252);
+  border-radius: 5px;
+  color: #101010;
+} */
+
+/* .navLink .active .icon {
+  color: blue;
+} */
+
+/* .navLink .active {
+  background-color: #4a5568;
+  border-radius: 5px;
+  color: #ffff;
+}
+
+.navLink .active .icon {
+  color:#CBD5E0
+} */
+
+/* Webkit (Chrome, Safari, newer versions of Opera) */
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 .main::-webkit-scrollbar {
   width: 10px;
 }
@@ -116,6 +178,7 @@ body {
   border: none;
   border-radius: 3px;
 }
+<<<<<<< HEAD
 /* Handle */
 .main::-webkit-scrollbar-thumb {
   background:#4A5568;
@@ -123,6 +186,23 @@ body {
 }
 }
 @media (min-width: 768px) {
+=======
+
+/* Handle */
+.main::-webkit-scrollbar-thumb {
+  background: #44444433;
+  border-radius: 3px;
+}
+/* .main::-webkit-scrollbar-thumb:hover {
+  background: #eeee;
+} */
+table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+@media (min-width: 768px) {
+  /* dashboard */
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
   .dashboard {
     display: grid;
     grid-template-columns: 15rem 1fr;
@@ -135,7 +215,10 @@ body {
     grid-row: 1/-1;
   }
 }
+<<<<<<< HEAD
 
 
 
  
+=======
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb

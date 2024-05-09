@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import {getDate, getMonth, getYear } from "date-fns";
+=======
+import { getDate, getMonth, getYear } from "date-fns";
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
 
 //prettier-ignore
 const monthData = ["Jan","Feb","Mar","April","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"]

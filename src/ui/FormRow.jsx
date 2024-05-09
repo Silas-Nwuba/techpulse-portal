@@ -2,7 +2,11 @@ import React from "react";
 
 const FormRow = ({ label, children, error }) => {
   return (
+<<<<<<< HEAD
     <div className={`mb-5 flex flex-col`}>
+=======
+    <div className={`mb-5`}>
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
       <label
         htmlFor={`${label}`}
         className="font-medium text-stone-500 dark:text-[#E2E8F0] text-sm"

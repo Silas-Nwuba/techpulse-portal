@@ -7,7 +7,11 @@ const Stat = ({ color, name, data, children }) => {
     >
       <span className={`${color} rounded-full p-4`}>{children}</span>
       <span className="leading-6">
+<<<<<<< HEAD
         <h1 className="text-stone-[#333333] dark:text-[#CBD5E0] font-medium text-[15px]">
+=======
+        <h1 className="text-stone-[#333333] dark:text-[#CBD5E0] font-medium text-[16px]">
+>>>>>>> 2240043135df3e38123bbfa092520827935184bb
           {name}
         </h1>
         <h3 className="text-stone-[#333333] dark:text-[#CBD5E0] font-semibold text-[18px] ">
