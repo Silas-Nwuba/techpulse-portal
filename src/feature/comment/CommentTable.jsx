@@ -3,7 +3,7 @@ import Table from "../../ui/Table";
 import Pagination from "../../ui/Pagination";
 import CommentRow from "./CommentRow";
 import { useComment } from "./useComment";
-import TableSkeletonSpinner from "../../ui/TableSkeletonSpinner";
+import FullPageLoaderSpinner from "../../ui/FullPageLoaderSpinner"
 import TableOperation from "../../ui/TableOperation";
 import Error from "../../ui/Error";
 const CommentTable = () => {
@@ -14,7 +14,7 @@ const CommentTable = () => {
       document.title = "TechPulse";
     };
   }, []);
-  if (isLoading) return <TableSkeletonSpinner />;
+  if (isLoading) return <FullPageLoaderSpinner/> ;
   if (error) return <Error />;
   return (
     <div className="mt-40 md:mt-10 bg-white dark:bg-[#2D3748] shadow-sm rounded-sm  p-4 mb-10 w-full overflow-x-auto">

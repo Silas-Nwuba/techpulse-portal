@@ -1,13 +1,18 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
 import useCreatePost from "./useCreatePost";
 import FormRow from "../../ui/FormRow";
 import toast from "react-hot-toast";
+import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker-cssmodules.css'
+import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi2";
 import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 import { useUserDropdown } from "../../context/UserDropdownContextApi";
+import { useUser } from "../authentication/useUser";
 
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -16,6 +21,10 @@ const CreatePost = () => {
   const { createPost, isCreating, isError } = useCreatePost();
   const isLoading = isCreating;
   const { dispatch } = useUserDropdown();
+  const [startDate, setStartDate] = useState(new Date())
+  const {user} = useUser()
+  const {fullname} = user.user_metadata
+
   const onsubmit = (data) => {
     createPost(
       {
@@ -33,6 +42,7 @@ const CreatePost = () => {
     );
   };
   const onerror = (error) => {};
+
   return (
     <div className="mt-[120px] md:mt-10 mb-5">
       <div className="flex items-center justify-between mb-5">
@@ -58,11 +68,7 @@ const CreatePost = () => {
             {...register("title", {
               required: "Title field is required",
             })}
-            className={`disabled:opacity-50 ${
-              errors?.title
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none focus:border-2 border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            className={`disabled:opacity-50 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none focus:border-2 border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Image" error={errors?.image?.message}>
@@ -74,11 +80,7 @@ const CreatePost = () => {
             {...register("image", {
               required: "image field is required",
             })}
-            className={`file:bg-violet-50 ${
-              errors?.image
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            }  file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm file: disabled:opacity-50 focus:border-2 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[55px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            className={`file:bg-violet-50  file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm file: disabled:opacity-50 focus:border-2 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[55px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Category" error={errors?.category?.message}>
@@ -88,11 +90,8 @@ const CreatePost = () => {
             {...register("category", {
               required: "Category field is required",
             })}
-            className={`disabled:opacity-50 ${
-              errors?.category
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px] focus:border-2 text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            className={`disabled:opacity-50 
+           disabled:bg-gray-100 disabled:cursor-wait disabled:border  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px] focus:border-2 text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           >
             <option value="">Select</option>
             <option value="Technology">Technology</option>
@@ -101,35 +100,22 @@ const CreatePost = () => {
             <option value="Gadget">Gadjet</option>
           </select>
         </FormRow>
-        <FormRow label="Created Date" error={errors?.createdDate?.message}>
-          <input
-            type="date"
-            name="createDate"
-            disabled={isError ? false : isLoading}
-            {...register("createdDate", {
-              required: "Created date field is required",
-            })}
-            className={`disabled:opacity-50 ${
-              errors?.createdDate
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px]  focus:border-2 text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-          />
-        </FormRow>
+        <div className={`mb-5 flex flex-col`} > 
+        <label htmlFor="date" className="font-medium text-stone-500 dark:text-[#E2E8F0] text-sm">Created Date</label>
+        <DatePicker  selected={startDate} placeholderText="dd-mm-yyyy" dateFormat="dd-MM-yyyy" onChange={(date) => setStartDate(date)} className="disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:outline-none border h-[50px] rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"/>
+        {!startDate && <small className="text-red-500 text-sm font-medium dark:text-[#E53E3E]">
+        Created Date is required</small>}
+        </div>
         <FormRow label="Author" error={errors?.author?.message}>
           <input
             type="text"
-            defaultValue="Ebuka"
+            defaultValue={fullname}
             name="author"
             disabled={isError ? false : isLoading}
             {...register("author", {
               required: "Author field is required",
             })}
-            className={`disabled:opacity-50 ${
-              errors?.author
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            className={`disabled:opacity-50  disabled:bg-gray-100 disabled:cursor-wait disabled:border   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Content" error={errors?.content?.message}>
@@ -141,11 +127,7 @@ const CreatePost = () => {
             {...register("content", {
               required: "Content field is required",
             })}
-            className={`disabled:opacity-50 ${
-              errors?.content
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+            className={`disabled:opacity-50disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <div className="flex gap-3">

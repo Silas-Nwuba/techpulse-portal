@@ -93,9 +93,9 @@ const LoginForm = () => {
                 onClick={handleToggle}
               >
                 {isOpen ? (
-                  <HiOutlineEyeSlash className="text-stone-600  dark:text-stone-400" />
+                  <HiOutlineEyeSlash className="text-stone-600  dark:text-stone-200" />
                 ) : (
-                  <HiOutlineEye className="text-stone-600 dark:text-stone-400" />
+                  <HiOutlineEye className="text-stone-600 dark:text-stone-200" />
                 )}
               </span>
 
@@ -127,7 +127,7 @@ const LoginForm = () => {
           </Link>
         </div>
       </div>
-      <div className="w-full dark:border-[#4A5568] text-center border border-stone-200 border-t mt-[120px]">
+      <div className="w-full dark:border-[#4A5568] text-center  border-stone-200 border-t mt-[118px]">
         <p className="py-2 px-3 text-stone-600 dark:text-stone-300 text-sm pt-4">
           &copy; {new Date().getFullYear()} TechPulse. All right reserverd.
         </p>

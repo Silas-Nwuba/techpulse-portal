@@ -9,7 +9,7 @@ const Header = ({ setSidebarOpen }) => {
     setSidebarOpen(true);
   };
   return (
-    <div className="bg-white dark:bg-[#1A202C] dark:border-b dark:border-[#2D3748] p-4 flex justify-between items-center px-2 shadow-sm z-[9999] md:z-50 header fixed top-0 md:px-5 md:sticky">
+    <div className="bg-white dark:bg-[#1A202C] dark:border-b dark:border-[#2D3748] p-4 flex justify-between items-center px-2 shadow-sm z-[9999] md:z-50 header fixed top-0 md:px-5 md:sticky w-full">
       <h1
         className="text-stone-600 text-[16px] dark:text-[#E2E8F0] hidden font-medium md:block"
         onClick={() => toast.success("working")}

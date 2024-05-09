@@ -27,9 +27,9 @@ const PostContent = ({ post }) => {
       <img
         src={post.image}
         alt="postImage"
-        className="w-full rounded-xl sm:h-[200px]"
+        className="w-full sm:w-[500px] rounded-xl h-[200px]"
       />
-      <h1 className="text-[16px] md:text-[18px] font-semibold text-stone-700 dark:text-[#eeeeee]">
+      <h1 className="text-[16px] md:text-[18px] font-semibold text-stone-700 dark:text-[#eeeeee] mt-3">
         {(post.title.charAt(0).toUpperCase() + post.title.slice(1)).length >
         maxLength
           ? `${(

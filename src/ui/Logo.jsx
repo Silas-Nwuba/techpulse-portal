@@ -8,7 +8,7 @@ const Logo = ({ sidebarOpen, setIsSidebarOpen }) => {
     display = "block";
   }
   return (
-    <div className="flex items-center justify-between gap-4 shadow-md py-3 px-3 md:px-0 md:py-0 md:shadow-none md:ml-5 md:mt-10 md:mx-5 ">
+    <div className="flex items-center justify-between gap-4 shadow-md py-3 px-3 md:px-0 md:py-0 md:shadow-none md:ml-5 md:mt-3 md:mx-5 ">
       <span>
         <Link
           to={"/"}
@@ -18,7 +18,7 @@ const Logo = ({ sidebarOpen, setIsSidebarOpen }) => {
         </Link>
       </span>
       <span
-        className={`cursor-pointer hover:bg-gray-200 rounded-full p-1 md:${display}`}
+        className={`cursor-pointer hover:bg-gray-200  dark:bg-[#2D3748] rounded-full p-1 md:${display}`}
         onClick={() => setIsSidebarOpen(false)}
       >
         <HiXMark className="text-xl dark:text-slate-50" />

@@ -9,15 +9,7 @@
 }
 body {
   overflow-x: hidden;
-}
-.scrollBar::-webkit-scrollbar-thumb {
-  border: 2px solid #ddd;
-  background-color: red;
-  border-radius: 3px;
-}
-.scrollBar::-webkit-scrollbar-track {
-  border: 1px solid red;
-  background-color: red;
+  overflow-y: auto;
 }
 .skeleton {
   animation: skeleton 1s alternate linear infinite;
@@ -32,60 +24,89 @@ body {
     background: hsl(200, 20%, 98%);
   }
 }
-a:focus {
-  outline: none;
-}
-/* google sigin in button */
-button span {
-  color: black;
-}
 
 /* Webkit (Chrome, Safari, newer versions of Opera) */
 .scrollBar::-webkit-scrollbar {
   width: 10px;
 }
-
 /* Track */
 .scrollBar::-webkit-scrollbar-track {
   background: #f1f1f1;
   border: none;
   border-radius: 3px;
 }
-
 /* Handle */
 .scrollBar::-webkit-scrollbar-thumb {
   background: #dfdfdf;
   border-radius: 3px;
 }
-a.active {
-  color: rgba(0, 0, 255, 0.753);
+&.light{
+  .react-datepicker {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 200000;
+  }
+  .react-datepicker__header {
+    background-color: #f9fafc;
+  }
+  .react-datepicker__day--selected {
+    background-color: #007bff;
+    color: white;
+  }
+  /* Webkit (Chrome, Safari, newer versions of Opera) */
+.main::-webkit-scrollbar {
+  width: 10px;
 }
-
-.header {
-  width: 100%;
+/* Track */
+.main::-webkit-scrollbar-track {
+  background: #dddd;
+  border: none;
+  border-radius: 3px;
 }
-
-/* .navLink .active {
-  background-color: rgb(248 250 252);
-  border-radius: 5px;
-  color: #101010;
-} */
-
-/* .navLink .active .icon {
-  color: blue;
-} */
-
-/* .navLink .active {
-  background-color: #4a5568;
-  border-radius: 5px;
-  color: #ffff;
+/* Handle */
+.main::-webkit-scrollbar-thumb {
+  background:#9c9c9cdd;
+  border-radius: 3px;
 }
-
-.navLink .active .icon {
-  color:#CBD5E0
-} */
-
-/* Webkit (Chrome, Safari, newer versions of Opera) */
+}
+&.dark{
+  .react-datepicker {
+    border: 1px solid #2D3748;
+    border-radius: 4px;
+    z-index: 200000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+  .react-datepicker__header {
+    background-color:  #2D3748;
+  }
+  .react-datepicker__month{
+    border: 1px solid #2D3748;
+   
+  }
+  .react-datepicker__day{
+    color:#CBD5E0
+  }
+  .react-datepicker__current-month{
+    color:#CBD5E0
+  }
+  .react-datepicker__day-name{
+    color:#CBD5E0
+  }
+  .react-datepicker__month-container{
+    background-color:  #2D3748;
+  }
+ .react-datepicker__day--keyboard-selected,
+ .react-datepicker__month-text--keyboard-selected,
+ .react-datepicker__quarter-text--keyboard-selected,
+ .react-datepicker__year-text--keyboard-selected
+   {
+    color:white
+ }
+ .react-datepicker__day:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+  /* Webkit (Chrome, Safari, newer versions of Opera) */
 .main::-webkit-scrollbar {
   width: 10px;
 }
@@ -95,21 +116,13 @@ a.active {
   border: none;
   border-radius: 3px;
 }
-
 /* Handle */
 .main::-webkit-scrollbar-thumb {
-  background: #44444433;
+  background:#4A5568;
   border-radius: 3px;
 }
-/* .main::-webkit-scrollbar-thumb:hover {
-  background: #eeee;
-} */
-table tbody tr:nth-child(even) {
-  background-color: #f8fafc;
 }
-
 @media (min-width: 768px) {
-  /* dashboard */
   .dashboard {
     display: grid;
     grid-template-columns: 15rem 1fr;
@@ -122,3 +135,7 @@ table tbody tr:nth-child(even) {
     grid-row: 1/-1;
   }
 }
+
+
+
+ 

@@ -2,13 +2,14 @@ import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { DarkModeProvider } from "./context/DarkModeContext";
+import { UserDropdownProvider } from "./context/UserDropdownContextApi";
 import AppLayout from "./ui/AppLayout";
 import News from "./Pages/main/News";
 import Contact from "./Pages/main/Contact";
 import DashboardLayout from "./ui/DashboardLayout";
 import Dashboard from "./Pages/admin/Dashboard";
 import Post from "./Pages/admin/PostPage";
-import { UserDropdownProvider } from "./context/UserDropdownContextApi";
 import CommentPage from "./Pages/admin/ComentPage";
 import CommentDetail from "./Pages/admin/CommentDetail";
 import CreatePostPage from "./Pages/admin/CreatePost";
@@ -20,7 +21,6 @@ import Home from "./Pages/main/Home";
 import Setting from "./Pages/admin/Setting";
 import ResetPassword from "./Pages/admin/ResetPassword";
 import UpdatePassword from "./Pages/admin/UpdatePassword";
-import { DarkModeProvider } from "./context/DarkModeContext";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

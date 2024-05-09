@@ -1,4 +1,4 @@
-import { getDate, getMonth, getYear } from "date-fns";
+import {getDate, getMonth, getYear } from "date-fns";
 
 //prettier-ignore
 const monthData = ["Jan","Feb","Mar","April","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"]

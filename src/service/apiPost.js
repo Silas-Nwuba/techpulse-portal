@@ -1,28 +1,15 @@
-import { Page_Size } from "../utils/constant";
+import {Post_Per_page } from "../utils/constant";
 import supabase, { supabaseUrl } from "./supabase";
-
-export const getPost = async ({ pageParam = 1 }) => {
-  const { data, error } = await supabase
+export const getPost = async ({pageParam = 1}) => {
+  const { data, error, count} = await supabase
     .from("post")
-    .select("*")
-    .range((pageParam - 1) * Page_Size, pageParam * Page_Size - 1);
+    .select("*",{ count: "exact" })
+    .range((pageParam - 1) * Post_Per_page, pageParam * Post_Per_page - 1);
   if (error) {
     throw new Error("Please check internet connection");
   }
-
-  return data;
+  return {data, count};
 };
-export const getTotalPost = async () => {
-  const { count, error } = await supabase
-    .from("post")
-    .select("*", { count: "exact" });
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  return count;
-};
-
 export const createPost = async (newPostData) => {
   const imageName = `${Math.random()}-${newPostData.image.name}`.replaceAll(
     "/",

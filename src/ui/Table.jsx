@@ -15,7 +15,7 @@ const Header = ({ children }) => {
 };
 const Row = ({ children }) => {
   return (
-    <tr className="border border-stone-100 dark:border-none dark:text-white dark:even:bg-[#4A5568]">
+    <tr className="border border-stone-100 dark:border-none dark:text-white dark:even:bg-[#4A5568] even:bg-[#f8fafc]">
       {children}
     </tr>
   );
