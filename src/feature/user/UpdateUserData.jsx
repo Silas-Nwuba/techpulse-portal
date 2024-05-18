@@ -28,11 +28,7 @@ const UpdateUserData = () => {
     );
   };
   return (
-<<<<<<< HEAD
     <div className="bg-white px-4 py-5 rounded-md shadow-sm mt-5 dark:bg-[#2D3748] ">
-=======
-    <div className="bg-white px-4 py-5 rounded-md shadow-sm mt-5 dark:bg-[#2D3748]">
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
       <form onSubmit={handleSubmit}>
         <FormRow label={"Full Name"}>
           <input
@@ -48,11 +44,7 @@ const UpdateUserData = () => {
           <input
             id="email address"
             type="text"
-<<<<<<< HEAD
             disabled={isUpdating}
-=======
-            disabled={true}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
             value={email}
             className="disabled:bg-gray-100 disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  disabled:border-gray-200 focus:outline-none border h-[50px]  focus:border-2 text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400"
           />
@@ -70,11 +62,7 @@ const UpdateUserData = () => {
         <FormRow label={"Role"}>
           <input
             value={role}
-<<<<<<< HEAD
             disabled={isUpdating}
-=======
-            disabled={true}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
             className="disabled:bg-gray-100 disabled:border dark:bg-[#4A5568] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px] focus:border-2 text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400"
           />
         </FormRow>

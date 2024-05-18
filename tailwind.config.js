@@ -7,14 +7,10 @@ export default {
       sans: "Montserrat, sans-serif",
     },
     screens: {
-<<<<<<< HEAD
       sm: "640px",
-=======
-      sm: "480px",
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
       md: "768px",
-      lg: "1024px",
-      xl: "1280px",
+      lg: "960px",
+      xl: "1200px",
       "2xl": "1536px",
     },
     extend: {},

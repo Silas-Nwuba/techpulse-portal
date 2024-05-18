@@ -1,51 +1,56 @@
-<<<<<<< HEAD
-
 import React, { useState } from "react";
-=======
-import React from "react";
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
-import { useForm } from "react-hook-form";
-import Button from "../../ui/Button";
-import useCreatePost from "./useCreatePost";
-import FormRow from "../../ui/FormRow";
 import toast from "react-hot-toast";
-<<<<<<< HEAD
 import DatePicker from "react-datepicker";
-import 'react-datepicker/dist/react-datepicker-cssmodules.css'
+import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import "react-datepicker/dist/react-datepicker.css";
-=======
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+import Select from "react-select";
+import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
 import { HiArrowRight } from "react-icons/hi2";
 import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 import { useUserDropdown } from "../../context/UserDropdownContextApi";
-<<<<<<< HEAD
 import { useUser } from "../authentication/useUser";
-=======
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+import useCreatePost from "./useCreatePost";
+import FormRow from "../../ui/FormRow";
+import Button from "../../ui/Button";
+const options = [
+  { value: "Technology", label: "Technology" },
+  { value: "Business", label: "Business" },
+  { value: "Smartphone", label: "Smartphone" },
+  { value: "Gadget", label: "Gadget" },
+];
+const customStyles = {
+  control: (provided) => ({
+    ...provided,
+    border: "1px solid #ced4da",
+    height: "45px",
+    marginTop: "3px",
+    borderRadius: "5px",
+  }),
+};
 
 const CreatePost = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState, reset } = useForm();
+  const { register, handleSubmit, formState, reset, control } = useForm();
   const { errors } = formState;
   const { createPost, isCreating, isError } = useCreatePost();
   const isLoading = isCreating;
   const { dispatch } = useUserDropdown();
-<<<<<<< HEAD
-  const [startDate, setStartDate] = useState(new Date())
-  const {user} = useUser()
-  const {fullname} = user.user_metadata
+  const [createDate, setCreateDate] = useState(new Date());
+  const { user } = useUser();
+  const { fullname } = user.user_metadata;
 
-=======
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
   const onsubmit = (data) => {
     createPost(
       {
         ...data,
         image: data.image[0],
+        title: data.title.charAt(0).toUpperCase() + data.title.slice(1),
+        createdDate: format(createDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"),
       },
       {
-        onSettled: () => {
+        onSuccess: () => {
           reset();
         },
         onError: (errors) => {
@@ -54,11 +59,6 @@ const CreatePost = () => {
       }
     );
   };
-  const onerror = (error) => {};
-<<<<<<< HEAD
-
-=======
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
   return (
     <div className="mt-[120px] md:mt-10 mb-5">
       <div className="flex items-center justify-between mb-5">
@@ -73,7 +73,7 @@ const CreatePost = () => {
         </span>
       </div>
       <form
-        onSubmit={handleSubmit(onsubmit, onerror)}
+        onSubmit={handleSubmit(onsubmit)}
         className="bg-white px-4 py-5 rounded-md shadow-sm dark:bg-[#2D3748]"
       >
         <FormRow label="Blog Title" error={errors?.title?.message}>
@@ -84,15 +84,7 @@ const CreatePost = () => {
             {...register("title", {
               required: "Title field is required",
             })}
-<<<<<<< HEAD
-            className={`disabled:opacity-50 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none focus:border-2 border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-=======
-            className={`disabled:opacity-50 ${
-              errors?.title
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none focus:border-2 border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+            className={`disabled:opacity-50 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none focus:border-2 border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Image" error={errors?.image?.message}>
@@ -104,92 +96,70 @@ const CreatePost = () => {
             {...register("image", {
               required: "image field is required",
             })}
-<<<<<<< HEAD
-            className={`file:bg-violet-50  file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm file: disabled:opacity-50 focus:border-2 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[55px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-=======
-            className={`file:bg-violet-50 ${
-              errors?.image
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            }  file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm file: disabled:opacity-50 focus:border-2 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[55px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+            className={`file:bg-violet-50  file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-[0.5em] file:px-4  file:border-0 file:text-sm file: disabled:opacity-50 focus:border-2 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[45px] text-sm border-gray-300 rounded-md p-1 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Category" error={errors?.category?.message}>
-          <select
+          <Controller
             name="category"
             disabled={isLoading}
-            {...register("category", {
-              required: "Category field is required",
-            })}
-<<<<<<< HEAD
-            className={`disabled:opacity-50 
-           disabled:bg-gray-100 disabled:cursor-wait disabled:border  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px] focus:border-2 text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-          >
-            <option value="">Select</option>
-            <option value="Technology">Technology</option>
-            <option value="Business">Business</option>
-            <option value="SmartPhone">SmartPhone</option>
-            <option value="Gadget">Gadjet</option>
-          </select>
+            control={control}
+            defaultValue={null}
+            render={({ field }) => (
+              <Select
+                {...register("category", {
+                  required: "Category field is required",
+                })}
+                {...field}
+                options={options}
+                placeholder="Select.."
+                styles={customStyles}
+                className={`disabled:opacity-50 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 h-[45px] mt-2 rounded-md`}
+              />
+            )}
+          />
         </FormRow>
-        <div className={`mb-5 flex flex-col`} > 
-        <label htmlFor="date" className="font-medium text-stone-500 dark:text-[#E2E8F0] text-sm">Created Date</label>
-        <DatePicker  selected={startDate} placeholderText="dd-mm-yyyy" dateFormat="dd-MM-yyyy" onChange={(date) => setStartDate(date)} className="disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:outline-none border h-[50px] rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"/>
-        {!startDate && <small className="text-red-500 text-sm font-medium dark:text-[#E53E3E]">
-        Created Date is required</small>}
+        <div className={`mb-5 flex flex-col`}>
+          <label
+            htmlFor="date"
+            className="font-medium text-stone-500 dark:text-[#E2E8F0] text-sm"
+          >
+            Created Date
+          </label>
+          <DatePicker
+            disabled={isLoading}
+            selected={createDate}
+            placeholderText="dd-mm-yyyy"
+            dateFormat="dd-mm-yyyy"
+            onChange={(date) => setCreateDate(date)}
+            className="disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:outline-none border h-[45px] rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
+          />
+          {!createDate && (
+            <small className="text-red-500 text-sm font-medium dark:text-[#E53E3E]">
+              Created Date is required
+            </small>
+          )}
         </div>
         <FormRow label="Author" error={errors?.author?.message}>
           <input
             type="text"
             defaultValue={fullname}
-=======
-            className={`disabled:opacity-50 ${
-              errors?.category
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px] focus:border-2 text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-          >
-            <option value="">Select</option>
-            <option value="Technology">Technology</option>
-            <option value="Gadget">Gadjet</option>
-            <option value="Business">Business</option>
-          </select>
-        </FormRow>
-        <FormRow label="Created Date" error={errors?.createdDate?.message}>
-          <input
-            type="date"
-            name="createDate"
-            disabled={isError ? false : isLoading}
-            {...register("createdDate", {
-              required: "Created date field is required",
-            })}
-            className={`disabled:opacity-50 ${
-              errors?.createdDate
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px]  focus:border-2 text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-          />
-        </FormRow>
-        <FormRow label="Author" error={errors?.author?.message}>
-          <input
-            type="text"
-            defaultValue="Ebuka"
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
             name="author"
             disabled={isError ? false : isLoading}
             {...register("author", {
               required: "Author field is required",
             })}
-<<<<<<< HEAD
-            className={`disabled:opacity-50  disabled:bg-gray-100 disabled:cursor-wait disabled:border   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-=======
-            className={`disabled:opacity-50 ${
-              errors?.author
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+            className={`disabled:opacity-50  disabled:bg-gray-100 disabled:cursor-wait disabled:border   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200 focus:outline-none border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+          />
+        </FormRow>
+        <FormRow label="Summary" error={""}>
+          <textarea
+            height="150px"
+            type="text"
+            name="summary"
+            disabled={isError ? false : isLoading}
+            {...register("summary")}
+            className={`disabled:opacity-50disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Content" error={errors?.content?.message}>
@@ -201,15 +171,7 @@ const CreatePost = () => {
             {...register("content", {
               required: "Content field is required",
             })}
-<<<<<<< HEAD
             className={`disabled:opacity-50disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-=======
-            className={`disabled:opacity-50 ${
-              errors?.content
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
           />
         </FormRow>
         <div className="flex gap-3">

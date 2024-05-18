@@ -9,17 +9,12 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     if (!isAuthenticated && !isLoading) navigate("/admin/login");
   }, [isAuthenticated, navigate, isLoading]);
-
-<<<<<<< HEAD
   if (isLoading)
     return (
       <FullPageLoaderSpinner>
         <p className="mt-1 dark:text-stone-300">Loading...</p>
       </FullPageLoaderSpinner>
     );
-=======
-  if (isLoading) return <FullPageLoaderSpinner />;
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
   if (isAuthenticated && user.user_metadata.role === "Administrator")
     return children;
 };

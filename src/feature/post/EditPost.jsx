@@ -1,56 +1,55 @@
 import React from "react";
-<<<<<<< HEAD
 import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
-=======
-import { useForm } from "react-hook-form";
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+import Select from "react-select";
 import Button from "../../ui/Button";
 import FormRow from "../../ui/FormRow";
 import useEditPost from "./useEditPost";
 import { useNavigate } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi2";
 import useGetEditPostById from "./useGetEditPostById";
-<<<<<<< HEAD
 import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 import { useUserDropdown } from "../../context/UserDropdownContextApi";
 import FullPageLoaderSpinner from "../../ui/FullPageLoaderSpinner";
 import { useUser } from "../authentication/useUser";
 import { formatDate } from "../../utils/helper";
-import Error from "../../ui/Error"
-=======
-import { formatDate } from "../../utils/helper";
-import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
-import { useUserDropdown } from "../../context/UserDropdownContextApi";
-import FullPageLoaderSpinner from "../../ui/FullPageLoaderSpinner";
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+import Error from "../../ui/Error";
 
+const options = [
+  { value: "Technology", label: "Technology" },
+  { value: "Smartphone", label: "Smartphone" },
+  { value: "Business", label: "Business" },
+];
+const customStyles = {
+  control: (provided) => ({
+    ...provided,
+    border: "1px solid #ced4da",
+    height: "45px",
+    marginTop: "3px",
+    borderRadius: "5px",
+  }),
+};
 const EditPost = () => {
   const { dispatch } = useUserDropdown();
   const navigate = useNavigate();
-<<<<<<< HEAD
   const { data, isFetching, error } = useGetEditPostById();
   const { editPost, isEditing, isError } = useEditPost();
   const { register, handleSubmit, formState, reset, control } = useForm({
     values: { ...data },
   });
   const { errors } = formState;
-  const {user} = useUser()
-  const {fullname} = user.user_metadata
-=======
-  const { data, isFetching } = useGetEditPostById();
-  const { editPost, isEditing, isError } = useEditPost();
-  const { register, handleSubmit, formState, reset } = useForm({
-    values: { ...data, createdDate: formatDate(data?.createdDate) },
-  });
-  const { errors } = formState;
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+  const { user } = useUser();
+  const { fullname } = user.user_metadata;
 
   const onsubmit = (data) => {
     const image = typeof data.image === "string" ? data.image : data.image[0];
     editPost(
       {
-        newPostData: { ...data, image },
+        newPostData: {
+          ...data,
+          image,
+          title: data.title.charAt(0).toUpperCase() + data.title.slice(1),
+        },
         id: data.id,
       },
       {
@@ -61,16 +60,8 @@ const EditPost = () => {
       }
     );
   };
-<<<<<<< HEAD
-  
-  // navigate("/admin/post")
   if (isFetching) return <FullPageLoaderSpinner />;
-  if (error) return <Error/>
-=======
-
-  const onerror = (error) => {};
-  if (isFetching) return <FullPageLoaderSpinner />;
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+  if (error) return <Error />;
   return (
     <div className="md:mt-10  mt-[120px] mb-10">
       <div className="flex items-center justify-between mb-5">
@@ -79,8 +70,7 @@ const EditPost = () => {
         </h1>
         <span
           className="flex items-center gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
-<<<<<<< HEAD
-          onClick={() => window.location.replace("/admin/post") }
+          onClick={() => navigate("/admin/post")}
         >
           <p>Back</p>
           <HiArrowRight />
@@ -88,15 +78,6 @@ const EditPost = () => {
       </div>
       <form
         onSubmit={handleSubmit(onsubmit)}
-=======
-          onClick={() => navigate("/admin/post")}
-        >
-          <p>Back</p> <HiArrowRight />
-        </span>
-      </div>
-      <form
-        onSubmit={handleSubmit(onsubmit, onerror)}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
         className="bg-white px-4 py-5 rounded-md shadow-sm dark:bg-[#2D3748]"
       >
         <FormRow label="Blog Title" error={errors?.title?.message}>
@@ -107,15 +88,7 @@ const EditPost = () => {
             {...register("title", {
               required: "Title field is required",
             })}
-<<<<<<< HEAD
             className={`disabled:opacity-50  disabled:bg-gray-100 disabled:cursor-wait disabled:border  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none focus:border-2 border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-=======
-            className={`disabled:opacity-50 ${
-              errors?.title
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none focus:border-2 border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
           />
         </FormRow>
         <FormRow label="Image" error={errors?.image?.message}>
@@ -127,86 +100,91 @@ const EditPost = () => {
             {...register("image", {
               required: data?.image ? false : "image field is required",
             })}
-<<<<<<< HEAD
             className={`file:bg-violet-50 file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm file: disabled:opacity-50 focus:border-2 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[55px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-=======
-            className={`file:bg-violet-50 ${
-              errors?.image
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            }  file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm file: disabled:opacity-50 focus:border-2 disabled:bg-gray-100 disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none border h-[55px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+          />
+        </FormRow>
+        <FormRow label="Summary" error={errors?.summary?.message}>
+          <textarea
+            height="150px"
+            type="text"
+            name="summary"
+            disabled={isError ? false : isEditing}
+            {...register("summary")}
+            className={`disabled:opacity-50disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
           />
         </FormRow>
         <FormRow label="Category" error={errors?.category?.message}>
-          <select
+          <Controller
+            name="category"
+            control={control}
+            defaultValue={null}
+            render={({ field }) => (
+              <Select
+                {...register("category", {
+                  required: "Category field is required",
+                })}
+                {...field}
+                defaultInputValue={data.category}
+                options={options}
+                disabled={isEditing}
+                styles={customStyles}
+                // className={`disabled:opacity-50 disabled:bg-gray-100 bg-red-600 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 h-[45px] mt-2 rounded-md`}
+              />
+            )}
+          />
+          {/* <select
             name="category"
             disabled={isEditing}
             {...register("category", {
               required: "Category field is required",
             })}
-<<<<<<< HEAD
             className={`disabled:opacity-50 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px] focus:border-2 text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-=======
-            className={`disabled:opacity-50 ${
-              errors?.category
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px] focus:border-2 text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
           >
             <option value="">Select</option>
             <option value="Technology">Technology</option>
-            <option value="Gadget">Gadjet</option>
             <option value="Business">Business</option>
-          </select>
+            <option value="SmartPhone">SmartPhone</option>
+          </select> */}
         </FormRow>
-<<<<<<< HEAD
-        <div className={`mb-5 flex flex-col`} > 
-        <label htmlFor="createDate" className="font-medium text-stone-500 dark:text-[#E2E8F0] text-sm">Created Date</label> 
-        <Controller name="date"  defaultValue={formatDate(data?.createdDate)} rules={{required:"Created Date is required"}} control={control} render={({field}) => <DatePicker  {...field} selected={field.value} placeholderText="dd-mm-yyyy" dateFormat="dd-MM-yyyy" onChange={(date) => field.onChange(date)} className="disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:outline-none border h-[50px] rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"/>}/>
-        {errors?.date  && <small className="text-red-500 text-sm font-medium dark:text-[#E53E3E]">
-        {errors?.date?.message}</small>}
+        <div className={`mb-5 flex flex-col`}>
+          <label
+            htmlFor="createDate"
+            className="font-medium text-stone-500 dark:text-[#E2E8F0] text-sm"
+          >
+            Created Date
+          </label>
+          <Controller
+            name="date"
+            defaultValue={formatDate(data?.createdDate)}
+            rules={{ required: "Created Date is required" }}
+            control={control}
+            render={({ field }) => (
+              <DatePicker
+                {...field}
+                selected={field.value}
+                placeholderText="dd-mm-yyyy"
+                dateFormat="dd-MM-yyyy"
+                onChange={(date) => field.onChange(date)}
+                className="disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:outline-none border h-[50px] rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
+              />
+            )}
+          />
+          {errors?.date && (
+            <small className="text-red-500 text-sm font-medium dark:text-[#E53E3E]">
+              {errors?.date?.message}
+            </small>
+          )}
         </div>
         <FormRow label="Author" error={errors?.author?.message}>
           <input
             type="text"
             defaultValue={fullname}
-=======
-        <FormRow label="Created Date" error={errors?.createdDate?.message}>
-          <input
-            type="date"
-            name="createDate"
-            disabled={isError ? false : isEditing}
-            {...register("createdDate", {
-              required: "Created date field is required",
-            })}
-            className={`disabled:opacity-50 ${
-              errors?.createdDate
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border-gray-200 focus:outline-none border h-[50px]  focus:border-2 text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-          />
-        </FormRow>
-        <FormRow label="Author" error={errors?.author?.message}>
-          <input
-            type="text"
-            defaultValue="Ebuka"
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
             name="author"
             disabled={isError ? false : isEditing}
             {...register("author", {
               required: "Author field is required",
             })}
-<<<<<<< HEAD
             className={`disabled:opacity-50disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-=======
-            className={`disabled:opacity-50 ${
-              errors?.author
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
           />
         </FormRow>
         <FormRow label="Content" error={errors?.content?.message}>
@@ -218,15 +196,7 @@ const EditPost = () => {
             {...register("content", {
               required: "Content field is required",
             })}
-<<<<<<< HEAD
             className={`disabled:opacity-50disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-=======
-            className={`disabled:opacity-50 ${
-              errors?.content
-                ? "border-red-400 focus:border-red-400 focus:border"
-                : ""
-            } disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
           />
         </FormRow>
         <div className="flex gap-3">

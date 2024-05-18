@@ -26,13 +26,8 @@ const CommentDetailBox = () => {
 
   if (isLoading) return <CommentDetailLoader />;
   return (
-<<<<<<< HEAD
     <div className="mt-40 md:mt-10 mb-5">
       <div className="flex justify-between items-center flex-wrap gap-2 md:gap-0">
-=======
-    <div className="mt-10 mb-5">
-      <div className="flex justify-between items-center">
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
         <h1 className="text-xl font-semibold text-stone-500 dark:text-[#E2E8F0]">
           Comment Id #{String(comment?.id).padStart(3, "00")}
         </h1>
@@ -44,7 +39,6 @@ const CommentDetailBox = () => {
           <HiArrowRight />
         </span>
       </div>
-<<<<<<< HEAD
       <div className="bg-white dark:bg-[#2D3748] rounded-md mt-5 pb-5 w-full">
         <div className="bg-[#007bff] dark:bg-[#4299E1] py-3 rounded-t-md px-5">
           <h1 className=" text-[16px] md:text-[18px] font-semibold text-white dark:text-[#E2E8F0]">
@@ -54,57 +48,29 @@ const CommentDetailBox = () => {
         <div className="flex md:justify-between mx-4 flex-wrap items-center mt-10">
           <div className="space-y-2">
             <h3 className="text-[18px] md:text-xl  font-semibold text-stone-500 dark:text-[#E2E8F0]">
-=======
-      <div className="bg-white dark:bg-[#2D3748] rounded-md mt-5 pb-5">
-        <div className="bg-[#007bff] dark:bg-[#4299E1] py-3 rounded-t-md px-5">
-          <h1 className="text-[18px] font-semibold text-white dark:text-[#E2E8F0]">
-            Verify Comment
-          </h1>
-        </div>
-        <div className="flex justify-between mx-4 items-center mt-10">
-          <div className="space-y-2">
-            <h3 className="text-[20px] font-semibold text-stone-500 dark:text-[#E2E8F0]">
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
               {comment?.post.title.charAt(0).toUpperCase() +
                 comment?.post.title.slice(1)}
             </h3>
           </div>
-<<<<<<< HEAD
           <div className="gap-4 flex-wrap flex justify-between mx-0 md:mx-4 mt-2 md:mt-0 items-center mr-3">
             <span className="text-[16px] text-stone-500 dark:text-[#E2E8F0]">
               Date: {formatDate(comment?.date)}
             </span>
             <span className="dark:text-[#E2E8F0] text-stone-500">
-=======
-          <div className="flex items-center gap-4 mr-3">
-            <span className="text-[15px] text-stone-500 dark:text-[#E2E8F0]">
-              Date: {formatDate(comment?.date)}
-            </span>
-            <span className="dark:text-[#E2E8F0]">
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
               Time: {hours === 0 ? 12 : hours}: {minute} : {second} {preiod}
             </span>
           </div>
         </div>
-<<<<<<< HEAD
         <div className=" flex-wrap flex justify-between gap-3 md:gap-0  mt-2 md:mt-0 items-center mx-4">
           <span className="text-[16px] text-stone-500 mt-2 dark:text-[#E2E8F0]">
             Category - {comment?.post.category}
           </span>
           <span className="mr-5 text-stone-500 dark:text-[#E2E8F0]">
-=======
-        <div className="flex justify-between items-center mx-4">
-          <span className="text-[16px] text-stone-500 mt-2 dark:text-[#E2E8F0]">
-            Category - {comment?.post.category}
-          </span>
-          <span className="mr-5 dark:text-[#E2E8F0]">
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
             Status -{" "}
             {comment?.status.charAt(0).toUpperCase() + comment?.status.slice(1)}
           </span>
         </div>
         <div className="mx-4 bg-gray-50 dark:bg-[#4A5568] rounded-sm mt-10 py-10 px-5 space-y-3">
-<<<<<<< HEAD
           <h3 className="text-xl font-semibold dark:text-[#E2E8F0] text-stone-500">
             Message
           </h3>
@@ -112,13 +78,6 @@ const CommentDetailBox = () => {
         </div>
         <div className="border-t border-stone-200 mt-10 dark:border-[#4A5568]">
           <span className="mt-4 mb-2  ml-4 flex justify-end items-center gap-5 mr-3  md:mr-10">
-=======
-          <h3 className="text-xl font-semibold dark:text-[#E2E8F0]">Message</h3>
-          <p className="dark:text-[#E2E8F0]">{comment?.comment}</p>
-        </div>
-        <div className="border-t border-stone-200 mt-10 dark:border-[#4A5568]">
-          <span className="mt-4 mb-2  ml-4 flex justify-end items-center gap-5 mr-10">
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
             <Button
               name="Back"
               disable={isEditingComment}

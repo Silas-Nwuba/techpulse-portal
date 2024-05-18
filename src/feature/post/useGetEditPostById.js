@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 const useGetEditPostById = () => {
   const { id } = useParams();
   const { data, error, isFetching } = useQuery({
-    queryKey: ["post"],
+    queryKey: ["editById"],
     queryFn: () => getEditPostData(id),
     retry: false,
   });

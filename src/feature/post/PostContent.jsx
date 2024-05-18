@@ -9,9 +9,9 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import { useNavigate } from "react-router-dom";
 import { useUserDropdown } from "../../context/UserDropdownContextApi";
 const PostContent = ({ post }) => {
+  console.log(post);
   const navigate = useNavigate();
   const { deletePost, isDeleting } = useDeletePost();
-  const { day, month, year } = formatPostDate(post.createdDate);
   const maxLength = 50;
   const { dispatch } = useUserDropdown();
   const handleEdit = () => {
@@ -27,15 +27,9 @@ const PostContent = ({ post }) => {
       <img
         src={post.image}
         alt="postImage"
-<<<<<<< HEAD
         className="w-full sm:w-[500px] rounded-xl h-[200px]"
       />
-      <h1 className="text-[16px] md:text-[18px] font-semibold text-stone-700 dark:text-[#eeeeee] mt-3">
-=======
-        className="w-full rounded-xl sm:h-[200px]"
-      />
-      <h1 className="text-[16px] md:text-[18px] font-semibold text-stone-700 dark:text-[#eeeeee]">
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
+      <h1 className="md:text-[16px] font-semibold text-stone-700 dark:text-[#eeeeee] mt-3">
         {(post.title.charAt(0).toUpperCase() + post.title.slice(1)).length >
         maxLength
           ? `${(
@@ -51,9 +45,7 @@ const PostContent = ({ post }) => {
           </span>
           <span className="flex gap-1 items-center">
             <HiOutlineCalendar className=" text-stone-600 dark:text-[#CBD5E0]" />
-            <p className="mt-1">
-              {day} {month} {year}
-            </p>
+            <p className="mt-1">{formatPostDate(post.createdDate)}</p>
           </span>
         </div>
         <div className="flex item-center gap-2 cursor-pointer">

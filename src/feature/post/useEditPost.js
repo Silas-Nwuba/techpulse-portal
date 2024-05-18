@@ -11,7 +11,7 @@ const useEditPost = () => {
       });
       queryClient.setQueryData(["post"], data);
       queryClient.invalidateQueries({
-        queryKey: ["post"],
+        queryKey: ["editPost"],
       });
     },
     onError: (error) => {

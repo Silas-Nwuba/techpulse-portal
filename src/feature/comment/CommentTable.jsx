@@ -3,67 +3,9 @@ import Table from "../../ui/Table";
 import Pagination from "../../ui/Pagination";
 import CommentRow from "./CommentRow";
 import { useComment } from "./useComment";
-<<<<<<< HEAD
 import FullPageLoaderSpinner from "../../ui/FullPageLoaderSpinner"
 import TableOperation from "../../ui/TableOperation";
 import Error from "../../ui/Error";
-=======
-import TableSkeletonSpinner from "../../ui/TableSkeletonSpinner";
-import TableOperation from "../../ui/TableOperation";
-import Error from "../../ui/Error";
-
-// const text = [
-//   {
-//     id: 100,
-//     name: "silas",
-//     email: "nwubasilas@yahoo.com",
-//     date: "2024-03-04",
-//     status: "Approved",
-//   },
-//   {
-//     id: 101,
-//     name: "angela",
-//     email: "nwubasilas@yahoo.com",
-//     date: "2024-03-04",
-//     status: "Pending",
-//   },
-//   {
-//     id: 102,
-//     name: "emeka",
-//     email: "nwubasilas@yahoo.com",
-//     date: "2024-03-04",
-//     status: "Approved",
-//   },
-//   {
-//     id: 103,
-//     name: "prince",
-//     email: "nwubasilas@yahoo.com",
-//     date: "2024-03-04",
-//     status: "Pending",
-//   },
-//   {
-//     id: 104,
-//     name: "ebuka",
-//     email: "nwubasilas@yahoo.com",
-//     date: "2024-03-04",
-//     status: "Approved",
-//   },
-//   {
-//     id: 103,
-//     name: "prince",
-//     email: "nwubasilas@yahoo.com",
-//     date: "2024-03-04",
-//     status: "Pending",
-//   },
-//   {
-//     id: 104,
-//     name: "ebuka",
-//     email: "nwubasilas@yahoo.com",
-//     date: "2024-03-04",
-//     status: "Approved",
-//   },
-// ];
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
 const CommentTable = () => {
   const { comments, count, error, isLoading } = useComment();
   useEffect(() => {
@@ -72,11 +14,7 @@ const CommentTable = () => {
       document.title = "TechPulse";
     };
   }, []);
-<<<<<<< HEAD
   if (isLoading) return <FullPageLoaderSpinner/> ;
-=======
-  if (isLoading) return <TableSkeletonSpinner />;
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
   if (error) return <Error />;
   return (
     <div className="mt-40 md:mt-10 bg-white dark:bg-[#2D3748] shadow-sm rounded-sm  p-4 mb-10 w-full overflow-x-auto">

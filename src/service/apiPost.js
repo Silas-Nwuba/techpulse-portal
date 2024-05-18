@@ -1,43 +1,26 @@
-<<<<<<< HEAD
-import {Post_Per_page } from "../utils/constant";
+import { Post_Per_page } from "../utils/constant";
 import supabase, { supabaseUrl } from "./supabase";
-export const getPost = async ({pageParam = 1}) => {
-  const { data, error, count} = await supabase
+export const getPost = async ({ pageParam = 1 }) => {
+  const { data, error, count } = await supabase
     .from("post")
-    .select("*",{ count: "exact" })
+    .select("*", { count: "exact" })
+    .order("createdDate", { ascending: false })
     .range((pageParam - 1) * Post_Per_page, pageParam * Post_Per_page - 1);
   if (error) {
     throw new Error("Please check internet connection");
   }
-  return {data, count};
+  return { data, count };
 };
-=======
-import { Page_Size } from "../utils/constant";
-import supabase, { supabaseUrl } from "./supabase";
-
-export const getPost = async ({ pageParam = 1 }) => {
+export const getAllPost = async () => {
   const { data, error } = await supabase
     .from("post")
     .select("*")
-    .range((pageParam - 1) * Page_Size, pageParam * Page_Size - 1);
+    .order("createdDate", { ascending: false });
   if (error) {
     throw new Error("Please check internet connection");
   }
-
   return data;
 };
-export const getTotalPost = async () => {
-  const { count, error } = await supabase
-    .from("post")
-    .select("*", { count: "exact" });
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  return count;
-};
-
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
 export const createPost = async (newPostData) => {
   const imageName = `${Math.random()}-${newPostData.image.name}`.replaceAll(
     "/",
@@ -46,7 +29,13 @@ export const createPost = async (newPostData) => {
   const imagePath = `${supabaseUrl}/storage/v1/object/public/image/${imageName}`;
   const { data, error } = await supabase
     .from("post")
-    .insert([{ ...newPostData, image: imagePath }])
+    .insert([
+      {
+        ...newPostData,
+        image: imagePath,
+        category: newPostData.category.value,
+      },
+    ])
     .select();
   if (error) {
     throw new Error("Post could not be publish");
@@ -62,6 +51,7 @@ export const createPost = async (newPostData) => {
       "Post image could not be uploaded and the post was not published"
     );
   }
+  console.log(data);
   return data;
 };
 export const getEditPostData = async (commentId) => {

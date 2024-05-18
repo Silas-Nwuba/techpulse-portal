@@ -9,10 +9,7 @@ const Setting = () => {
   const navigate = useNavigate();
   const { dispatch } = useUserDropdown();
   useEffect(() => {
-<<<<<<< HEAD
     window.scrollTo({ top: 0 });
-=======
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
     dispatch({ type: "closeUserDropdown", payload: false });
     document.title = "Setting - TechPulse";
     return () => {
@@ -22,11 +19,7 @@ const Setting = () => {
 
   return (
     <>
-<<<<<<< HEAD
       <div className="flex items-center justify-between mx-2 mt-[7rem] md:mt-10">
-=======
-      <div className="flex items-center justify-between mt-10 mx-2">
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
         <span className="text-[20px] text-[#333333] font-semibold dark:text-[#E2E8F0] ">
           Admin Settings
         </span>

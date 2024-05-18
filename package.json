@@ -14,23 +14,18 @@
     "@supabase/supabase-js": "^2.39.7",
     "@tanstack/react-query": "^5.22.2",
     "@tanstack/react-query-devtools": "^5.24.0",
-<<<<<<< HEAD
     "color-convert": "^2.0.1",
     "date-fns": "^3.3.1",
     "react": "^18.2.0",
     "react-datepicker": "^6.6.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.13",
-=======
-    "date-fns": "^3.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
     "react-hook-form": "^7.50.1",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
     "react-intersection-observer": "^9.8.1",
-    "react-router-dom": "^6.22.0"
+    "react-router-dom": "^6.22.0",
+    "react-select": "^5.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

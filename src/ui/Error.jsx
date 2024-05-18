@@ -24,11 +24,7 @@ const Error = () => {
         backgroundColor="bg-gradient-to-r from-cyan-500 to-blue-400"
         color="text-white"
         width="w-[150px]"
-<<<<<<< HEAD
         name="Try again"
-=======
-        name="Try Again"
->>>>>>> 2240043135df3e38123bbfa092520827935184bb
         onClick={handleTryAgain}
       />
     </div>
