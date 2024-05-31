@@ -18,9 +18,9 @@ const CommentDetailBox = () => {
   const { deleteComment, isDeleting } = useDeleteComment();
   const { hours, minute, second, preiod } = formatTime(comment?.date);
   useEffect(() => {
-    document.title = "CommentDetail - TechPulse";
+    document.title = "CommentDetail | TechPulse";
     return () => {
-      document.title = "TechPulse";
+      document.title = "Dashboard | TechPulse";
     };
   });
 
@@ -117,7 +117,7 @@ const CommentDetailBox = () => {
                   width={"w-[90px]"}
                   borderColor={"border-red-500"}
                   backgroundColor="bg-[#E53E3E]"
-                  color="text-[#E2E8F0]"
+                  color="text-[#ffff]"
                   marginBottom="mb-0"
                   hover="hover:bg-red-600"
                   hoverBorder="hover:border-red-600"

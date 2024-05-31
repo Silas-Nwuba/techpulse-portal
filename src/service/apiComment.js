@@ -1,11 +1,17 @@
 import { Page_Size } from "../utils/constant";
 import supabase from "./supabase";
 
-export const getComment = async ({ filter, page }) => {
+export const getComment = async () => {
+  let { data, error } = await supabase.from("comment").select("*,post(id)");
+  if (error) {
+    throw new Error("Comment fail to approve");
+  }
+  return data;
+};
+export const getCommentByPagination = async ({ filter, page }) => {
   let query = supabase
     .from("comment")
     .select("*, post(title, category)", { count: "exact" });
-
   //FILTER
   if (filter) query = query.eq(filter.field, filter.value);
   //Pagination
@@ -21,7 +27,6 @@ export const getComment = async ({ filter, page }) => {
   }
   return { data, count };
 };
-
 export const getCommentId = async (commentId) => {
   const { data, error } = await supabase
     .from("comment")

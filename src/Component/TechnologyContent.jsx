@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 import { formatPostDate } from "../utils/helper";
 import { FaCalendarCheck } from "react-icons/fa";
 const TechnologyContent = ({ data }) => {
+  console.log(data);
   return (
     <div className="block lg:flex gap-6 mt-10">
-      {data.slice(1, 2).map((data) => {
+      {data?.slice(0, 1).map((data) => {
         return (
           <Link
-            to={`news/article/${data.id}${Math.floor(Math.random() * 1000)}`}
-            className="relative w-[900px] h-[420px]"
+            to={`/${
+              data.category.charAt(0).toLowerCase() + data.category.slice(1)
+            }/article/${data.id}`}
+            className="relative w-[900px] h-[420px] "
             key={data.id}
           >
             <img
@@ -37,22 +40,24 @@ const TechnologyContent = ({ data }) => {
           </Link>
         );
       })}
-      <span className="space-y-5 xl:mt-0 mt-20">
-        {data.slice(1, 5).map((data) => {
+      <span className="space-y-[18px] xl:mt-0 ">
+        {data?.slice(1, 5).map((data) => {
           return (
             <Link
-              to={`news/article/${data.id}${Math.floor(Math.random() * 1000)}`}
-              className="flex gap-5"
-              key={data.id}
+              to={`/${
+                data?.category.charAt(0).toLowerCase() + data?.category.slice(1)
+              }/article/${data?.id}`}
+              className="flex gap-5 mt-7 xl:mt-0"
+              key={data?.id}
             >
               <img
-                src={data.image}
-                alt={data.title}
+                src={data?.image}
+                alt={data?.title}
                 className="object-cover w-[100px] h-[91px] hover:opacity-70 cursor-pointer transition-transform duration-300 ease-in-out"
               />
               <div className="space-y-2">
-                <h1 className="text-[15px] text-stone-600 font-semibold hover:text-[#007bff] transition-all cursor-pointer">
-                  {data.title}
+                <h1 className="text-[16px] text-stone-600 font-semibold hover:text-[#007bff] transition-all cursor-pointer">
+                  {data?.title}
                 </h1>
               </div>
             </Link>
@@ -62,5 +67,4 @@ const TechnologyContent = ({ data }) => {
     </div>
   );
 };
-
 export default TechnologyContent;

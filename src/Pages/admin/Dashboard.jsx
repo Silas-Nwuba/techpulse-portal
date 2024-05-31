@@ -5,9 +5,9 @@ const Dashboard = () => {
   const { dispatch } = useUserDropdown();
   useEffect(() => {
     dispatch({ type: "closeUserDropdown", payload: false });
-    document.title = "Dashboard - TechPulse";
+    document.title = "Dashboard | TechPulse";
     return () => {
-      document.title = "Dashboard - TechPulse";
+      document.title = "Dashboard | TechPulse";
     };
   }, [dispatch]);
   return (

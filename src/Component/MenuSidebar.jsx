@@ -1,7 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-const MenuSidebar = ({ showMenuScroll }) => {
+const MenuSidebar = ({ setShowMenu }) => {
   const inputRef = useRef(null);
+  const handleCloseSideMenu = (e) => {
+    setShowMenu(false);
+  };
+
   useEffect(() => {
     if (inputRef.current) inputRef.current.focus();
     document.documentElement.style.overflowY = "hidden";
@@ -9,11 +13,10 @@ const MenuSidebar = ({ showMenuScroll }) => {
       document.documentElement.style.overflowY = "visible";
     };
   });
+
   return (
     <div
-      className={`bg-sky-500 w-full h-full pt-2 px-10 pb-10 z-[50000] transition duration-300 ease-out fixed ${
-        showMenuScroll ? "top-[65px]" : ""
-      }`}
+      className={`bg-sky-500 w-full h-screen pt-2 px-10 pb-10 z-[50000] transition duration-300 ease-out`}
     >
       <input
         type="text"
@@ -23,21 +26,31 @@ const MenuSidebar = ({ showMenuScroll }) => {
       />
       <div className="bg-stone-300 w-full"></div>
       <nav className="mt-10">
-        <ul className="space-y-8 text-slate-50">
+        <ul className="space-y-10 text-slate-50">
           <li>
-            <NavLink>Home</NavLink>
+            <NavLink to={"/"} onClick={handleCloseSideMenu}>
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink>Technology</NavLink>
+            <NavLink to={"/technology"} onClick={handleCloseSideMenu}>
+              Technology
+            </NavLink>
           </li>
           <li>
-            <NavLink>Business</NavLink>
+            <NavLink to={"/business"} onClick={handleCloseSideMenu}>
+              Business
+            </NavLink>
           </li>
           <li>
-            <NavLink>Smartphone</NavLink>
+            <NavLink to={"/smartphone"} onClick={handleCloseSideMenu}>
+              SmartPhone
+            </NavLink>
           </li>
           <li>
-            <NavLink>Gadget</NavLink>
+            <NavLink to={"/gadget"} onClick={handleCloseSideMenu}>
+              Gadget
+            </NavLink>
           </li>
         </ul>
       </nav>

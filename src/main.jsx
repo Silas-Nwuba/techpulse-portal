@@ -8,13 +8,13 @@ import "./index.css";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <GoogleOAuthProvider clientId="871969682300-bdnk53t8ntsfqd86bu3n3fnioqjol7lt.apps.googleusercontent.com">
-    <React.StrictMode>
+  <React.StrictMode>
+    <GoogleOAuthProvider clientId="871969682300-bdnk53t8ntsfqd86bu3n3fnioqjol7lt.apps.googleusercontent.com">
       <App />
       <ErrorBoundary
         FallbackComponent={ErrorFallback}
         onReset={() => window.location.replace("/admin/dashboard")}
       ></ErrorBoundary>
-    </React.StrictMode>
-  </GoogleOAuthProvider>
+    </GoogleOAuthProvider>
+  </React.StrictMode>
 );

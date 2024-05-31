@@ -16,12 +16,20 @@ const Technology = () => {
           </h2>
           <HiMiniPlay className="text-[#007bff] text-xl mt-[5px]" />
         </span>
-        <Link className="text-[#007bff] text-sm">See More</Link>
+        <Link to={"/technology"} className="text-[#007bff] text-sm">
+          See More
+        </Link>
       </div>
-      <div className="bg-[#ebeaea] w-full h-[2px] mt-3">
-        <div className="bg-sky-500 w-20 h-full"></div>
+      <div className="bg-slate-100 w-full h-[2px] mt-3 relative">
+        <div className="bg-sky-500 w-[50px] h-full border-2 border-sky-500 absolute bottom-0"></div>
       </div>
+
       {isLoading && <TechLoaderSpinner />}
+      {!isLoading && techArr?.length === 0 && (
+        <p className="mt-10 text-center text-[15px]">
+          No technology posts available. Check back soon!
+        </p>
+      )}
       {!isLoading && techArr?.length !== 0 && (
         <TechnologyContent data={techArr} />
       )}

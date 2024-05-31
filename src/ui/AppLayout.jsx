@@ -11,7 +11,10 @@ import { Link, Outlet } from "react-router-dom";
 import HeaderAdvert from "../Component/HeaderAdvert";
 import { HiChevronDown } from "react-icons/hi2";
 import MenuSidebar from "../Component/MenuSidebar";
+import useGetAllComment from "../feature/comment/useGetAllComment";
+import NotFoundError from "./NotFoundError";
 const AppLayout = () => {
+  const { error } = useGetAllComment();
   const [showMenu, setShowMenu] = useState(false);
   const [showNav, setShowNav] = useState(false);
   const handleNavigation = () => {
@@ -27,30 +30,13 @@ const AppLayout = () => {
     if (showMenu) setShowNav(false);
   };
 
-  // const [showMenuScroll, setShowMenuScroll] = useState(false);
-  // const menuRef = useRef(null);
-  // useEffect(() => {
-  //   setShowMenuScroll(false);
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       setShowMenuScroll(!entry.isIntersecting);
-  //     },
-  //     { threshold: 0.2 }
-  //   );
-
-  //   if (menuRef.current) {
-  //     observer.observe(menuRef.current);
-  //   }
-  //   return () => {
-  //     if (menuRef.current) {
-  //       observer.unobserve(menuRef.current);
-  //     }
-  //   };
-  // }, [menuRef]);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (error) {
+    return <NotFoundError />;
+  }
   return (
     <div className="flex flex-col min-h-screen">
       <header className="item-center px-4 py-4 lg:px-10 flex justify-between">
@@ -118,26 +104,15 @@ const AppLayout = () => {
         handleCloseMenu={handleCloseMenu}
         showMenu={showMenu}
         showNav={showNav}
-        // menuRef={menuRef}
       />
-      {/* {showMenuScroll && (
-        <Menu
-          handleShowMenu={handleShowMenu}
-          handleCloseMenu={handleCloseMenu}
-          showMenu={showMenu}
-          showNav={showNav}
-          position={"fixed top-0 opactiy-5"}
-        />
-      )} */}
 
-      {/* {showMenu && <MenuSidebar showMenuScroll={showMenuScroll} />} */}
-      {showMenu && <MenuSidebar />}
+      {showMenu && <MenuSidebar setShowMenu={setShowMenu} />}
       <HeaderAdvert />
-      <main className="w-[95%] md:w-[95%] mx-auto mt-10 mb-10">
+      <main className="w-[95%] md:w-[95%] mx-auto mt-10 mb-10 min-h-screen">
         <Outlet />
       </main>
       <Footer>
-        <footer className="bg-sky-600 w-full mt-5 py-3 text-sm text-center text-slate-50 font-normal">
+        <footer className="bg-sky-600 w-full  mt-0 py-3 text-sm text-center  text-slate-50 font-normal">
           &copy; {new Date().getFullYear()} TechPulse All right reserved
         </footer>
       </Footer>

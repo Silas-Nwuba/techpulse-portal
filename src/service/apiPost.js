@@ -51,14 +51,13 @@ export const createPost = async (newPostData) => {
       "Post image could not be uploaded and the post was not published"
     );
   }
-  console.log(data);
   return data;
 };
-export const getEditPostData = async (commentId) => {
+export const getEditPostById = async (id) => {
   const { data, error } = await supabase
     .from("post")
     .select("*")
-    .eq("id", commentId)
+    .eq("id", id)
     .single();
   if (error) {
     throw new Error("Post data was not found");

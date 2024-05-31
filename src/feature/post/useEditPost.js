@@ -4,11 +4,13 @@ import { editPost as editPostApi } from "../../service/apiPost";
 const useEditPost = () => {
   const queryClient = useQueryClient();
   const { mutate: editPost, isPending: isEditing } = useMutation({
+    mutationKey: ["editPost"],
     mutationFn: ({ newPostData, id }) => editPostApi(newPostData, id),
     onSuccess: (data) => {
       toast.success("Post successfully edited", {
         id: "sucessId",
       });
+      window.location.href = "http://localhost:5173/admin/post";
       queryClient.setQueryData(["post"], data);
       queryClient.invalidateQueries({
         queryKey: ["editPost"],

@@ -11,9 +11,9 @@ const Setting = () => {
   useEffect(() => {
     window.scrollTo({ top: 0 });
     dispatch({ type: "closeUserDropdown", payload: false });
-    document.title = "Setting - TechPulse";
+    document.title = "Settings | TechPulse";
     return () => {
-      document.title = "TechPulse";
+      document.title = "Dashboard | TechPulse";
     };
   }, [dispatch]);
 

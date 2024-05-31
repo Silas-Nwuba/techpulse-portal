@@ -16,7 +16,6 @@ const Main = () => {
         alt="advert"
         className="m-auto w-full mt-20 mb-10"
       />
-      {/* <div className=" bg-slate-50 py-10 px-5 skeleton"></div> */}
     </>
   );
 };

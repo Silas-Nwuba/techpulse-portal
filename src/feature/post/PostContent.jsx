@@ -1,7 +1,12 @@
 import React from "react";
-import { FaEdit } from "react-icons/fa";
+import { FaClock, FaEdit, FaUser, FaUserAlt } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
-import { HiOutlineCalendar, HiOutlineUser } from "react-icons/hi2";
+import {
+  HiMiniUsers,
+  HiOutlineCalendar,
+  HiOutlineUser,
+  HiUser,
+} from "react-icons/hi2";
 import { useDeletePost } from "./useDeletePost";
 import { formatPostDate } from "../../utils/helper";
 import Modal from "../../ui/Modal";
@@ -9,7 +14,6 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import { useNavigate } from "react-router-dom";
 import { useUserDropdown } from "../../context/UserDropdownContextApi";
 const PostContent = ({ post }) => {
-  console.log(post);
   const navigate = useNavigate();
   const { deletePost, isDeleting } = useDeletePost();
   const maxLength = 50;
@@ -40,11 +44,11 @@ const PostContent = ({ post }) => {
       <div className="mt-1 flex justify-between items-center">
         <div className="flex flex-wrap gap-5 items-center text-stone-600  dark:text-[#CBD5E0] text-sm">
           <span className="flex gap-1 items-center">
-            <HiOutlineUser className="text-stone-600 dark:text-[#CBD5E0]" />
+            <HiUser className="text-stone-400 dark:text-[#CBD5E0]" />
             <p className="mt-1 text-sm">{post.author}</p>
           </span>
           <span className="flex gap-1 items-center">
-            <HiOutlineCalendar className=" text-stone-600 dark:text-[#CBD5E0]" />
+            <HiOutlineCalendar className=" text-[(rgb(84, 86, 88))] dark:text-[#CBD5E0]" />
             <p className="mt-1">{formatPostDate(post.createdDate)}</p>
           </span>
         </div>

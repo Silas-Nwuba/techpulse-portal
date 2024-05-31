@@ -16,12 +16,12 @@ const Post = () => {
   const { ref, inView } = useInView();
   const { dispatch } = useUserDropdown();
   useEffect(() => {
-    document.title = "Post - TechPulse";
+    document.title = "Post | TechPulse";
     if (inView && hasNextPage) {
       fetchNextPage();
     }
     return () => {
-      document.title = "Post - TechPulse";
+      document.title = "Dashboard | TechPulse";
     };
   }, [inView, hasNextPage, fetchNextPage]);
 

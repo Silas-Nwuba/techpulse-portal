@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getComment } from "../../service/apiComment";
+import { getCommentByPagination } from "../../service/apiComment";
 import { useSearchParams } from "react-router-dom";
 import { Page_Size } from "../../utils/constant";
 
@@ -23,7 +23,7 @@ export const useComment = () => {
     isLoading,
   } = useQuery({
     queryKey: ["comment", filter, page],
-    queryFn: () => getComment({ filter, page }),
+    queryFn: () => getCommentByPagination({ filter, page }),
   });
 
   //PREFETCHING
@@ -31,7 +31,7 @@ export const useComment = () => {
   if (page < pageCount)
     queryClient.prefetchQuery({
       queryKey: ["comment", filter, page + 1],
-      queryFn: () => getComment({ filter, page: page + 1 }),
+      queryFn: () => getCommentByPagination({ filter, page: page + 1 }),
     });
 
   return { comments, error, isLoading, page, count };

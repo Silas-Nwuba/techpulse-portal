@@ -15,12 +15,17 @@ import CreatePostPage from "./Pages/admin/CreatePost";
 import EditPostPage from "./Pages/admin/EditPostPage";
 import PageNotFound from "./ui/PageNotFound";
 import Login from "./Pages/admin/Login";
-import ProtectedRoute from "./ui/ProtectedRoute";
 import Setting from "./Pages/admin/Setting";
 import ResetPassword from "./Pages/admin/ResetPassword";
 import UpdatePassword from "./Pages/admin/UpdatePassword";
 import HomePage from "./Pages/main/HomePage";
 import TechnologyPage from "./Pages/main/TechnologyPage";
+import BusinessPage from "./Pages/main/BusinessPage";
+import SmartphonePage from "./Pages/main/SmartphonePage";
+import GadgetPage from "./Pages/main/GadgetPage";
+import ArticlePage from "./Pages/main/ArticlePage";
+import LatestPostPage from "./Pages/main/LatestPostPage";
+import OlderPostPage from "./Pages/main/OlderPostPage";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -41,6 +46,15 @@ const App = () => {
                   <Route index element={<Navigate replace to="home" />} />
                   <Route path="home" element={<HomePage />} />
                   <Route path="technology" element={<TechnologyPage />} />
+                  <Route path="business" element={<BusinessPage />} />
+                  <Route path="smartphone" element={<SmartphonePage />} />
+                  <Route path="gadget" element={<GadgetPage />} />
+                  <Route path="latest" element={<LatestPostPage />} />
+                  <Route path="older" element={<OlderPostPage />} />
+                  <Route
+                    path="/:name/article/:postId"
+                    element={<ArticlePage />}
+                  />
                 </Route>
                 <Route
                   element={
@@ -88,6 +102,9 @@ const App = () => {
         toastOptions={{
           error: {
             duration: 5000,
+          },
+          style: {
+            zIndex: 30000,
           },
         }}
       />
