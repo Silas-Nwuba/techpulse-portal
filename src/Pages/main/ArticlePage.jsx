@@ -15,13 +15,7 @@ import FormRow from "../../ui/FormRow";
 import Button from "../../ui/Button";
 import { useGetallPost } from "../../feature/post/useGetallPost";
 import { formatPostDate } from "../../utils/helper";
-const contentObj = {
-  content: `Lorem, ipsum dolor sit amet consectetur adipisicing elit Cumque rem tenetur quaerat ad iusto! Sapiente quia corrupti enim illum obcaecati eveniet quod aut deserunt voluptatum impedit nostrum beatae, doloribus odio Lorem, ipsum dolor sit amet consectetur adipisicing elit Cumque rem tenetur quaerat ad iusto! Sapiente quia corrupti enim illum obcaecati eveniet quod aut deserunt voluptatum impedit nostrum beatae, doloribus odio.
 
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit Cumque rem tenetur quaerat ad iusto! Sapiente quia corrupti enim illum obcaecati eveniet quod aut deserunt voluptatum impedit nostrum beatae, doloribus odio Lorem, ipsum dolor sit amet consectetur adipisicing elit Cumque rem tenetur quaerat ad iusto! Sapiente quia corrupti enim illum obcaecati eveniet quod aut deserunt voluptatum impedit nostrum beatae, doloribus odio.
-  
-  `,
-};
 const ArticlePage = () => {
   const { data } = useGetallPost();
   const { register, formState, handleSubmit, getValues } = useForm();
@@ -32,10 +26,6 @@ const ArticlePage = () => {
   const onSuccess = (data) => {
     toast.success("Comment successfully sent!");
   };
-
-  const paragraphs = item?.content
-    .split(/(<\/p>)/)
-    .filter((p) => p.trim().length > 0);
 
   // const formatContentAsParagraphs = (text) => {
   //   // Remove any <br> tags

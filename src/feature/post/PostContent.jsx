@@ -1,12 +1,7 @@
 import React from "react";
-import { FaClock, FaEdit, FaUser, FaUserAlt } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
-import {
-  HiMiniUsers,
-  HiOutlineCalendar,
-  HiOutlineUser,
-  HiUser,
-} from "react-icons/hi2";
+import { HiOutlineCalendar, HiUser } from "react-icons/hi2";
 import { useDeletePost } from "./useDeletePost";
 import { formatPostDate } from "../../utils/helper";
 import Modal from "../../ui/Modal";

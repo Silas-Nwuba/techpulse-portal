@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
-import ReactQuill, { Quill } from "react-quill";
+import ReactQuill from "react-quill";
 import Select from "react-select";
 import Button from "../../ui/Button";
 import FormRow from "../../ui/FormRow";
@@ -9,11 +9,9 @@ import useEditPost from "./useEditPost";
 import { useNavigate } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi2";
 import useGetEditPostById from "./useGetEditPostById";
-import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 import { useUserDropdown } from "../../context/UserDropdownContextApi";
 import FullPageLoaderSpinner from "../../ui/FullPageLoaderSpinner";
 import { useUser } from "../authentication/useUser";
-import { formatDate } from "../../utils/helper";
 import NotFoundError from "../../ui/NotFoundError";
 import LoaderSpinner from "../../ui/LoaderSpinner";
 
@@ -36,7 +34,7 @@ const EditPost = () => {
   const { dispatch } = useUserDropdown();
   const navigate = useNavigate();
   const { data, isFetching, error } = useGetEditPostById();
-  const { editPost, isEditing, isError } = useEditPost();
+  const { editPost, isEditing } = useEditPost();
   const { register, handleSubmit, formState, reset, control } = useForm({
     values: { ...data },
   });

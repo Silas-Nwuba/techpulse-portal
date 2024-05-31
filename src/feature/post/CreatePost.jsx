@@ -10,7 +10,6 @@ import { format } from "date-fns";
 import { HiArrowRight } from "react-icons/hi2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 import { useUserDropdown } from "../../context/UserDropdownContextApi";
 import { useUser } from "../authentication/useUser";
 import useCreatePost from "./useCreatePost";
