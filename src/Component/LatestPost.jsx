@@ -7,7 +7,7 @@ import { differenceInDays, parseISO } from "date-fns";
 import LatestPostContent from "./LatestPostContent";
 const LatestPost = () => {
   const { data, isLoading } = useGetallPost();
-
+  console.log(data);
   let latestPostArr = data?.filter(
     (item) => differenceInDays(new Date(), parseISO(item.createdDate)) === 1
   );
