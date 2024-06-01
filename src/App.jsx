@@ -26,6 +26,7 @@ import GadgetPage from "./Pages/main/GadgetPage";
 import ArticlePage from "./Pages/main/ArticlePage";
 import LatestPostPage from "./Pages/main/LatestPostPage";
 import OlderPostPage from "./Pages/main/OlderPostPage";
+import { Helmet } from "react-helmet";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -36,6 +37,20 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <>
+      <div className="App">
+        <Helmet>
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2814454738676259"
+            crossorigin="anonymous"
+          ></script>
+          {/* <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2814454738676259"
+            crossorigin="anonymous"
+          ></script> */}
+        </Helmet>
+      </div>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <DarkModeProvider>

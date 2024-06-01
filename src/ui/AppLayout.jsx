@@ -13,6 +13,7 @@ import { HiChevronDown } from "react-icons/hi2";
 import MenuSidebar from "../Component/MenuSidebar";
 import useGetAllComment from "../feature/comment/useGetAllComment";
 import NotFoundError from "./NotFoundError";
+import HorizontalAd from "./HorizontalAd";
 const AppLayout = () => {
   const { error } = useGetAllComment();
   const [showMenu, setShowMenu] = useState(false);
@@ -107,7 +108,10 @@ const AppLayout = () => {
       />
 
       {showMenu && <MenuSidebar setShowMenu={setShowMenu} />}
-      <HeaderAdvert />
+      <div className="bg-slate-50 w-full py-10 px-3">
+        <HorizontalAd />
+      </div>
+      {/* <HeaderAdvert /> */}
       <main className="w-[95%] md:w-[95%] mx-auto mt-10 mb-10 min-h-screen">
         <Outlet />
       </main>

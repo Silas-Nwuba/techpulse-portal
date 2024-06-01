@@ -1,37 +1,16 @@
 import React from "react";
 import LatestPost from "./LatestPost";
-import AsideAdvert from "./AsideAdvert";
 import OlderPost from "./OlderPost";
+import SquareAd from "../ui/SquareAd";
 
 const Aside = () => {
   return (
     <aside>
       <LatestPost />
-      <div className="bg-gray-100 w-ful h-full py-5 mt-10">
-        <AsideAdvert>
-          <img
-            src="\image\google-ad3.PNG"
-            alt="advert"
-            className="m-auto cursor-pointer"
-          />
-        </AsideAdvert>
-        <AsideAdvert>
-          <img
-            src="\image\google-ad3.PNG"
-            alt="advert"
-            className="m-auto cursor-pointer"
-          />
-        </AsideAdvert>
-      </div>
+      <SquareAd />
+      <SquareAd />
       <OlderPost />
-      <AsideAdvert>
-        <img
-          src="\image\google-ad3.PNG"
-          alt="advert"
-          className="m-auto cursor-pointer"
-        />
-        {/* <p className="text-xs test-stone-600 pt-2">Advertisment</p> */}
-      </AsideAdvert>
+      <SquareAd />
     </aside>
   );
 };

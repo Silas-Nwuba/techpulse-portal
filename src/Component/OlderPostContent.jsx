@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const OlderPostContent = ({ data }) => {
   return (
     <>
-      {data?.slice(0, 4).map((data) => (
+      {data?.slice(0, 7).map((data) => (
         <Link
           to={`/${
             data?.category.charAt(0).toLowerCase() + data?.category.slice(1)
