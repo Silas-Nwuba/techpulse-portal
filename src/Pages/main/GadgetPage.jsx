@@ -69,9 +69,9 @@ const GadgetPage = () => {
             );
           })}
       </div>
-      <div className="my-80  bg-slate-50 py-10 flex flex-col justify-center items-center">
+      {/* <div className="my-80  bg-slate-50 py-10 flex flex-col justify-center items-center">
         <img src="\image\google-ads.PNG" alt="" className="w-[500px] " />
-      </div>
+      </div> */}
     </section>
   );
 };

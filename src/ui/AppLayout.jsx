@@ -40,23 +40,23 @@ const AppLayout = () => {
   }
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="item-center px-4 py-4 lg:px-10 flex justify-between">
+      <header className="item-center px-4 py-4 lg:px-10 flex justify-between dark:bg-[#000000]">
         <nav>
-          <ul className="flex gap-4 text-stone-500 text-[13px] font-medium">
+          <ul className="flex gap-4 text-stone-500 dark:text-[#e0e0e0] text-[13px] font-medium">
             <li
-              className="hover:text-[#007bff] transition-all flex items-center gap-1"
+              className="hover:text-[#007bff]  dark:hover:text-[#eeeeee] transition-all flex items-center gap-1"
               onClick={handleNavigation}
             >
               <Link>Home</Link>
               <HiChevronDown className="mt-1 block lg:hidden" />
             </li>
-            <li className="hover:text-[#007bff] transition-all hidden lg:block">
+            <li className="hover:text-[#007bff] dark:hover:text-[#eeeeee] transition-all hidden lg:block">
               <Link>About</Link>
             </li>
-            <li className="hover:text-[#007bff] transition-all hidden lg:block">
+            <li className="hover:text-[#007bff] dark:hover:text-[#eeeeee] transition-all hidden lg:block">
               <Link>Contact</Link>
             </li>
-            <li className="hover:text-[#007bff] transition-all hidden lg:block">
+            <li className="hover:text-[#007bff] dark:hover:text-[#eeeeee] transition-all hidden lg:block">
               <Link>Advertise with us</Link>
             </li>
           </ul>
@@ -85,7 +85,7 @@ const AppLayout = () => {
           <ul className="flex gap-2 md:gap-3 cursor-pointer">
             <li>
               <Link>
-                <FaFacebookSquare className="text-sky-600 transition-all duration-200 text-2xl" />
+                <FaFacebookSquare className="text-sky-600   transition-all duration-200 text-2xl" />
               </Link>
             </li>
             <li>
@@ -108,15 +108,16 @@ const AppLayout = () => {
       />
 
       {showMenu && <MenuSidebar setShowMenu={setShowMenu} />}
-      <div className="bg-slate-50 w-full py-10 px-3">
-        <HorizontalAd />
+      <div className="bg-slate-50 dark:bg-[#2c2c2c] w-full py-10 px-3">
+        <HeaderAdvert />
+        {/* <HorizontalAd /> */}
       </div>
       {/* <HeaderAdvert /> */}
       <main className="w-[95%] md:w-[95%] mx-auto mt-10 mb-10 min-h-screen">
         <Outlet />
       </main>
       <Footer>
-        <footer className="bg-sky-600 w-full  mt-0 py-3 text-sm text-center  text-slate-50 font-normal">
+        <footer className="bg-sky-600 w-full dark:bg-[#1e1e1e] dark:text-[#e0e0e0]  mt-0 py-3 text-sm text-center  text-slate-50 font-normal">
           &copy; {new Date().getFullYear()} TechPulse All right reserved
         </footer>
       </Footer>

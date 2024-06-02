@@ -26,30 +26,8 @@ const ArticlePage = () => {
   const onSuccess = (data) => {
     toast.success("Comment successfully sent!");
   };
-
-  // const formatContentAsParagraphs = (text) => {
-  //   // Remove any <br> tags
-  //   const cleanedText = text?.replace(/<\/?[^>]+(>|$)/g, "");
-
-  //   // Split the text by double newlines or single newlines
-  //   const paragraphs = cleanedText
-  //     ?.split(/\n{2,}|\r{2,}/)
-  //     .map((para) => para.trim())
-  //     .filter((para) => para);
-
-  //   console.log(paragraphs);
-  //   // Wrap each paragraph with <p> tags
-  //   const formattedContent = paragraphs
-  //     ?.map(
-  //       (para, index) =>
-  //         `<p className="${index === 0 ? "mt-0" : "mt-20"}">${para}</p>`
-  //     )
-  //     .join("");
-  //   return formattedContent;
-  // };
-
   useEffect(() => {
-    // window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0 });
     document.title = `${item?.title}`;
     return () => {
       document.title = "TechPulse: Tech to the world";
@@ -59,23 +37,23 @@ const ArticlePage = () => {
     <div className="mt-5 flex  w-[95%] gap-10 flex-col lg:flex-row mx-auto">
       <div className="flex-1">
         <header className="space-y-4">
-          <h1 className="text-xl md:text-2xl uppercase text-stone-600 font-bold leading-8">
+          <h1 className="text-xl md:text-2xl uppercase text-stone-600 font-bold leading-8 dark:text-[#fafafa]">
             {item?.title}
           </h1>
-          <p className="text-stone-500 capitalize text-sm leading-7">
+          <p className="text-stone-500 capitalize text-sm leading-7 dark:text-[#e0e0e0]">
             {htmlToText(item?.summary)}
           </p>
           <div className="md:flex justify-between gap-20 items-center">
             <div className="flex-col space-y-2">
-              <p className="text-sm">
+              <p className="text-sm dark:text-stone-300">
                 By <span className="font-semibold">{item?.author} </span>
               </p>
               <span className="flex gap-5">
-                <div className="flex gap-1 items-center text-[11px] text-[(rgb(84, 86, 88))]">
+                <div className="flex gap-1 items-center text-[11px] text-[(rgb(84, 86, 88))] dark:text-stone-300">
                   <FaClock className="text-stone-400" />
                   <span>{formatPostDate(item?.createdDate)}</span>
                 </div>
-                <div className="flex items-center text-[11px] text-[(rgb(84, 86, 88))] gap-1">
+                <div className="flex items-center text-[11px] text-[(rgb(84, 86, 88))] dark:text-stone-300 gap-1">
                   <FaComment className="text-stone-400" />
                   <span>10</span>
                 </div>
@@ -83,13 +61,13 @@ const ArticlePage = () => {
             </div>
 
             <div className="flex items-center gap-5 mt-5 ml-40">
-              <Link className="bg-slate-50 p-2 rounded-full ">
+              <Link className="bg-slate-50 p-2 rounded-full dark:bg-[#2c2c2c] ">
                 <FaFacebook className="text-sky-600 text-lg" />
               </Link>
-              <Link className="bg-slate-50 p-2 rounded-full">
+              <Link className="bg-slate-50 p-2 rounded-full dark:bg-[#2c2c2c]">
                 <FaTwitter className="text-sky-400 text-lg" />
               </Link>
-              <Link className="bg-slate-50 p-2 rounded-full">
+              <Link className="bg-slate-50 p-2 rounded-full dark:bg-[#2c2c2c]">
                 <FaWhatsapp className="text-green-600 text-lg" />
               </Link>
             </div>
@@ -107,9 +85,9 @@ const ArticlePage = () => {
             <div>
               <Interweave
                 content={item?.content}
-                className="text-sm text-stone-500 whitespace-pre-wrap tracking-wide py-5 leading-8 capitalize  w-[100%]"
+                className="text-sm text-stone-500 dark:text-[#e0e0e0]  whitespace-pre-wrap tracking-wide py-5 leading-8 capitalize  w-[100%]"
               />
-              <div className="mt-10 flex justify-center mb-10">
+              <div className="flex justify-center mb-10 mt-10">
                 <img src="/image/advert1.jpg" alt="googleAd" />
               </div>
             </div>
@@ -162,13 +140,19 @@ const ArticlePage = () => {
             </div>
           </div> */}
           <div className="mt-10">
-            <h3 className="font-semibold text-xl mt-5 py-4">Leave a Comment</h3>
-            <p className="mb-5 bg-red-300 p-4 w-full text-white text-sm rounded-md">
+            <h3 className="font-semibold text-xl mt-5 py-4 dark:text-[#e0e0e0]">
+              Leave a Comment
+            </h3>
+            <p className="mb-5 bg-red-300 dark:bg-[#3a3a3a] dark:border-[#2c2c2c] dark:text-[#e0e0e0] p-4 w-full text-white text-sm rounded-md">
               Your email address will not be published. Your comment will be
               reviewed by the administrator before published.
             </p>
             <form onSubmit={handleSubmit(onSuccess)}>
-              <FormRow label={"Name"} error={errors?.name?.message}>
+              <FormRow
+                label={"Name"}
+                error={errors?.name?.message}
+                color="dark:text-[#e0e0e0]"
+              >
                 <input
                   type="text"
                   name="username"
@@ -186,7 +170,7 @@ const ArticlePage = () => {
                       return nameValidate;
                     },
                   })}
-                  className="disabled:opacity-50  disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:border-2 disabled:border-gray-200 focus:outline-none border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400"
+                  className="disabled:opacity-50  dark:bg-[#2c2c2c] dark:border-[#2c2c2c] dark:text-[#e0e0e0] disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:border-2 disabled:border-gray-200 focus:outline-none border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400"
                 />
               </FormRow>
               <FormRow label={"Email address"} error={errors?.email?.message}>
@@ -201,7 +185,7 @@ const ArticlePage = () => {
                       message: "Email Adress is incorrect check and try again",
                     },
                   })}
-                  className="disabled:opacity-50  disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:border-2 disabled:border-gray-200 focus:outline-none border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400"
+                  className="disabled:opacity-50 dark:bg-[#2c2c2c] dark:border-[#2c2c2c] dark:text-[#e0e0e0]  disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:border-2 disabled:border-gray-200 focus:outline-none border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400"
                 />
               </FormRow>
               <FormRow label="Message" error={errors?.message?.message}>
@@ -216,13 +200,14 @@ const ArticlePage = () => {
                       message: "Message should be atleast 3 character or more",
                     },
                   })}
-                  className={`disabled:opacity-50 disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+                  className={`disabled:opacity-50 dark:bg-[#2c2c2c] dark:border-[#2c2c2c] dark:text-[#e0e0e0] disabled:bg-gray-100 disabled:cursor-wait disabled:border focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
                 />
               </FormRow>
               <Button
                 name={"Post comment"}
                 backgroundColor="bg-sky-500"
                 borderColor={"border-sky-500"}
+                darkMode={"bg-[#3a3a3a]"}
                 width={"w-[150px]"}
                 padding="py-3 px-3"
                 marginBottom="mb-0"

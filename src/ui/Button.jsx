@@ -23,7 +23,7 @@ const Button = ({
       type="submit"
       className={`${backgroundColor} ${width} ${border}  ${
         loading ? "cursor-wait" : "cursor-pointer"
-      } ${borderColor} text-[15px] ${rounded}  dark:${darkMode} transition duration-300 ease-in-out focus:outline-none ${marginTop} ${hoverBorder} ${hover} ${padding} ${color} font-semibold ${marginBottom}`}
+      } ${borderColor} text-[15px] ${rounded}  dark:${darkMode} transition duration-300 ease-in-out focus:outline-none ${marginTop} ${hoverBorder} ${hover} ${padding} ${color} font-medium ${marginBottom}`}
     >
       {loading ? children : name}
     </button>

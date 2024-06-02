@@ -13,17 +13,26 @@ const SquareAd = () => {
 
     return () => clearTimeout(timer);
   }, []);
-  if (isLoading) return <SquareAdLoader />;
+  // if (!isLoading) return <SquareAdLoader />;
   return (
-    <div className="text-center mx-0 my-10 space-y-5">
-      <ins
+    <div className="text-center mt-10 mx-auto space-y-10">
+      <img
+        src="/image/advert4.png"
+        alt=""
+        className="w-[300px] text-center mx-auto"
+      />
+      {/* <ins
         class="adsbygoogle"
-        style={{ display: "block", width: "300px", height: "300px" }}
+        style={{
+          display: `${isLoading ? "block" : "none"}`,
+          width: "300px",
+          height: "300px",
+        }}
         data-ad-client="ca-pub-2814454738676259"
         data-ad-slot="6251301049"
         data-ad-format="auto"
         data-full-width-responsive="true"
-      ></ins>
+      ></ins> */}
     </div>
   );
 };

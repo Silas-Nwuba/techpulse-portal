@@ -15,16 +15,19 @@ const LatestPost = () => {
     <section className="xl:mb-10">
       <div className="flex justify-between items-center mt-20 xl:mt-0">
         <span className="flex item-center gap-2">
-          <h2 className="text-lg font-semibold text-stone-800 tracking-wide uppercase">
+          <h2 className="text-lg font-semibold text-stone-800 dark:text-[#e0e0e0] tracking-wide uppercase">
             Latest news
           </h2>
           <HiMiniPlay className="text-[#007bff] text-lg mt-[5px]" />
         </span>
-        <Link to={"/latest"} className="text-[#007bff] text-sm">
+        <Link
+          to={"/latest"}
+          className="text-[#007bff] text-sm dark:text-[#1e88e5]"
+        >
           See More
         </Link>
       </div>
-      <div className="bg-slate-100 w-full h-[2px] mt-3 relative">
+      <div className="bg-slate-100 w-full h-[2px] mt-3 relative dark:bg-[#2c2c2c] ">
         <div className="bg-sky-500 w-[50px] h-full border-2 border-sky-500 absolute bottom-0"></div>
       </div>
 

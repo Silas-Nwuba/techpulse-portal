@@ -9,7 +9,7 @@ const Logo = () => {
         <img src="\image\logo 2.png" alt="logo" className="w-[30px] h-[30px]" />
         <h1
           to={"/"}
-          className="font-semibold text-xl lg:text-2xl font-sans  text-white text-center px-2 py-5  tracking-widest"
+          className="font-semibold text-xl lg:text-2xl font-sans dark:text-stone-100   text-white text-center px-2 py-5  tracking-widest"
         >
           TechPulse
         </h1>

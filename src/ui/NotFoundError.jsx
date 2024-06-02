@@ -9,8 +9,11 @@ const NotFoundError = () => {
         alt="Error"
         className="w-[200px] "
       />
-      <h3 className="font-semibold">Connect to internet</h3>
-      <p className="text-sm"> your are offline. check network connectivity</p>
+      <h3 className="font-semibold dark:text-[#e0e0e0]">Connect to internet</h3>
+      <p className="text-sm dark:text-[#e0e0e0]">
+        {" "}
+        your are offline. check network connectivity
+      </p>
 
       <Button
         name={"Reload"}

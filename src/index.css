@@ -137,10 +137,10 @@ blockquote p {
 
 @keyframes skeleton {
   0% {
-    background: hsl(200, 20%, 90%);
+    background: #383838;
   }
   100% {
-    background: hsl(200, 20%, 98%);
+    background: #494848;
   }
 }
 @media (min-width: 768px) {

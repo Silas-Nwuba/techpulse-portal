@@ -40,7 +40,13 @@ const BusinessPage = () => {
           businessPostErr.length !== 0 &&
           businessPostErr?.map((item) => {
             return (
-              <Link className="flex gap-4" key={item.id}>
+              <Link
+                to={`/${
+                  item.category.charAt(0).toLowerCase() + item.category.slice(1)
+                }/article/${item.id}`}
+                className="flex gap-4"
+                key={item.id}
+              >
                 <img
                   src={item.image}
                   alt={item.title}
@@ -69,9 +75,9 @@ const BusinessPage = () => {
             );
           })}
       </div>
-      <div className="my-80  bg-slate-50 py-10 flex flex-col justify-center items-center">
+      {/* <div className="my-80  bg-slate-50 py-10 flex flex-col justify-center items-center">
         <img src="\image\google-ads.PNG" alt="" className="w-[500px] " />
-      </div>
+      </div> */}
     </section>
   );
 };

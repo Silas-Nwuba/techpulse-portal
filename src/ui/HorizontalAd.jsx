@@ -13,12 +13,16 @@ const HorizontalAd = () => {
 
     return () => clearTimeout(timer);
   }, []);
-  if (isLoading) return <HorizontalAdLoader />;
+  if (!isLoading) return <HorizontalAdLoader />;
   return (
     <div className="text-center mx-0 my-20">
       <ins
         class="adsbygoogle"
-        style={{ display: "block", width: "728px", height: "90px" }}
+        style={{
+          display: `${isLoading ? "block" : "none"}`,
+          width: "728px",
+          height: "90px",
+        }}
         data-ad-client="ca-pub-2814454738676259"
         data-ad-slot="2763095130"
         data-ad-format="auto"
