@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import HorizontalAdLoader from "./HorizontalAdLoader";
+import HeaderAdvert from "../Component/HeaderAdvert";
 
-const HorizontalAd = () => {
+const HorizontalAd = ({ marginTop, backgroundColor, height }) => {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -13,11 +13,18 @@ const HorizontalAd = () => {
 
     return () => clearTimeout(timer);
   }, []);
-  if (!isLoading) return <HorizontalAdLoader />;
+  if (!isLoading)
+    return (
+      <HeaderAdvert
+        marginTop={marginTop}
+        backgroundColor={backgroundColor}
+        height={height}
+      />
+    );
   return (
-    <div className="text-center mx-0 my-20">
+    <div className="text-center mx-0">
       <ins
-        class="adsbygoogle"
+        className="adsbygoogle"
         style={{
           display: `${isLoading ? "block" : "none"}`,
           width: "728px",

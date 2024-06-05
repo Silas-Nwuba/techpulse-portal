@@ -7,6 +7,7 @@ import SmartphoneContent from "./SmartphoneContent";
 const Smartphone = () => {
   const { data, isLoading } = useGetallPost();
   const smartphoneArr = data?.filter((item) => item.category === "SmartPhone");
+  console.log(smartphoneArr);
 
   return (
     <section className="mt-20">

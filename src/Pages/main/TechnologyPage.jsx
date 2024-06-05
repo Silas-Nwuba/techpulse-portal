@@ -18,7 +18,7 @@ const TechnologyPage = () => {
     };
   }, []);
   return (
-    <section className="mb-10">
+    <section className="mb-10 min-h-screen">
       <div>
         <span className="flex item-center gap-2">
           <h2 className="text-xl font-semibold text-stone-800 dark:text-[#e0e0e0] tracking-wide uppercase">

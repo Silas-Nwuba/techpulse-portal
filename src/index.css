@@ -134,15 +134,27 @@ blockquote p {
   animation: skeleton 1s alternate linear infinite;
   opacity: 0.7;
 }
-
-@keyframes skeleton {
-  0% {
-    background: #383838;
-  }
-  100% {
-    background: #494848;
+&.dark {
+  @keyframes skeleton {
+    0% {
+      background: #383838;
+    }
+    100% {
+      background: #494848;
+    }
   }
 }
+&.light {
+  @keyframes skeleton {
+    0% {
+      background: #eeeeee;
+    }
+    100% {
+      background: rgb(209, 207, 207);
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .dashboard {
     display: grid;

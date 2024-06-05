@@ -26,28 +26,34 @@ const Menu = ({ showMenu, handleShowMenu, handleCloseMenu }) => {
           </li>
           <li
             className={`hover:text-white dark:hover:text-[#1e88e5] transition-all duration-300 hidden lg:block ease-in-out ${
-              technologyeMatch ? "text-white font-semibold" : ""
+              technologyeMatch
+                ? "text-white font-semibold dark:text-[#1e88e5]"
+                : ""
             }`}
           >
             <NavLink to={"/technology"}>Technology</NavLink>
           </li>
           <li
             className={`hover:text-white dark:hover:text-[#1e88e5] transition-all duration-300 hidden lg:block ease-in-out ${
-              businessMatch ? "text-white font-semibold" : ""
+              businessMatch
+                ? "text-white font-semibold dark:text-[#1e88e5]"
+                : ""
             }`}
           >
             <NavLink to={"/business"}>Business</NavLink>
           </li>
           <li
             className={`hover:text-white dark:hover:text-[#1e88e5] transition-all duration-300 hidden lg:block ease-in-out ${
-              smartphoneMatch ? "text-white font-semibold" : ""
+              smartphoneMatch
+                ? "text-white font-semibold dark:text-[#1e88e5]"
+                : ""
             }`}
           >
             <NavLink to={"/smartphone"}>SmartPhone</NavLink>
           </li>
           <li
             className={`hover:text-white dark:hover:text-[#1e88e5] transition-all duration-300 hidden lg:block ease-in-out ${
-              gadgetMatch ? "text-white font-semibold" : ""
+              gadgetMatch ? "text-white font-semibold dark:text-[#1e88e5]" : ""
             }`}
           >
             <NavLink to={"gadget"}>Gadget</NavLink>
@@ -58,7 +64,7 @@ const Menu = ({ showMenu, handleShowMenu, handleCloseMenu }) => {
         <input
           type="text"
           placeholder="Search"
-          className="bg-sky-300 dark:bg-[#2c2c2c] rounded-md py-2 dark:placeholder:text-stone-200 placeholder:text-white text-sm px-4 text-white focus:outline-none w-full hidden lg:block"
+          className="bg-sky-300 dark:bg-[#414040] rounded-md py-2 dark:placeholder:text-stone-200 placeholder:text-white text-sm px-4 text-white focus:outline-none w-full hidden lg:block"
         />
         {showMenu ? (
           <HiXMark

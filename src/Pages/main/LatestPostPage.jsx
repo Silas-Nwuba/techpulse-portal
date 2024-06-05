@@ -11,7 +11,7 @@ import { parseISO } from "date-fns";
 const LatestPostPage = () => {
   const { data, isLoading } = useGetallPost();
   let latestPostArr = data?.filter(
-    (item) => differenceInDays(new Date(), parseISO(item.createdDate)) === 1
+    (item) => differenceInDays(new Date(), parseISO(item.createdDate)) === 0
   );
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -21,7 +21,7 @@ const LatestPostPage = () => {
     };
   }, []);
   return (
-    <section>
+    <section className="min-h-screen">
       <div>
         <span className="flex item-center gap-2">
           <h2 className="text-xl font-semibold text-stone-800 tracking-wide uppercase dark:text-[#e0e0e0]">

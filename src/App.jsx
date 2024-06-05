@@ -27,6 +27,8 @@ import ArticlePage from "./Pages/main/ArticlePage";
 import LatestPostPage from "./Pages/main/LatestPostPage";
 import OlderPostPage from "./Pages/main/OlderPostPage";
 import { Helmet } from "react-helmet";
+import ContactPage from "./Pages/main/ContactPage";
+import AboutPage from "./Pages/main/AboutPage";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -60,6 +62,8 @@ const App = () => {
                 <Route element={<AppLayout />}>
                   <Route index element={<Navigate replace to="home" />} />
                   <Route path="home" element={<HomePage />} />
+                  <Route path="about" element={<AboutPage />} />
+                  <Route path="contact" element={<ContactPage />} />
                   <Route path="technology" element={<TechnologyPage />} />
                   <Route path="business" element={<BusinessPage />} />
                   <Route path="smartphone" element={<SmartphonePage />} />

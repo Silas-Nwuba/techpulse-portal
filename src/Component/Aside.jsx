@@ -7,10 +7,9 @@ const Aside = () => {
   return (
     <aside>
       <LatestPost />
-      <SquareAd />
-      <SquareAd />
+      <SquareAd height={"h-[80px]"} marginTop={"mt-[2px]"} />
       <OlderPost />
-      <SquareAd />
+      <SquareAd height={"h-[500px]"} marginTop={"mt-[60px]"} />
     </aside>
   );
 };

@@ -3,6 +3,7 @@ import Technology from "./Technology";
 import Business from "./Business";
 import Smartphone from "./Smartphone";
 import Gadget from "./Gadget";
+import HorizontalAd from "../ui/HorizontalAd";
 
 const Main = () => {
   return (
@@ -11,11 +12,7 @@ const Main = () => {
       <Business />
       <Smartphone />
       <Gadget />
-      <img
-        src="\image\ad728.jpg"
-        alt="advert"
-        className="m-auto w-full mt-20 mb-10"
-      />
+      <HorizontalAd marginTop={"mt-[40px]"} backgroundColor={"bg-slate-50"} />
     </>
   );
 };

@@ -15,6 +15,8 @@ import FormRow from "../../ui/FormRow";
 import Button from "../../ui/Button";
 import { useGetallPost } from "../../feature/post/useGetallPost";
 import { formatPostDate } from "../../utils/helper";
+import SquareAd from "../../ui/SquareAd";
+import HorizontalAd from "../../ui/HorizontalAd";
 
 const ArticlePage = () => {
   const { data } = useGetallPost();
@@ -34,7 +36,7 @@ const ArticlePage = () => {
     };
   }, [item]);
   return (
-    <div className="mt-5 flex  w-[95%] gap-10 flex-col lg:flex-row mx-auto">
+    <div className="mt-5 flex w-[95%] gap-10 flex-col lg:flex-row mx-auto min-h-screen">
       <div className="flex-1">
         <header className="space-y-4">
           <h1 className="text-xl md:text-2xl uppercase text-stone-600 font-bold leading-8 dark:text-[#fafafa]">
@@ -43,7 +45,7 @@ const ArticlePage = () => {
           <p className="text-stone-500 capitalize text-sm leading-7 dark:text-[#e0e0e0]">
             {htmlToText(item?.summary)}
           </p>
-          <div className="md:flex justify-between gap-20 items-center">
+          <div className=" md:flex md:justify-between items-center">
             <div className="flex-col space-y-2">
               <p className="text-sm dark:text-stone-300">
                 By <span className="font-semibold">{item?.author} </span>
@@ -59,8 +61,7 @@ const ArticlePage = () => {
                 </div>
               </span>
             </div>
-
-            <div className="flex items-center gap-5 mt-5 ml-40">
+            <div className="flex items-center gap-5 mt-5 justify-center md:ml-40">
               <Link className="bg-slate-50 p-2 rounded-full dark:bg-[#2c2c2c] ">
                 <FaFacebook className="text-sky-600 text-lg" />
               </Link>
@@ -85,65 +86,20 @@ const ArticlePage = () => {
             <div>
               <Interweave
                 content={item?.content}
-                className="text-sm text-stone-500 dark:text-[#e0e0e0]  whitespace-pre-wrap tracking-wide py-5 leading-8 capitalize  w-[100%]"
+                className="text-sm text-stone-500 dark:text-[#e0e0e0] whitespace-pre-wrap tracking-wide py-5 leading-8 capitalize  w-[100%]"
               />
-              <div className="flex justify-center mb-10 mt-10">
-                <img src="/image/advert1.jpg" alt="googleAd" />
-              </div>
+              <HorizontalAd
+                marginTop={"mt-10"}
+                backgroundColor={"bg-slate-50"}
+                height={"h-[70px]"}
+              />
             </div>
           </div>
-          {/* <div>
-            <h2 className="font-semibold text-xl py-4 mt-10">3 Comments</h2>
-            <div className="space-y-5 mt-5 bg-slate-50 w-full p-5">
-              <div className="flex gap-5 items-center ">
-                <img
-                  src="/image/avatar.webp"
-                  alt="user"
-                  className="object-cover flex-shrink-0 w-[40px] h-[40px] rounded-full"
-                />
-                <span className="space-y-2">
-                  <span className="flex gap-4 items-center">
-                    <h3 className="text-sky-500 font-medium">Mark stan</h3>
-                    <p className="text-sm text-stone-400">20 mins ago</p>
-                  </span>
-                  <p className="text-stone-500 text-sm">ok</p>
-                </span>
-              </div>
-              <div className="flex gap-5 items-center ">
-                <img
-                  src="/image/avatar.webp"
-                  alt="user"
-                  className="object-cover flex-shrink-0 w-[40px] h-[40px] rounded-full"
-                />
-                <span className="space-y-2">
-                  <span className="flex gap-4 items-center">
-                    <h3 className="text-sky-500 font-medium">Martins obi</h3>
-                    <p className="text-sm text-stone-400">10 mins ago</p>
-                  </span>
-                  <p className="text-stone-500 text-sm">great work</p>
-                </span>
-              </div>
-              <div className="flex gap-5 items-center ">
-                <img
-                  src="/image/avatar.webp"
-                  alt="user"
-                  className="object-cover flex-shrink-0 w-[40px] h-[40px] rounded-full"
-                />
-                <span className="space-y-2">
-                  <span className="flex gap-4 items-center">
-                    <h3 className="text-sky-500 font-medium">John mark</h3>
-                    <p className="text-sm text-stone-400">5 mins ago</p>
-                  </span>
-                  <p className="text-stone-500 text-sm">Good one</p>
-                </span>
-              </div>
-            </div>
-          </div> */}
-          <div className="mt-10">
-            <h3 className="font-semibold text-xl mt-5 py-4 dark:text-[#e0e0e0]">
+          <div className="mt-20">
+            <h3 className="font-semibold text-xl mt-20 py-4 dark:text-[#e0e0e0]">
               Leave a Comment
             </h3>
-            <p className="mb-5 bg-red-300 dark:bg-[#3a3a3a] dark:border-[#2c2c2c] dark:text-[#e0e0e0] p-4 w-full text-white text-sm rounded-md">
+            <p className="mb-5 bg-[#D32F2F] dark:bg-[#D32F2F] dark:border-[#2c2c2c] dark:text-[#e0e0e0] p-4 w-full text-white text-sm rounded-md">
               Your email address will not be published. Your comment will be
               reviewed by the administrator before published.
             </p>
@@ -218,15 +174,9 @@ const ArticlePage = () => {
           </div>
         </section>
       </div>
-      <section>
-        <span className="space-y-5 flex flex-col xl:mt-0 w-3/4 xl:w-full mx-auto">
-          <img src="/image/advert3.png" alt="googleAd" />
-          <img src="/image/advert4.png" alt="googleAd" />
-          <img src="/image/advert3.png" alt="googleAd" />
-          <img src="/image/advert-image.jpg" alt="googleAd" />
-          <img src="/image/advert4.png" alt="googleAd" />
-          <img src="/image/advert3.png" alt="googleAd" />
-        </span>
+      <section className="lg:w-[25%]">
+        <SquareAd height={"h-[80%]"} marginTop={"mt-20"} />
+        <span className="space-y-5 flex flex-col xl:mt-0 w-3/4 xl:w-full mx-auto"></span>
       </section>
     </div>
   );

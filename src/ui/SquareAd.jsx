@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SquareAdLoader from "./SquareAdLoader";
+import AsideAdvert from "../Component/AsideAdvert";
 
-const SquareAd = () => {
+const SquareAd = ({ height, marginTop }) => {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -13,15 +13,10 @@ const SquareAd = () => {
 
     return () => clearTimeout(timer);
   }, []);
-  // if (!isLoading) return <SquareAdLoader />;
+  if (!isLoading) return <AsideAdvert height={height} marginTop={marginTop} />;
   return (
     <div className="text-center mt-10 mx-auto space-y-10">
-      <img
-        src="/image/advert4.png"
-        alt=""
-        className="w-[300px] text-center mx-auto"
-      />
-      {/* <ins
+      <ins
         class="adsbygoogle"
         style={{
           display: `${isLoading ? "block" : "none"}`,
@@ -32,7 +27,7 @@ const SquareAd = () => {
         data-ad-slot="6251301049"
         data-ad-format="auto"
         data-full-width-responsive="true"
-      ></ins> */}
+      ></ins>
     </div>
   );
 };

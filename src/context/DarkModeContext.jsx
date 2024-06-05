@@ -4,11 +4,14 @@ import { useLocalStorageDarkMode } from "../hook/useLocalStorageDarkMode";
 const DarkModeContext = createContext();
 const Local_Key = "darkMode";
 function DarkModeProvider({ children }) {
-  const [isDarkMode, setIsDarkMode] = useLocalStorageDarkMode("light",Local_Key);
-  useEffect( 
+  const [isDarkMode, setIsDarkMode] = useLocalStorageDarkMode(
+    "light",
+    Local_Key
+  );
+  useEffect(
     function () {
       if (isDarkMode) {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.add("light");
         document.documentElement.classList.remove("light");
       } else {
         document.documentElement.classList.add("light");

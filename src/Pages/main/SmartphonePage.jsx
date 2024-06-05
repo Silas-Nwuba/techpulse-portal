@@ -8,7 +8,7 @@ import PageLoaderSpinner from "../../Component/PageLoaderSpinner";
 
 const SmartphonePage = () => {
   const { data, isLoading } = useGetallPost();
-  const smartPhoneErr = data?.filter((data) => data.category === "Smartphone");
+  const smartPhoneErr = data?.filter((data) => data.category === "SmartPhone");
   useEffect(() => {
     window.scrollTo({ top: 0 });
     document.title = "TechPulse | Smartphone";
@@ -17,7 +17,7 @@ const SmartphonePage = () => {
     };
   }, []);
   return (
-    <section>
+    <section className="min-h-screen">
       <div>
         <span className="flex item-center gap-2">
           <h2 className="text-xl font-semibold text-stone-800 tracking-wide uppercase dark:text-[#e0e0e0] ">
@@ -53,7 +53,7 @@ const SmartphonePage = () => {
                   className="w-[100px] h-[100px] object-cover hover:opacity-70 cursor-pointer transition-transform pb-3 duration-300 ease-in-out"
                 />
                 <span className="space-y-1">
-                  <h1 className="text-[15px] text-stone-800 dark:text-[#e0e0e0]  font-semibold hover:text-[#007bff] transition-all cursor-pointer">
+                  <h1 className="text-[15px] text-stone-800 dark:text-[#e0e0e0] font-semibold hover:text-[#007bff] transition-all cursor-pointer">
                     {item.title}
                   </h1>
                   <div className="flex gap-3 pt-2">

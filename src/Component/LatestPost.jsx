@@ -33,7 +33,7 @@ const LatestPost = () => {
 
       {isLoading && <LatestPostLoaderSpinner />}
       {!isLoading && latestPostArr?.length === 0 && (
-        <p className="mt-10 text-center text-[15px]">
+        <p className="mt-10 text-center text-[15px] dark:text-[#e0e0e0]">
           No latest posts available. Check back soon!
         </p>
       )}
