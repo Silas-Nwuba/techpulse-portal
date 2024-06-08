@@ -57,7 +57,7 @@ const OlderPostPage = () => {
                   className="w-[100px] h-[100px] object-cover hover:opacity-70 cursor-pointer transition-transform pb-3 duration-300 ease-in-out"
                 />
                 <span className="space-y-1">
-                  <h1 className="text-[15px] text-stone-800 font-semibold dark:text-[#e0e0e0] hover:text-[#007bff] transition-all cursor-pointer">
+                  <h1 className="text-[15px] text-stone-800 focus:text-[#007bff] font-semibold dark:text-[#e0e0e0] hover:text-[#007bff] transition-all cursor-pointer">
                     {item.title}
                   </h1>
                   <div className="flex gap-3 pt-2">

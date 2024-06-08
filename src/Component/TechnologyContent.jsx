@@ -56,7 +56,7 @@ const TechnologyContent = ({ data }) => {
                 className="object-cover w-[100px] h-[91px] hover:opacity-70 cursor-pointer transition-transform duration-300 ease-in-out"
               />
               <div className="space-y-2">
-                <h1 className="text-[16px] text-stone-600 font-semibold dark:text-[#e0e0e0] hover:text-[#007bff] transition-all cursor-pointer">
+                <h1 className="text-[16px] focus:text-[#007bff] text-stone-600 font-semibold dark:text-[#e0e0e0] hover:text-[#007bff] transition-all cursor-pointer">
                   {data?.title}
                 </h1>
               </div>

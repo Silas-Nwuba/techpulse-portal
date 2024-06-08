@@ -26,7 +26,7 @@ const ArticlePage = () => {
   const item = data?.find((item) => item.id === Number(postId));
 
   const onSuccess = (data) => {
-    toast.success("Comment successfully sent!");
+    toast.success("Comment successfully sent!", { id: "succesid" });
   };
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -39,7 +39,7 @@ const ArticlePage = () => {
     <div className="mt-5 flex w-[95%] gap-10 flex-col lg:flex-row mx-auto min-h-screen">
       <div className="flex-1">
         <header className="space-y-4">
-          <h1 className="text-xl md:text-2xl uppercase text-stone-600 font-bold leading-8 dark:text-[#fafafa]">
+          <h1 className="text-xl md:text-2xl uppercase text-stone-800 font-bold leading-8 dark:text-[#fafafa]">
             {item?.title}
           </h1>
           <p className="text-stone-500 capitalize text-sm leading-7 dark:text-[#e0e0e0]">
@@ -90,7 +90,7 @@ const ArticlePage = () => {
               />
               <HorizontalAd
                 marginTop={"mt-10"}
-                backgroundColor={"bg-slate-50"}
+                backgroundColor={"bg-gray-50"}
                 height={"h-[70px]"}
               />
             </div>

@@ -56,7 +56,6 @@ const PostContent = ({ post }) => {
             <Modal.Open opens="post-delete">
               <FaTrash className="text-red-600 dark:text-[#E53E3E]" />
             </Modal.Open>
-
             <Modal.Window name="post-delete">
               <ConfirmDelete isDeleting={isDeleting} onConfirm={handleDelete} />
             </Modal.Window>

@@ -24,7 +24,7 @@ const LatestPostContent = ({ data }) => {
               />
             </span>
             <span>
-              <h1 className="text-[16px] text-stone-600 font-semibold hover:text-[#007bff]  dark:text-[#e0e0e0] transition-all cursor-pointer">
+              <h1 className="text-[14px] focus:text-[#007bff] text-stone-600 font-semibold hover:text-[#007bff]  dark:text-[#e0e0e0] transition-all cursor-pointer">
                 {data?.title}
               </h1>
               {/* <p className="text-sm text-stone-600">{}</p> */}

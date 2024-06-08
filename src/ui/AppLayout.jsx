@@ -14,6 +14,8 @@ import MenuSidebar from "../Component/MenuSidebar";
 import useGetAllComment from "../feature/comment/useGetAllComment";
 import NotFoundError from "./NotFoundError";
 import HorizontalAd from "./HorizontalAd";
+import Modal from "./Modal";
+import AdvertModal from "./AdvertModal";
 const AppLayout = () => {
   const { error } = useGetAllComment();
   const [showMenu, setShowMenu] = useState(false);
@@ -57,7 +59,7 @@ const AppLayout = () => {
               }`}
               onClick={handleNavigation}
             >
-              <NavLink to={"/"}>Home</NavLink>
+              <NavLink>Home</NavLink>
               <HiChevronDown className="mt-1 block lg:hidden" />
             </li>
             <li
@@ -85,7 +87,14 @@ const AppLayout = () => {
                   : ""
               }`}
             >
-              <NavLink to={"/advert"}>Advertise with us</NavLink>
+              <Modal>
+                <Modal.Open opens={"advert"}>
+                  <p className="cursor-pointer">Advertise with us</p>
+                </Modal.Open>
+                <Modal.Window name={"advert"}>
+                  <AdvertModal />
+                </Modal.Window>
+              </Modal>
             </li>
           </ul>
           {showNav && (
@@ -136,7 +145,7 @@ const AppLayout = () => {
       />
 
       {showMenu && <MenuSidebar setShowMenu={setShowMenu} />}
-      <div className="bg-slate-50 dark:bg-[#2c2c2c] w-full py-10 px-3">
+      <div className="bg-gray-50 dark:bg-[#2c2c2c] w-full py-10 px-3">
         <HorizontalAd />
       </div>
       <main className="w-[95%] md:w-[95%] mx-auto mt-10 mb-10">

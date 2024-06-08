@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <div className="flex gap-1 items-center">
       <HiOutlineBars3 className="text-[28px] w-20 cursor-pointer font-semibold hidden" />
-      <Link to={"/"} className="flex items-center">
+      <Link to={"/home"} className="flex items-center">
         <img src="\image\logo 2.png" alt="logo" className="w-[30px] h-[30px]" />
         <h1
           to={"/"}

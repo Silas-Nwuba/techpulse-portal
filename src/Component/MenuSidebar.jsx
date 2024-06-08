@@ -1,13 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 const MenuSidebar = ({ setShowMenu }) => {
-  const inputRef = useRef(null);
   const handleCloseSideMenu = (e) => {
     setShowMenu(false);
   };
 
   useEffect(() => {
-    if (inputRef.current) inputRef.current.focus();
     document.documentElement.style.overflowY = "hidden";
     return () => {
       document.documentElement.style.overflowY = "visible";
@@ -22,7 +20,6 @@ const MenuSidebar = ({ setShowMenu }) => {
         type="text"
         placeholder="Search"
         className="bg-sky-300 rounded-md py-2 text-sm px-4 dark:bg-[#2c2c2c] dark:placeholder:text-stone-200 text-white placeholder:text-white focus:outline-none w-full mt-5"
-        ref={inputRef}
       />
       <div className="bg-stone-300 dark:text-[#e0e0e0] w-full"></div>
       <nav className="mt-10">

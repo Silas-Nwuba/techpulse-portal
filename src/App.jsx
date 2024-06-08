@@ -39,20 +39,6 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <>
-      <div className="App">
-        <Helmet>
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2814454738676259"
-            crossorigin="anonymous"
-          ></script>
-          {/* <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2814454738676259"
-            crossorigin="anonymous"
-          ></script> */}
-        </Helmet>
-      </div>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <DarkModeProvider>
