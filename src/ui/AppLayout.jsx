@@ -8,7 +8,6 @@ import {
   FaWhatsappSquare,
 } from "react-icons/fa";
 import { Link, NavLink, Outlet, useMatch } from "react-router-dom";
-import HeaderAdvert from "../Component/HeaderAdvert";
 import { HiChevronDown } from "react-icons/hi2";
 import MenuSidebar from "../Component/MenuSidebar";
 import useGetAllComment from "../feature/comment/useGetAllComment";
@@ -16,6 +15,7 @@ import NotFoundError from "./NotFoundError";
 import HorizontalAd from "./HorizontalAd";
 import Modal from "./Modal";
 import AdvertModal from "./AdvertModal";
+
 const AppLayout = () => {
   const { error } = useGetAllComment();
   const [showMenu, setShowMenu] = useState(false);
@@ -24,6 +24,7 @@ const AppLayout = () => {
   const homeMatch = useMatch("/home");
   const aboutMatch = useMatch("/about");
   const contactMatch = useMatch("/contact");
+  const privacyMatch = useMatch("/privacy");
   const advertMatch = useMatch("/advert");
 
   const handleNavigation = () => {
@@ -59,7 +60,7 @@ const AppLayout = () => {
               }`}
               onClick={handleNavigation}
             >
-              <NavLink>Home</NavLink>
+              <NavLink to={"/"}>Home</NavLink>
               <HiChevronDown className="mt-1 block lg:hidden" />
             </li>
             <li
@@ -79,6 +80,16 @@ const AppLayout = () => {
               }`}
             >
               <NavLink to={"/contact"}>Contact</NavLink>
+            </li>
+
+            <li
+              className={`hover:text-[#007bff] dark:hover:text-[#eeeeee] transition-all hidden lg:block ${
+                privacyMatch
+                  ? "text-[#1e88e5] font-semibold dark:text-[#1e88e5]"
+                  : ""
+              }`}
+            >
+              <NavLink to={"/privacy"}>Privacy police</NavLink>
             </li>
             <li
               className={`hover:text-[#007bff] dark:hover:text-[#eeeeee] transition-all hidden lg:block ${
@@ -111,7 +122,10 @@ const AppLayout = () => {
                     <NavLink>Contact</NavLink>
                   </li>
                   <li className="hover:text-[#007bff] transition-all">
-                    <NavLink>Advertise with us</NavLink>
+                    <NavLink>Privacy police</NavLink>
+                  </li>
+                  <li className="hover:text-[#007bff] transition-all">
+                    <NavLink vLink>Advertise with us</NavLink>
                   </li>
                 </ul>
               </nav>
@@ -151,6 +165,7 @@ const AppLayout = () => {
       <main className="w-[95%] md:w-[95%] mx-auto mt-10 mb-10">
         <Outlet />
       </main>
+      {/* <Cookies /> */}
       <Footer>
         <footer className="bg-sky-600 w-full dark:bg-[#1e1e1e]  dark:text-[#e0e0e0] mt-0 py-3 text-sm text-center  text-slate-50 font-normal">
           &copy; {new Date().getFullYear()} TechPulse All right reserved

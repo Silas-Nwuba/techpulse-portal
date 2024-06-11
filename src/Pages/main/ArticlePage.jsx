@@ -29,6 +29,8 @@ const ArticlePage = () => {
     toast.success("Comment successfully sent!", { id: "succesid" });
   };
   useEffect(() => {
+    document.body.classList.remove("bg-slate-50");
+    document.body.classList.add("bg-white");
     window.scrollTo({ top: 0 });
     document.title = `${item?.title}`;
     return () => {

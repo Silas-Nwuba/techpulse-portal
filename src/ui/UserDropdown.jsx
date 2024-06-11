@@ -41,7 +41,7 @@ const UserDropdown = () => {
       <ul className="py-2 space-y-2 mt-2 ">
         <Link
           to={"/admin/settings"}
-          className="flex items-center gap-2 text-[#333333] dark:text-[#CBD5E0] group cursor-pointer mx-2 rounded-md hover:bg-slate-50 dark:hover:bg-[#4A5568] font-medium group-hover:text-stone-500 py-2 px-6 hover:transition-all hover:duration-150 hover:ease-in-out"
+          className="flex items-center gap-2 text-[#333333] dark:text-[#CBD5E0] group cursor-pointer mx-2 rounded-md hover:bg-stone-100 md:hover:bg-slate-50 dark:hover:bg-[#4A5568] font-medium group-hover:text-stone-500 py-2 px-6 hover:transition-all hover:duration-150 hover:ease-in-out"
         >
           <HiOutlineCog8Tooth className="font-semibold text-xl text-stone-500 dark:text-[#CBD5E0] group-hover:text-stone-400 dark:group-hover:text-[#CBD5E0]" />
           <li className="text-sm group-hover:text-stone-500 dark:group-hover:text-[#CBD5E0]">
@@ -49,7 +49,7 @@ const UserDropdown = () => {
           </li>
         </Link>
         <span
-          className={`flex items-center gap-2 group mx-2 rounded-md hover:bg-slate-50 dark:hover:bg-[#4A5568] py-2 dark:group-hover:bg-[#4A5568] focus:bg-slate-50 dark:focus:bg-[#4A5568]  ${
+          className={`flex items-center gap-2 group mx-2 rounded-md hover:bg-stone-100 md:hover:bg-slate-50 dark:hover:bg-[#4A5568] py-2 dark:group-hover:bg-[#4A5568]  dark:focus:bg-[#4A5568]  ${
             isLogout ? "cursor-wait" : "cursor-pointer"
           } font-medium px-6 hover:transition-all hover:duration-150 hover:ease-in-out`}
           onClick={logout}

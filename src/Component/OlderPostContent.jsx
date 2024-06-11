@@ -18,7 +18,7 @@ const OlderPostContent = ({ data }) => {
             className="object-cover w-[100px] h-[100px] hover:opacity-70 cursor-pointer transition-transform duration-300 ease-in-out"
           />
           <div className="space-y-1">
-            <h1 className="text-[14px] text-[rgb(32, 34, 36)] focus:text-[#007bff] dark:text-[#e0e0e0] font-semibold hover:text-[#007bff] transition-all cursor-pointer">
+            <h1 className="text-sm text-[rgb(32, 34, 36)] focus:text-[#007bff] dark:text-[#e0e0e0] font-semibold hover:text-[#007bff] transition-all cursor-pointer">
               {data?.title}
             </h1>
 

@@ -12,7 +12,7 @@ const Menu = ({ showMenu, handleShowMenu, handleCloseMenu }) => {
 
   return (
     <section
-      className={`flex justify-between bg-[#007bff] dark:bg-[#1e1e1e] shadow-sm px-2 md:px-5 xl:px-10 w-full items-center z-[20000] transition-opacity duration-300 ease-in-out`}
+      className={`flex justify-between bg-[#1e88e5] dark:bg-[#1e1e1e] shadow-sm px-2 md:px-5 xl:px-10 w-full items-center z-[20000] transition-opacity duration-300 ease-in-out`}
     >
       <Logo />
       <nav>

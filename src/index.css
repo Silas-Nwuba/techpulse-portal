@@ -147,14 +147,20 @@ blockquote p {
 &.light {
   @keyframes skeleton {
     0% {
-      background: #eeeeee;
+      background: #f1f5f9;
     }
     100% {
-      background: #eeeeee;
+      background: #f6f6f8;
     }
   }
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #fdfdfd inset !important;
+}
 @media (min-width: 768px) {
   .dashboard {
     display: grid;

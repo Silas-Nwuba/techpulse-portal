@@ -14,7 +14,7 @@ const Logo = ({ setIsSidebarOpen }) => {
         </h1>
       </Link>
       <HiXMark
-        className="text-xl block md:hidden"
+        className="text-2xl block md:hidden font-semibold"
         onClick={() => setIsSidebarOpen(false)}
       />
     </div>

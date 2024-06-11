@@ -8,7 +8,7 @@ import LatestPostContent from "./LatestPostContent";
 const LatestPost = () => {
   const { data, isLoading } = useGetallPost();
   let latestPostArr = data?.filter(
-    (item) => differenceInDays(new Date(), parseISO(item.createdDate)) === 0
+    (item) => differenceInDays(new Date(), parseISO(item.createdDate)) === 1
   );
 
   return (

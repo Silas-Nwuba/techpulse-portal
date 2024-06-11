@@ -38,7 +38,7 @@ const LoginForm = () => {
   }, [setPasswordType, isOpen]);
   return (
     <div className="flex flex-col min-h-screen mx-auto">
-      <h1 className="font-semibold text-[24px] text-[#333333] dark:text-white sm:text-[24px] mb-5 mt-[100px] text-center tracking-wider">
+      <h1 className="font-semibold text-[24px] text-[#333333] dark:text-white sm:text-[24px] mb-5 mt-[50px] text-center tracking-wider">
         Log in
         {/* <span className="ml-1 tracking-wider">TechPulse</span> */}
       </h1>
@@ -127,7 +127,7 @@ const LoginForm = () => {
           </Link>
         </div>
       </div>
-      <div className="w-full dark:border-[#4A5568] text-center  border-stone-200 border-t mt-[118px]">
+      <div className="w-full dark:border-[#4A5568] text-center border-stone-300 border-t absolute bottom-0">
         <p className="py-2 px-3 text-stone-600 dark:text-stone-300 text-sm pt-4">
           &copy; {new Date().getFullYear()} TechPulse. All right reserverd.
         </p>

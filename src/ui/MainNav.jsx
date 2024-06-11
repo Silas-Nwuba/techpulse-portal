@@ -24,7 +24,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/admin/dashboard"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] dark:hover:bg-#4a5568]   ${
-          dashboardMatch ? "bg-slate-50 rounded-md" : ""
+          dashboardMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
         }  dark:${
           dashboardMatch ? "bg-[#4A5568]" : ""
         } dark:focus:text-[#ffff] text-stone px-[0px] group hover:bg-slate-50  dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}
@@ -47,7 +47,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
-          homeMatch ? "bg-slate-50 rounded-md" : ""
+          homeMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
         }  dark:${
           homeMatch ? "bg-[#4A5568]" : ""
         } dark:focus:text-[#ffff] text-stone px-[0px] group hover:bg-slate-50  dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}
@@ -69,7 +69,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/admin/post"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
-          postMatch ? "bg-slate-50 rounded-md" : ""
+          postMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
         }  dark:${
           postMatch ? "bg-[#4A5568]" : ""
         }  text-stone-700 px-[0px] group hover:bg-slate-50 dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}
@@ -93,7 +93,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/admin/comment"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
-          commentMatch ? "bg-slate-50 rounded-md" : ""
+          commentMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
         }  dark:${
           commentMatch ? "bg-[#4A5568]" : ""
         }  text-stone px-[0px] group hover:bg-slate-50  dark:hover:bg-[#4A5568] dark: hover:rounded-md hover:w-full transition ease-in-out duration-30`}
@@ -115,7 +115,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/admin/settings"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
-          settingMatch ? "bg-slate-50 rounded-md" : ""
+          settingMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
         }  dark:${
           settingMatch ? "bg-[#4A5568]" : ""
         }  text-stone px-[0px] group hover:bg-slate-50  dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}

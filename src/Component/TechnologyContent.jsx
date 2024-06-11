@@ -22,7 +22,7 @@ const TechnologyContent = ({ data }) => {
               className=" w-[900px] h-[420px] object-cover cursor-pointer transition-transform duration-300 ease-in-out flex-shrink-0"
             />
             <span className="absolute bottom-10 mx-4 z-[20000]">
-              <h1 className="text-[24px] text-white dark:text-[#e0e0e0] font-bold cursor-pointer">
+              <h1 className="text-[24px] text-white dark:text-[#e0e0e0] focus:text-[#007bff] hover:text-[#007bff]  font-bold cursor-pointer">
                 {data.title}
               </h1>
               <div className="flex gap-3 pt-2 font-medium">

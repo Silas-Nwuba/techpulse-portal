@@ -3,10 +3,13 @@ import Main from "../../Component/Main";
 import Aside from "../../Component/Aside";
 const HomePage = () => {
   useEffect(() => {
+    document.body.classList.remove("bg-slate-50");
+    document.body.classList.add("bg-white");
     window.scrollTo({ top: 0, behavior: "smooth" });
     document.title = "TechPulse: Tech to the world";
     return () => {
       document.title = "TechPulse: Tech to the world";
+      document.body.classList.remove("bg-white");
     };
   }, []);
 

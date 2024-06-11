@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { formatPostDate } from "../utils/helper";
 const SmartphoneContent = ({ data }) => {
   return (
-    <div className="mt-10 space-y-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div className="mt-10 space-y-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 space-y-5">
         {data.map((data) => (
           <Link
             to={`/${
@@ -20,7 +20,7 @@ const SmartphoneContent = ({ data }) => {
               className="w-[100px] h-[100px] object-cover hover:opacity-70 cursor-pointer transition-transform pb-3 duration-300 ease-in-out"
             />
             <span className="space-y-1">
-              <h1 className="text-[16px] focus:text-[#007bff] text-stone-800 dark:text-[#e0e0e0] font-semibold hover:text-[#007bff] transition-all cursor-pointer">
+              <h1 className="text-sm focus:text-[#007bff] text-stone-800 dark:text-[#e0e0e0] font-semibold hover:text-[#007bff] transition-all cursor-pointer">
                 {data?.title}
               </h1>
               <div className="flex gap-3 pt-2">

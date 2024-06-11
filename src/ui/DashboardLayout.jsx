@@ -27,7 +27,7 @@ const DashboardLayout = () => {
         setIsSidebarOpen={setIsSidebarOpen}
       />
       <main
-        className="overflow-y-auto overflow-x-hidden w-full main px-5 bg-gray-50 dark:bg-[#1A202C]"
+        className="overflow-y-auto overflow-x-hidden w-full main px-5 bg-gray-100 dark:bg-[#1A202C]"
         ref={mainContentRef}
       >
         <Outlet />

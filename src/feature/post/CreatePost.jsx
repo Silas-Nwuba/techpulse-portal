@@ -50,18 +50,16 @@ const CreatePost = () => {
   const [createDate, setCreateDate] = useState(new Date());
   const { user } = useUser();
   const onsubmit = (data) => {
-    console.log(data, isLoading);
     createPost(
       {
         ...data,
-        image: data.image[0],
         title: data.title.charAt(0).toUpperCase() + data.title.slice(1),
         createdDate: format(createDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"),
       },
       {
-        onSuccess: () => {
-          reset();
-        },
+        // onSuccess: () => {
+        //   reset();
+        // },
         onError: (errors) => {
           toast.error(errors.message);
         },
@@ -104,15 +102,15 @@ const CreatePost = () => {
               className={` dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:outline-none focus:border-2 border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
             />
           </FormRow>
-          <FormRow label="Image" error={errors?.image?.message}>
+          <FormRow label="Image Url" error={errors?.image?.message}>
             <input
-              type="file"
+              type="text"
               name="image"
-              accept="image/*"
+              // accept="image/*"
               {...register("image", {
-                required: "image field is required",
+                required: "image Url field is required",
               })}
-              className={`file:bg-violet-50  file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-[0.5em] file:px-4  file:border-0 file:text-sm focus:outline-none border h-[45px] text-sm border-gray-300 rounded-md p-1 mt-1 w-full focus:border-sky-400`}
+              className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:outline-none focus:border-2 border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
             />
           </FormRow>
           <FormRow label={"Category"} error={errors?.category?.message}>
