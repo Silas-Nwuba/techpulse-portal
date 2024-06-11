@@ -15,7 +15,7 @@ const Dashboard = () => {
   }, [dispatch]);
   return (
     <div className="mb-20 md:mb-0">
-      <h2 className="text-stone-600 text-2xl font-semibold mt-[120px] md:mt-10 dark:text-[#CBD5E0]">
+      <h2 className="text-stone-800 text-2xl font-semibold mt-[120px] tracking-wide md:mt-10 dark:text-[#CBD5E0]">
         Dashboard
       </h2>
       <Stats />

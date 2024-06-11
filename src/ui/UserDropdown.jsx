@@ -19,7 +19,7 @@ const UserDropdown = () => {
       </div>
     );
   return (
-    <div className="bg-white dark:bg-[#2D3748] transition -translate-y-2 border-t-4 border-t-[#007bff] dark:border-t dark:border-t-[#2D3748] shadow-xl rounded-md py-3 px-1 sm:px-0 flex flex-col justify-start mr-4  sm:mr-10 z-[10000] ml-5 absolute right-0 top-[4.5rem]  border-[#007bff] dark:border-[#CBD5E0]">
+    <div className="bg-white dark:bg-[#2D3748] transition -translate-y-2 border-t-4 border-t-[#007bff] dark:border-t dark:border-t-[#2D3748] shadow-2xl rounded-md py-3 px-1 sm:px-0 flex flex-col justify-start mr-4 sm:mr-10 z-[30000] ml-5 absolute right-0 top-[4.5rem]  border-[#007bff] dark:border-[#CBD5E0]">
       <div className="flex items-center justify-center gap-3 divide divide-stone-400 px-6  ">
         <span className="flex-shrink-0">
           <img

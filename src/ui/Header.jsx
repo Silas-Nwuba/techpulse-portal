@@ -13,7 +13,7 @@ const Header = ({ setSidebarOpen }) => {
         Welcome back admin!
       </h1>
       <div
-        className="flex items-center gap-6 bg-gray-200 rounded-full w-[37px] h-[37px] hover:bg-slate-200 md:hidden ml-2 dark:bg-[#2D3748]"
+        className="flex items-center gap-6 bg-gray-300 rounded-full w-[37px] h-[37px] hover:bg-slate-200 md:hidden ml-2 dark:bg-[#2D3748]"
         onClick={handleSidebar}
       >
         <HiOutlineBars3 className="text-[28px] w-20 cursor-pointer font-semibold dark:text-[#E2E8F0]" />
