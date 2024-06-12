@@ -49,7 +49,7 @@ const UserDropdown = () => {
           </li>
         </Link>
         <span
-          className={`flex items-center gap-2 group mx-2 rounded-md hover:bg-stone-100 md:hover:bg-slate-50 dark:hover:bg-[#4A5568] py-2 dark:group-hover:bg-[#4A5568]  dark:focus:bg-[#4A5568]  ${
+          className={`flex items-center gap-2 group mx-2 rounded-md focus:bg-stone-100 hover:bg-stone-100 md:hover:bg-slate-50 dark:hover:bg-[#4A5568] py-2 dark:group-hover:bg-[#4A5568]  dark:focus:bg-[#4A5568]  ${
             isLogout ? "cursor-wait" : "cursor-pointer"
           } font-medium px-6 hover:transition-all hover:duration-150 hover:ease-in-out`}
           onClick={logout}

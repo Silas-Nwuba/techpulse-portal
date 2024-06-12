@@ -4,7 +4,7 @@ import LoginForm from "../../feature/authentication/LoginForm";
 const Login = () => {
   useEffect(() => {
     document.body.classList.remove("bg-white");
-    document.body.classList.add("bg-gray-100");
+    document.body.classList.add("bg-[#f9fafc]");
     return () => {
       document.body.classList.remove("bg-white");
     };

@@ -5,7 +5,7 @@ const Dashboard = () => {
   const { dispatch } = useUserDropdown();
   useEffect(() => {
     document.body.classList.remove("bg-white");
-    document.body.classList.add("bg-gray-200");
+    document.body.classList.add("bg-[#f9fafc]");
     dispatch({ type: "closeUserDropdown", payload: false });
     document.title = "Dashboard | TechPulse";
     return () => {

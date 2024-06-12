@@ -37,12 +37,12 @@ const LoginForm = () => {
     };
   }, [setPasswordType, isOpen]);
   return (
-    <div className="flex flex-col min-h-screen mx-auto">
-      <h1 className="font-semibold text-[24px] text-[#333333] dark:text-white sm:text-[24px] mb-5 mt-[50px] text-center tracking-wider">
-        Log in
-        {/* <span className="ml-1 tracking-wider">TechPulse</span> */}
-      </h1>
-      <div className="dark:bg-[#2D3748] bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md mx-auto text-center">
+    <div className="w-full min-h-screen ">
+      <div className="dark:bg-[#2D3748] absolute top-1/2 left-2/4 -translate-x-1/2 -translate-y-2/4 bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md  text-center">
+        <h1 className="font-semibold text-[24px] text-[#333333] dark:text-white sm:text-[24px] tracking-wider">
+          Login
+          {/* <span className="ml-1 tracking-wider">TechPulse</span> */}
+        </h1>
         <div className="pt-4">
           <form
             onSubmit={handleSubmit(onsubmit, onerror)}
@@ -106,11 +106,10 @@ const LoginForm = () => {
                 </small>
               )}
             </div>
-
             <Button
               width={"w-full"}
               marginBottom="mb-0"
-              name={"Log in"}
+              name={"Login"}
               backgroundColor="bg-[#007bff]"
               hover="hover:bg-sky-00"
               rounded="rounded-full"
