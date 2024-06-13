@@ -24,15 +24,15 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/admin/dashboard"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] dark:hover:bg-#4a5568]   ${
-          dashboardMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
+          dashboardMatch ? "bg-stone-100 rounded-md font-medium" : ""
         }  dark:${
           dashboardMatch ? "bg-[#4A5568]" : ""
-        } dark:focus:text-[#ffff] text-stone px-[0px] group hover:bg-slate-50  dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}
+        } dark:focus:text-[#ffff] text-stone px-[0px] group hover:bg-stone-50  dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}
       >
         <AiOutlineDashboard
           className={`text-xl ml-5 group group-hover:text-[#007bff] dark:group-hover:text-[#007bff] dark:${
             dashboardMatch ? "text-[#007bff]" : "text-[#CBD5E0]"
-          } ${dashboardMatch ? "text-[#007bff]" : "text-stone-400"}`}
+          } ${dashboardMatch ? "text-[#007bff]" : "text-stone-600"}`}
         />
         <h3
           className={`group group-hover:text-stone-500  dark:${
@@ -47,7 +47,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
-          homeMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
+          homeMatch ? "bg-stone-100  font-medium rounded-md" : ""
         }  dark:${
           homeMatch ? "bg-[#4A5568]" : ""
         } dark:focus:text-[#ffff] text-stone px-[0px] group hover:bg-slate-50  dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}
@@ -55,7 +55,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         <HiOutlineHome
           className={`text-xl ml-5 group group-hover:text-[#007bff] dark:${
             homeMatch ? "text-[#007bff]" : "text-[#CBD5E0]"
-          } ${homeMatch ? "text-[#007bff]" : "text-stone-400"}`}
+          } ${homeMatch ? "text-[#007bff]" : "text-stone-600"}`}
         />
         <h3
           className={`group group-hover:text-stone-500  dark:${
@@ -69,7 +69,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/admin/post"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
-          postMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
+          postMatch ? "bg-stone-100 font-medium rounded-md" : ""
         }  dark:${
           postMatch ? "bg-[#4A5568]" : ""
         }  text-stone-700 px-[0px] group hover:bg-slate-50 dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}
@@ -77,7 +77,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         <HiOutlinePencilSquare
           className={`text-xl ml-5 group group-hover:text-[#007bff]   dark:${
             postMatch ? "text-[#007bff]" : "text-[#CBD5E0]"
-          }  ${postMatch ? "text-[#007bff]" : "text-stone-400"}`}
+          }  ${postMatch ? "text-[#007bff]" : "text-stone-600"}`}
         />
 
         <h3
@@ -93,7 +93,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/admin/comment"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
-          commentMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
+          commentMatch ? "bg-stone-100 font-medium rounded-md" : ""
         }  dark:${
           commentMatch ? "bg-[#4A5568]" : ""
         }  text-stone px-[0px] group hover:bg-slate-50  dark:hover:bg-[#4A5568] dark: hover:rounded-md hover:w-full transition ease-in-out duration-30`}
@@ -101,7 +101,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         <HiOutlineChatBubbleLeft
           className={`text-xl ml-5 group group-hover:text-[#007bff]  dark:${
             commentMatch ? "text-[#007bff]" : "text-[#CBD5E0]"
-          }  ${commentMatch ? "text-[#007bff]" : "text-stone-400 "}`}
+          }  ${commentMatch ? "text-[#007bff]" : "text-stone-600 "}`}
         />
         <h3
           className={`group group-hover:text-stone-500 text-stone-700  dark:${
@@ -115,7 +115,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         to={"/admin/settings"}
         onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
-          settingMatch ? "bg-stone-100 md:bg-slate-50 rounded-md" : ""
+          settingMatch ? "bg-stone-100 font-medium rounded-md" : ""
         }  dark:${
           settingMatch ? "bg-[#4A5568]" : ""
         }  text-stone px-[0px] group hover:bg-slate-50  dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}
@@ -123,7 +123,7 @@ const MainNav = ({ setIsSidebarOpen }) => {
         <HiOutlineCog6Tooth
           className={`text-xl ml-5 group group-hover:text-[#007bff]  dark:${
             settingMatch ? "text-[#007bff]" : "text-[#CBD5E0]"
-          }  ${settingMatch ? "text-[#007bff]" : "text-stone-400"}`}
+          }  ${settingMatch ? "text-[#007bff]" : "text-stone-600"}`}
         />
         <h3
           className={`group group-hover:text-stone-500 dark:group-hover:text-white dark:${

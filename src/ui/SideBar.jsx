@@ -11,13 +11,13 @@ const SideBar = ({ sidebarOpen, setIsSidebarOpen }) => {
   }
   return (
     <div
-      className={`bg-white dark:bg-[#2D3748] shadow-sm md:z-50 z-[20000] sidebar overflow-y-auto  min-h-screen  ${display} w-full md:block`}
+      className={`bg-white  dark:bg-[#2D3748] shadow-sm md:z-50 z-[20000] sidebar overflow-y-auto  min-h-screen  ${display} w-full md:block`}
     >
       <Logo setIsSidebarOpen={setIsSidebarOpen} />
       <MainNav setIsSidebarOpen={setIsSidebarOpen} />
       <Footer>
         <span className=" absolute bottom-0 mb-3 mt-10 w-full md:w-[240px]">
-          <div className="border border-stone-100 w-full md:w-[240px]"></div>
+          <div className="border border-stone-100 w-full md:w-[240px] dark:border-[#2b3341]"></div>
           <p className="dark:text-[#CBD5E0] text-sm text-stone-700 pt-5 mx-7">
             &copy; {new Date().getFullYear()} TechPulse.
           </p>

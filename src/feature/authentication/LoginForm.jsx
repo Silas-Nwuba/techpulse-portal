@@ -37,20 +37,22 @@ const LoginForm = () => {
     };
   }, [setPasswordType, isOpen]);
   return (
-    <div className="w-full min-h-screen ">
-      <div className="dark:bg-[#2D3748] absolute top-1/2 left-2/4 -translate-x-1/2 -translate-y-2/4 bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md  text-center">
-        <h1 className="font-semibold text-[24px] text-[#333333] dark:text-white sm:text-[24px] tracking-wider">
-          Login
-          {/* <span className="ml-1 tracking-wider">TechPulse</span> */}
-        </h1>
-        <div className="pt-4">
+    <div className="w-full min-h-screen">
+      <div className="flex flex-col justify-center text-center mt-10">
+        <span className="my-10 space-y-3 ">
+          <h1 className="font-semibold text-2xl text-sky-600  ">
+            Log In to TechPulse
+          </h1>
+          <p className="">Please enter your email and password</p>
+        </span>
+        <div className="dark:bg-[#2D3748] mx-auto bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md text-center">
           <form
             onSubmit={handleSubmit(onsubmit, onerror)}
             className="space-y-4 mb-3"
           >
             <div>
               <input
-                placeholder="Please enter your email address"
+                placeholder="Email address"
                 type="email"
                 name="email"
                 disabled={isPending}
@@ -62,7 +64,7 @@ const LoginForm = () => {
                     message: "Email address provided is invalid",
                   },
                 })}
-                className="disabled:opacity-50 dark:text-stone-300 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568]  dark:border-[#4A5568] dark:focus:none  disabled:border-gray-200 border text-sm mb-2 font-medium border-slate-50 bg-slate-50 rounded-full focus:border-2 dark:focus:border focus:border-sky-500 w-full  placeholder:text-stone-400 placeholder:font-medium  py-3 pl-5 outline-none focus:outline-none"
+                className="disabled:opacity-50 dark:text-stone-300 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568]  dark:border-[#4A5568] dark:focus:none  disabled:border-gray-200 border text-sm mb-2 font-medium border-slate-50 rounded-md focus:rounded-md focus:border-2 dark:focus:border focus:border-sky-500 w-full  placeholder:text-stone-400 placeholder:font-medium  bg-[#f6f6f8] py-3 pl-5 outline-none focus:outline-none"
               />
               {errors?.email && (
                 <small className="text-red-500 text-sm flex items-center gap-2 ml-2">
@@ -74,7 +76,7 @@ const LoginForm = () => {
             <div className="relative">
               <input
                 name="password"
-                placeholder="Please enter password"
+                placeholder="Password"
                 type={passwordType}
                 autoComplete="password"
                 disabled={isPending}
@@ -85,7 +87,7 @@ const LoginForm = () => {
                     message: "Password must be atleast 8 characters",
                   },
                 })}
-                className="disabled:opacity-50 dark:text-stone-300 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] disabled:border-gray-200 border text-sm mb-2 font-medium border-slate-50 dark:border-[#4A5568] dark:focus:border bg-slate-50 rounded-full focus:border-2 focus:border-sky-500 w-full  placeholder:text-stone-400 placeholder:font-medium  py-3 pl-5 outline-none focus:outline-none"
+                className="disabled:opacity-50 dark:text-stone-300 disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] disabled:border-gray-200 border text-sm mb-2 font-medium border-slate-50 dark:border-[#4A5568] dark:focus:border bg-[#f6f6f8] rounded-md focus:border-2 focus:border-sky-500 focus:rounded-md  w-full  placeholder:text-stone-400 placeholder:font-medium  py-3 pl-5 outline-none focus:outline-none"
               />
 
               <span
@@ -109,10 +111,10 @@ const LoginForm = () => {
             <Button
               width={"w-full"}
               marginBottom="mb-0"
-              name={"Login"}
+              name={"Log In"}
               backgroundColor="bg-[#007bff]"
               hover="hover:bg-sky-00"
-              rounded="rounded-full"
+              rounded="rounded-md"
               loading={isPending}
             >
               <MiniLoaderSpinner />

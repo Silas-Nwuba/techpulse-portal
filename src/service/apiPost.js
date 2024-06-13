@@ -22,11 +22,17 @@ export const getAllPost = async () => {
   return data;
 };
 export const createPost = async (newPostData) => {
+  const imageName = `${Math.random()}-${newPostData.image.name}`.replaceAll(
+    "/",
+    ""
+  );
+  const imagePath = `${supabaseUrl}/storage/v1/object/public/image/${imageName}`;
   const { data, error } = await supabase
     .from("post")
     .insert([
       {
         ...newPostData,
+        image: imagePath,
         category: newPostData.category.value,
       },
     ])
@@ -34,38 +40,18 @@ export const createPost = async (newPostData) => {
   if (error) {
     throw new Error("Post could not be publish");
   }
+  const { error: storageError } = await supabase.storage
+    .from("image")
+    .upload(imageName, newPostData.image, {
+      contentType: newPostData.image.type,
+    });
+  if (storageError) {
+    await supabase.from("post").delete().eq("id", data.id);
+    throw new Error(
+      "Post image could not be uploaded and the post was not published"
+    );
+  }
   return data;
-
-  // const imageName = `${Math.random()}-${newPostData.image.name}`.replaceAll(
-  //   "/",
-  //   ""
-  // );
-  // const imagePath = `${supabaseUrl}/storage/v1/object/public/image/${imageName}`;
-  // const { data, error } = await supabase
-  //   .from("post")
-  //   .insert([
-  //     {
-  //       ...newPostData,
-  //       image: imagePath,
-  //       category: newPostData.category.value,
-  //     },
-  //   ])
-  //   .select();
-  // if (error) {
-  //   throw new Error("Post could not be publish");
-  // }
-  // const { error: storageError } = await supabase.storage
-  //   .from("image")
-  //   .upload(imageName, newPostData.image, {
-  //     contentType: newPostData.image.type,
-  //   });
-  // if (storageError) {
-  //   await supabase.from("post").delete().eq("id", data.id);
-  //   throw new Error(
-  //     "Post image could not be uploaded and the post was not published"
-  //   );
-  // }
-  // return data;
 };
 
 export const getEditPostById = async (id) => {

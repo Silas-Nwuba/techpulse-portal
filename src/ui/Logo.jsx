@@ -3,7 +3,7 @@ import { HiXMark } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 const Logo = ({ setIsSidebarOpen }) => {
   return (
-    <div className=" flex items-center justify-between px-5">
+    <div className=" flex items-center justify-between  px-5">
       <Link to={"/"} className="flex items-center gap-3">
         <img src="\image\logo 2.png" alt="logo" className="w-[30px] h-[30px]" />
         <h1
@@ -14,7 +14,7 @@ const Logo = ({ setIsSidebarOpen }) => {
         </h1>
       </Link>
       <HiXMark
-        className="text-2xl block md:hidden font-semibold"
+        className="text-2xl block font-semibold cursor-pointer md:hidden"
         onClick={() => setIsSidebarOpen(false)}
       />
     </div>

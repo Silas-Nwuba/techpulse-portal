@@ -24,7 +24,7 @@ const Setting = () => {
     <>
       <div className="flex items-center justify-between mx-2 mt-[7rem] md:mt-10">
         <span className="text-[20px] text-[#333333] font-semibold dark:text-[#E2E8F0] ">
-          Admin Settings
+          Update User
         </span>
         <span
           className="flex items-center gap-2 justify-end text-[#007bff] text-[16px] mr-2 cursor-pointer"

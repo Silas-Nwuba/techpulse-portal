@@ -7,7 +7,7 @@ import { formatPostDate } from "../utils/helper";
 const LatestPostContent = ({ data }) => {
   // const { data: comment } = useGetAllComment();
   return (
-    <div className="flex flex-col mt-10 space-y-10">
+    <div className="flex flex-col mt-10 space-y-5">
       {data?.slice(0, 5).map((data) => (
         <div key={data?.id}>
           <Link
@@ -20,14 +20,13 @@ const LatestPostContent = ({ data }) => {
               <img
                 src={`${data?.image}`}
                 alt=""
-                className="object-cover w-[200px] h-[100px] hover:opacity-70 cursor-pointer transition-transform pb-3 duration-300 ease-in-out"
+                className="image hover:opacity-70 cursor-pointer transition-transform pb-3 duration-300 ease-in-out"
               />
             </span>
             <span>
               <h1 className="text-[14px] focus:text-[#007bff] text-stone-600 font-semibold hover:text-[#007bff]  dark:text-[#e0e0e0] transition-all cursor-pointer">
                 {data?.title}
               </h1>
-              {/* <p className="text-sm text-stone-600">{}</p> */}
               <div className="flex gap-3 pt-2">
                 <div className="flex items-center text-[(rgb(84, 86, 88))] dark:text-stone-300 text-[11px] gap-1">
                   <FaUser className="text-stone-400" />

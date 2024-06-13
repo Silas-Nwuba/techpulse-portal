@@ -45,7 +45,6 @@ const CreatePost = () => {
   } = useForm();
   const { errors } = formState;
   const { createPost, isCreating: isLoading, isError } = useCreatePost();
-
   const { dispatch } = useUserDropdown();
   const [createDate, setCreateDate] = useState(new Date());
   const { user } = useUser();
@@ -53,13 +52,14 @@ const CreatePost = () => {
     createPost(
       {
         ...data,
+        image: data.image[0],
         title: data.title.charAt(0).toUpperCase() + data.title.slice(1),
         createdDate: format(createDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"),
       },
       {
-        // onSuccess: () => {
-        //   reset();
-        // },
+        onSuccess: () => {
+          reset();
+        },
         onError: (errors) => {
           toast.error(errors.message);
         },
@@ -76,10 +76,10 @@ const CreatePost = () => {
   return (
     <>
       {isLoading && <LoaderSpinner />}
-      <div className="mt-[120px] md:mt-10 mb-5">
+      <div className="mt-[120px] md:mt-10">
         <div className="flex items-center justify-between mb-5">
           <h1 className="text-[18px] text-stone-600 font-medium dark:text-[#CBD5E0]">
-            Create New Post
+            Create Post
           </h1>
           <span
             className="flex items-center gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
@@ -90,7 +90,7 @@ const CreatePost = () => {
         </div>
         <form
           onSubmit={handleSubmit(onsubmit)}
-          className="bg-white px-4 py-5 rounded-md shadow-sm dark:bg-[#2D3748]"
+          className="bg-white w-full px-6 py-8 rounded-md shadow-md dark:bg-[#2D3748] "
         >
           <FormRow label="Blog Title" error={errors?.title?.message}>
             <input
@@ -99,18 +99,18 @@ const CreatePost = () => {
               {...register("title", {
                 required: "Title field is required",
               })}
-              className={` dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:outline-none focus:border-2 border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+              className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
-          <FormRow label="Image Url" error={errors?.image?.message}>
+          <FormRow label="Image" error={errors?.image?.message}>
             <input
-              type="text"
+              type="file"
               name="image"
-              // accept="image/*"
+              accept="image/*"
               {...register("image", {
-                required: "image Url field is required",
+                required: "image field is required",
               })}
-              className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  focus:outline-none focus:border-2 border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+              className={`file:bg-violet-50 file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm  focus:border-2 focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
           <FormRow label={"Category"} error={errors?.category?.message}>
@@ -132,7 +132,7 @@ const CreatePost = () => {
                     setValue("category", option);
                     trigger("category");
                   }}
-                  className={` dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  h-[45px] mt-2 rounded-md`}
+                  className={` dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] mt-2 rounded-md`}
                 />
               )}
             />
@@ -144,18 +144,11 @@ const CreatePost = () => {
             >
               Created Date
             </label>
-            <DatePicker
-              selected={createDate}
-              placeholderText="dd-mm-yyyy"
-              dateFormat="dd-mm-yyyy"
-              onChange={(date) => setCreateDate(date)}
-              className=" focus:outline-none border h-[45px] rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
+            <input
+              type="date"
+              defaultValue={createDate}
+              className="focus:outline-none border rounded-md p-3 mt-2 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
             />
-            {!createDate && (
-              <small className="text-red-500 text-sm font-medium dark:text-[#E53E3E]">
-                Created Date field is required
-              </small>
-            )}
           </div>
           <FormRow label="Author" error={errors?.author?.message}>
             <input
@@ -166,40 +159,43 @@ const CreatePost = () => {
               {...register("author", {
                 required: "Author field is required",
               })}
-              className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2  focus:outline-none border h-[45px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+              className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2  focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
-          <FormRow label="Summary" error={errors?.summary?.message}>
-            <Controller
-              name="summary"
-              control={control}
-              defaultValue=""
-              rules={{ required: "Summary field is required" }}
-              render={({ field }) => (
-                <ReactQuill
-                  {...field}
-                  onChange={(content) => field.onChange(content)}
-                  className="h-[100px] mt-2 mb-[90px] xs:mb-[70px] sm:mb-10 border-stone-300"
-                />
-              )}
-            />
-          </FormRow>
-          <FormRow label="Content" error={errors?.content?.message}>
-            <Controller
-              name="content"
-              control={control}
-              defaultValue=""
-              rules={{ required: "Content field is required" }}
-              render={({ field }) => (
-                <ReactQuill
-                  {...field}
-                  onChange={(content) => field.onChange(content)}
-                  className="h-[200px] mt-2 mb-[90px] xs:mb-[70px] sm:mb-10 border-stone-300 text-xl"
-                />
-              )}
-            />
-          </FormRow>
-          <div className="flex gap-3 mt-20 mb-5 sm:mt-0 sm:mb-0">
+          <div className="space-y-10">
+            <FormRow label="Summary">
+              <Controller
+                name="summary"
+                control={control}
+                defaultValue=""
+                rules={{ required: "Summary field is required" }}
+                render={({ field }) => (
+                  <ReactQuill
+                    {...field}
+                    onChange={(content) => field.onChange(content)}
+                    className="h-[100px] mt-2 border-stone-300"
+                  />
+                )}
+              />
+            </FormRow>
+
+            <FormRow label="Content">
+              <Controller
+                name="content"
+                control={control}
+                defaultValue=""
+                rules={{ required: "Content field is required" }}
+                render={({ field }) => (
+                  <ReactQuill
+                    {...field}
+                    onChange={(content) => field.onChange(content)}
+                    className="h-[200px] mt-2  border-stone-300 text-xl"
+                  />
+                )}
+              />
+            </FormRow>
+          </div>
+          <div className="flex gap-3 mt-10">
             <Button
               name="Back"
               backgroundColor="bg-slate-100"

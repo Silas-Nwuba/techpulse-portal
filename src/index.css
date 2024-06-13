@@ -144,22 +144,26 @@ blockquote p {
     }
   }
 }
-&.light {
-  @keyframes skeleton {
-    0% {
-      background: #f1f5f9;
-    }
-    100% {
-      background: #f6f6f8;
-    }
+
+@keyframes skeleton {
+  0% {
+    background: #dddd;
+  }
+  100% {
+    background: #f6f6f8;
   }
 }
 
+.image {
+  width: 400px; /* Ensure the image doesn't exceed its container */
+  height: 200px;
+  display: block;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #fdfdfd inset !important;
+  -webkit-box-shadow: 0 0 0 30px #f6f6f8 inset !important;
 }
 @media (min-width: 768px) {
   .dashboard {
