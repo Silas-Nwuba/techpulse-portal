@@ -9,7 +9,7 @@ const useLogin = () => {
   const { mutate: login, isPending } = useMutation({
     mutationFn: ({ email, password }) => loginApi(email, password),
     onSuccess: (user) => {
-      navigate("/admin/dashboard", { replace: true });
+      navigate("/dashboard", { replace: true });
       queryClient.setQueryData(["user"], user.user);
     },
     onError: (error) => {

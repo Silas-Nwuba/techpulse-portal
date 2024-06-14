@@ -11,9 +11,11 @@ const useLogout = () => {
     mutationKey: ["user"],
     mutationFn: logoutApi,
     onSuccess: () => {
-      navigate("/admin/login", { replace: true });
+      navigate("login", { replace: true });
       queryClient.removeQueries();
-      toast.success("Logged out successfully");
+      toast.success("Logged out successfully", {
+        id: "success",
+      });
       dispatch({ type: "closeUserDropdown", payload: false });
     },
     onError: (error) => {

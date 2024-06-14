@@ -40,7 +40,7 @@ const UserDropdown = () => {
       <div className="border border-stone-100 mt-2 dark:border-[#4A5568]"></div>
       <ul className="py-2 space-y-2 mt-2 ">
         <Link
-          to={"/admin/settings"}
+          to={"settings"}
           className="flex items-center gap-2 text-[#333333] dark:text-[#CBD5E0] group cursor-pointer mx-2 rounded-md hover:bg-stone-100 md:hover:bg-slate-50 dark:hover:bg-[#4A5568] font-medium group-hover:text-stone-500 py-2 px-6 hover:transition-all hover:duration-150 hover:ease-in-out"
         >
           <HiOutlineCog8Tooth className="font-semibold text-xl text-stone-500 dark:text-[#CBD5E0] group-hover:text-stone-400 dark:group-hover:text-[#CBD5E0]" />

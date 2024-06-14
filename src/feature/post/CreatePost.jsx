@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker-cssmodules.css";
-import "react-datepicker/dist/react-datepicker.css";
-import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
@@ -16,22 +12,39 @@ import useCreatePost from "./useCreatePost";
 import FormRow from "../../ui/FormRow";
 import Button from "../../ui/Button";
 import LoaderSpinner from "../../ui/LoaderSpinner";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { OverLay } from "../../ui/OverLay";
 
 const options = [
+  { value: "", label: "Select" },
   { value: "Technology", label: "Technology" },
   { value: "Business", label: "Business" },
   { value: "SmartPhone", label: "SmartPhone" },
   { value: "Gadget", label: "Gadget" },
 ];
-const customStyles = {
-  control: (provided) => ({
-    ...provided,
-    border: "1px solid #ced4da",
-    height: "45px",
-    marginTop: "3px",
-    borderRadius: "5px",
-  }),
-};
+// const customStylesLight = {
+//   control: (provided) => ({
+//     ...provided,
+//     border: "1px solid #ced4da",
+//     height: "45px",
+//     marginTop: "4px",
+//     borderRadius: "5px",
+//     backgroundColor: "#ffffff",
+//   }),
+// };
+
+// const customStylesDark = {
+//   control: (provided) => ({
+//     ...provided,
+//     border: "1px solid #4a5568",
+//     height: "45px",
+//     marginTop: "3px",
+//     borderRadius: "5px",
+//     backgroundColor: "#4a5568",
+//     outLine: "none",
+//   }),
+// };
 const CreatePost = () => {
   const navigate = useNavigate();
   const {
@@ -46,15 +59,15 @@ const CreatePost = () => {
   const { errors } = formState;
   const { createPost, isCreating: isLoading, isError } = useCreatePost();
   const { dispatch } = useUserDropdown();
-  const [createDate, setCreateDate] = useState(new Date());
   const { user } = useUser();
+
   const onsubmit = (data) => {
     createPost(
       {
         ...data,
         image: data.image[0],
         title: data.title.charAt(0).toUpperCase() + data.title.slice(1),
-        createdDate: format(createDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"),
+        // createdDate: format(createDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"),
       },
       {
         onSuccess: () => {
@@ -66,6 +79,7 @@ const CreatePost = () => {
       }
     );
   };
+
   useEffect(() => {
     document.title = "Create Post | TechPulse";
     return () => {
@@ -76,14 +90,15 @@ const CreatePost = () => {
   return (
     <>
       {isLoading && <LoaderSpinner />}
-      <div className="mt-[120px] md:mt-10">
+
+      <div className="mt-[120px] md:mt-10 mb-5">
         <div className="flex items-center justify-between mb-5">
           <h1 className="text-[18px] text-stone-600 font-medium dark:text-[#CBD5E0]">
             Create Post
           </h1>
           <span
             className="flex items-center gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
-            onClick={() => navigate("/admin/post")}
+            onClick={() => navigate("/post")}
           >
             <p>Back</p> <HiArrowRight />
           </span>
@@ -99,7 +114,7 @@ const CreatePost = () => {
               {...register("title", {
                 required: "Title field is required",
               })}
-              className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+              className={`dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
           <FormRow label="Image" error={errors?.image?.message}>
@@ -110,11 +125,24 @@ const CreatePost = () => {
               {...register("image", {
                 required: "image field is required",
               })}
-              className={`file:bg-violet-50 file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm  focus:border-2 focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+              className={`file:bg-violet-50 file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm  focus:border-2 focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
           <FormRow label={"Category"} error={errors?.category?.message}>
-            <Controller
+            <select
+              name="category"
+              {...register("category", {
+                required: "Category field is required",
+              })}
+              className="dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400"
+            >
+              {options.map((element, index) => (
+                <option key={index} value={element.value}>
+                  {element.label}
+                </option>
+              ))}
+            </select>
+            {/* <Controller
               name="category"
               control={control}
               defaultValue={null}
@@ -126,16 +154,16 @@ const CreatePost = () => {
                   {...field}
                   options={options}
                   placeholder="Select.."
-                  styles={customStyles}
+                  styles={customStylesDark}
                   onChange={(option) => {
                     field.onChange(option);
                     setValue("category", option);
                     trigger("category");
                   }}
-                  className={` dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] mt-2 rounded-md`}
+                  className="mt-2 rounded-md focus:border-none"
                 />
               )}
-            />
+            /> */}
           </FormRow>
           <div className={`mb-5 flex flex-col`}>
             <label
@@ -144,11 +172,27 @@ const CreatePost = () => {
             >
               Created Date
             </label>
-            <input
+            <Controller
+              name="createdDate"
+              defaultValue={format(new Date(), "MM-dd-yyyy")}
+              control={control}
+              render={({ field }) => (
+                <DatePicker
+                  {...field}
+                  popperPlacement="top-center"
+                  dateFormat={"MM-dd-yyyy"}
+                  selected={field.value}
+                  onChange={(newValue) => field.onChange(newValue)}
+                  className="focus:outline-none border h-[50px]  rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#4A5568] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
+                />
+              )}
+            />
+
+            {/* <input
               type="date"
               defaultValue={createDate}
-              className="focus:outline-none border rounded-md p-3 mt-2 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
-            />
+              className="focus:outline-none border rounded-md p-3 mt-2 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
+            /> */}
           </div>
           <FormRow label="Author" error={errors?.author?.message}>
             <input
@@ -159,10 +203,11 @@ const CreatePost = () => {
               {...register("author", {
                 required: "Author field is required",
               })}
-              className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2  focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+              className={`dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:border-2  focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
-          <div className="space-y-10">
+
+          <div className="mb-2">
             <FormRow label="Summary">
               <Controller
                 name="summary"
@@ -173,14 +218,30 @@ const CreatePost = () => {
                   <ReactQuill
                     {...field}
                     onChange={(content) => field.onChange(content)}
-                    className="h-[100px] mt-2 border-stone-300"
+                    className="h-[100px] mt-2 overflow-auto border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557] "
                   />
                 )}
               />
             </FormRow>
+          </div>
 
-            <FormRow label="Content">
-              <Controller
+          <div className="">
+            <label className="mt-5 font-medium text-stone-600 dark:text-[#e0e0e0] text-sm">
+              Content
+            </label>
+            <Controller
+              name="content"
+              control={control}
+              rules={{ required: "Content field is required" }}
+              render={({ field }) => (
+                <ReactQuill
+                  {...field}
+                  onChange={(content) => field.onChange(content)}
+                  className="h-[100px] mt-2 overflow-auto  border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557] "
+                />
+              )}
+            />
+            {/* <Controller
                 name="content"
                 control={control}
                 defaultValue=""
@@ -192,10 +253,10 @@ const CreatePost = () => {
                     className="h-[200px] mt-2  border-stone-300 text-xl"
                   />
                 )}
-              />
-            </FormRow>
+              /> */}
           </div>
-          <div className="flex gap-3 mt-10">
+
+          <div className="flex gap-3">
             <Button
               name="Back"
               backgroundColor="bg-slate-100"

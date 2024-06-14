@@ -39,16 +39,15 @@ const LoginForm = () => {
   return (
     <div className="w-full min-h-screen">
       <div className="flex flex-col justify-center text-center mt-10">
-        <span className="my-10 space-y-3 ">
-          <h1 className="font-semibold text-2xl text-sky-600  ">
-            Log In to TechPulse
+        <span className="my-10">
+          <h1 className="font-semibold text-2xl text-stone-700 dark:text-[#e0e0e0]">
+            Log In Admin
           </h1>
-          <p className="">Please enter your email and password</p>
         </span>
         <div className="dark:bg-[#2D3748] mx-auto bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md text-center">
           <form
             onSubmit={handleSubmit(onsubmit, onerror)}
-            className="space-y-4 mb-3"
+            className="space-y-5 mb-3"
           >
             <div>
               <input

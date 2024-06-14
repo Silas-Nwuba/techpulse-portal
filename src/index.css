@@ -23,7 +23,6 @@ blockquote {
   background-color: #f9f9f9;
   quotes: "“" "”" "‘" "’";
 }
-
 blockquote:before {
   color: #ccc;
   content: open-quote;
@@ -37,16 +36,19 @@ blockquote p {
   display: inline;
 }
 
-.scrollBar::-webkit-scrollbar {
+.scrollBar,
+.quill::-webkit-scrollbar {
   width: 10px;
 }
 
-.scrollBar::-webkit-scrollbar-track {
+.scrollBar,
+.quill::-webkit-scrollbar-track {
   background: #f1f1f1;
   border: none;
   border-radius: 3px;
 }
-.scrollBar::-webkit-scrollbar-thumb {
+.scrollBar,
+.quill::-webkit-scrollbar-thumb {
   background: #dfdfdf;
   border-radius: 3px;
 }
@@ -78,6 +80,9 @@ blockquote p {
     background: #9c9c9cdd;
     border-radius: 3px;
   }
+  .quill {
+    height: 200px;
+  }
 }
 &.dark {
   .react-datepicker {
@@ -86,6 +91,7 @@ blockquote p {
     z-index: 200000;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
+
   .react-datepicker__header {
     background-color: #2d3748;
   }
@@ -118,17 +124,68 @@ blockquote p {
   .main::-webkit-scrollbar {
     width: 10px;
   }
-
   .main::-webkit-scrollbar-track {
     background: #3333;
     border: none;
     border-radius: 3px;
   }
-
   .main::-webkit-scrollbar-thumb {
-    background: #4a5568;
+    background: #7989a3;
     border-radius: 3px;
   }
+  .quill::-webkit-scrollbar {
+    width: 10px;
+  }
+  .quill::-webkit-scrollbar-track {
+    background: #dddd;
+    border: none;
+    border-radius: 3px;
+  }
+  .quill::-webkit-scrollbar-thumb {
+    background: #4f5f80;
+    border-radius: 3px;
+  }
+
+  .ql-editor .ql-blank,
+  .ql-container.ql-snow {
+    border: none;
+  }
+  .ql-picker-label {
+    color: #eeeeee;
+  }
+  .ql-stroke {
+    color: white;
+  }
+  .quill {
+    height: 200px;
+  }
+  .ql-snow {
+    border-bottom: 1px solid #1a202c;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+  }
+  .ql-editor p {
+    color: #e2e8f0;
+  }
+  .ql-snow .ql-stroke {
+    stroke: #eeeeee;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #4a5568 inset !important;
+    -webkit-text-fill-color: #e2e2e2;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #f8f6f6 inset !important;
+  -webkit-text-fill-color: #575555;
 }
 .skeleton {
   animation: skeleton 1s alternate linear infinite;
@@ -159,12 +216,7 @@ blockquote p {
   height: 200px;
   display: block;
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #f6f6f8 inset !important;
-}
+
 @media (min-width: 768px) {
   .dashboard {
     display: grid;

@@ -6,9 +6,10 @@ import { HiOutlineBars3 } from "react-icons/hi2";
 const Header = ({ setSidebarOpen }) => {
   const handleSidebar = () => {
     setSidebarOpen(true);
+    document.documentElement.style.overflowY = "hidden";
   };
   return (
-    <div className="bg-white dark:bg-[#1A202C] dark:border-b dark:border-[#2D3748] p-4 flex justify-between items-center px-2 shadow-md md:shadow-sm z-[9999] md:z-50 header fixed top-0 md:px-5 md:sticky w-full">
+    <div className="bg-white dark:bg-[#1A202C] dark:border-b dark:border-[#2D3748] p-4 flex  justify-between items-center px-2 shadow-sm z-[9999] md:z-50 header fixed top-0 md:px-5 md:sticky w-full">
       <h1 className="text-stone-500 text-[16px] dark:text-[#E2E8F0] hidden  md:block">
         Welcome back, admin
       </h1>

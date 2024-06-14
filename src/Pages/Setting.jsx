@@ -1,22 +1,19 @@
 import React, { useEffect } from "react";
-import UpdateUserData from "../../feature/user/UpdateUserData";
-import UpdateUserPassword from "../../feature/user/UpdateUserPassword";
+import UpdateUserData from "../feature/user/UpdateUserData";
+import UpdateUserPassword from "../feature/user/UpdateUserPassword";
 import { useNavigate } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi2";
-import { useUserDropdown } from "../../context/UserDropdownContextApi";
+import { useUserDropdown } from "../context/UserDropdownContextApi";
 
 const Setting = () => {
   const navigate = useNavigate();
   const { dispatch } = useUserDropdown();
   useEffect(() => {
-    document.body.classList.remove("bg-white");
-    document.body.classList.add("bg-[#f9fafc]");
     window.scrollTo({ top: 0 });
     dispatch({ type: "closeUserDropdown", payload: false });
     document.title = "Settings | TechPulse";
     return () => {
       document.title = "Dashboard | TechPulse";
-      document.body.classList.remove("bg-white");
     };
   }, [dispatch]);
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import CommentDetailBox from "../../feature/comment/CommentDetailBox";
-import { useUserDropdown } from "../../context/UserDropdownContextApi";
+import CommentDetailBox from "../feature/comment/CommentDetailBox";
+import { useUserDropdown } from "../context/UserDropdownContextApi";
 
 const CommentDetail = () => {
   const { dispatch } = useUserDropdown();

@@ -11,19 +11,23 @@ import Error from "../../ui/Error";
 import FullPageLoaderSpinner from "../../ui/FullPageLoaderSpinner";
 import { usePost } from "../post/usePost";
 const Stats = () => {
-  const {data, isLoading:isPostCount, error:postErr} = usePost();
+  const { data, isLoading: isPostCount, error: postErr } = usePost();
   const { comments, error: commentErr, isLoading: isComment } = useComment();
   const approved = comments?.filter((comment) => comment.status === "Approved");
 
-  if (postErr|| commentErr) return <Error />;
+  if (postErr || commentErr) return <Error />;
   if (isPostCount || isComment) return <FullPageLoaderSpinner />;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10 md:grid-cols-2 lg:grid-cols-4 col-span-1 md:mt-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 md:grid-cols-2 lg:grid-cols-4 col-span-1 md:mt-5">
       <Stat name="User" color="bg-sky-400" data={formatNumber(1)}>
         <HiOutlineUserGroup className="text-2xl text-sky-800" />
       </Stat>
-      <Stat name="Post" color="bg-indigo-400" data={formatNumber(data?.pages?.[0].count) }>
+      <Stat
+        name="Post"
+        color="bg-indigo-400"
+        data={formatNumber(data?.pages?.[0].count)}
+      >
         <HiOutlinePencilSquare className="text-2xl font-semibold text-indigo-800" />
       </Stat>
       <Stat

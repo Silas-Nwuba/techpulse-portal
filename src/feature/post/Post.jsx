@@ -12,7 +12,6 @@ const Post = () => {
   const navigate = useNavigate();
   //prettier-ignore
   const { data, isError,isLoading,fetchNextPage,hasNextPage} = usePost();
-
   const { ref, inView } = useInView();
   const { dispatch } = useUserDropdown();
   useEffect(() => {
@@ -29,7 +28,7 @@ const Post = () => {
   if (isError) return <Error />;
   if (!data) return <Error />;
   const handleAddPost = () => {
-    navigate("/admin/post/create");
+    navigate("/post/create");
     dispatch({ type: "closeUserDropdown", payload: false });
   };
   return (
