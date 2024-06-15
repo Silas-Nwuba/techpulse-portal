@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { DarkModeProvider } from "./context/DarkModeContext";
@@ -37,7 +37,8 @@ const App = () => {
             <UserDropdownProvider>
               <BrowserRouter>
                 <Routes>
-                  <Route index path="/" element={<Login />}></Route>
+                  <Route index element={<Navigate to="login" />}></Route>
+                  <Route path="/login" element={<Login />}></Route>
                   <Route
                     element={
                       <ProtectedRoute>
