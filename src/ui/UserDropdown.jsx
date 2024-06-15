@@ -11,7 +11,7 @@ const UserDropdown = () => {
   const { logout, isLogout } = useLogout();
   if (isLoading)
     return (
-      <div className="bg-white dark:bg-[#2D3748] border-4 w-[250px] shadow-xl rounded-md py-3 flex flex-col justify-start mr-10 z-[10000] ml-5 absolute right-0 top-[4.5rem] border-t-4 border-[#007bff] ">
+      <div className="bg-white dark:bg-[#2D3748] border-4 w-[250px] shadow md:shadow-xl rounded-md py-3 flex flex-col justify-start mr-10 z-[10000] ml-5 absolute right-0 top-[4.5rem] border-t-4 border-[#007bff] ">
         <MiniLoaderSpinner
           borderRight="border-r-[#007bff]"
           borderTop="border-t-[#007bff]"

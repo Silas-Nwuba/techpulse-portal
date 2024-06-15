@@ -95,7 +95,7 @@ const CreatePost = () => {
         </div>
         <form
           onSubmit={handleSubmit(onsubmit)}
-          className="bg-white w-full px-6 py-8 rounded-md shadow-md dark:bg-[#2D3748] "
+          className="bg-white w-full px-6 py-8 rounded-md shadow dark:bg-[#2D3748] "
         >
           <FormRow label="Blog Title" error={errors?.title?.message}>
             <input

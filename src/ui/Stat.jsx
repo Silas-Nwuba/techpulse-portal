@@ -3,7 +3,7 @@ import React from "react";
 const Stat = ({ color, name, data, children }) => {
   return (
     <div
-      className={`bg-white dark:bg-[#2D3748]  rounded-md py-5 md:py-3 flex items-center px-5  gap-4 shadow-md md:shadow-sm w-full`}
+      className={`bg-white dark:bg-[#2D3748]  rounded-md py-5 md:py-3 flex items-center px-5  gap-4 shadow w-full`}
     >
       <span className={`${color} rounded-full p-4`}>{children}</span>
       <span className="leading-6">

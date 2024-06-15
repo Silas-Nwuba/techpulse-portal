@@ -38,13 +38,12 @@ const LoginForm = () => {
   }, [setPasswordType, isOpen]);
   return (
     <div className="w-full min-h-screen">
-      <div className="flex flex-col justify-center text-center mt-10">
-        <span className="my-10">
-          <h1 className="font-semibold text-2xl text-stone-700 dark:text-[#e0e0e0]">
-            Log In Admin
-          </h1>
-        </span>
-        <div className="dark:bg-[#2D3748] mx-auto bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md text-center">
+      <div className="absolute top-2/4 md:top-[40%] left-2/4 transform -translate-y-2/4 -translate-x-2/4 w-full">
+        <h1 className="font-semibold text-2xl text-stone-700 dark:text-[#e0e0e0] text-center mb-3">
+          Log In Admin
+        </h1>
+
+        <div className="dark:bg-[#2D3748] mx-auto  shadow bg-white  w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md text-center">
           <form
             onSubmit={handleSubmit(onsubmit, onerror)}
             className="space-y-5 mb-3"
