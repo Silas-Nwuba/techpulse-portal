@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -14,8 +14,6 @@ import Button from "../../ui/Button";
 import LoaderSpinner from "../../ui/LoaderSpinner";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { OverLay } from "../../ui/OverLay";
-
 const options = [
   { value: "", label: "Select" },
   { value: "Technology", label: "Technology" },
@@ -47,15 +45,7 @@ const options = [
 // };
 const CreatePost = () => {
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState,
-    reset,
-    control,
-    setValue,
-    trigger,
-  } = useForm();
+  const { register, handleSubmit, formState, reset, control } = useForm();
   const { errors } = formState;
   const { createPost, isCreating: isLoading, isError } = useCreatePost();
   const { dispatch } = useUserDropdown();
@@ -142,28 +132,6 @@ const CreatePost = () => {
                 </option>
               ))}
             </select>
-            {/* <Controller
-              name="category"
-              control={control}
-              defaultValue={null}
-              rules={{
-                required: "Category field is required",
-              }}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  options={options}
-                  placeholder="Select.."
-                  styles={customStylesDark}
-                  onChange={(option) => {
-                    field.onChange(option);
-                    setValue("category", option);
-                    trigger("category");
-                  }}
-                  className="mt-2 rounded-md focus:border-none"
-                />
-              )}
-            /> */}
           </FormRow>
           <div className={`mb-5 flex flex-col`}>
             <label
@@ -208,7 +176,7 @@ const CreatePost = () => {
           </FormRow>
 
           <div className="mb-2">
-            <FormRow label="Summary">
+            <FormRow label="Summary" error={errors?.summary?.message}>
               <Controller
                 name="summary"
                 control={control}
@@ -216,9 +184,24 @@ const CreatePost = () => {
                 rules={{ required: "Summary field is required" }}
                 render={({ field }) => (
                   <ReactQuill
+                    modules={{
+                      toolbar: [
+                        [{ header: "1" }, { header: "2" }, { font: [] }],
+                        [{ size: [] }],
+                        ["bold", "italic", "underline", "strike", "blockquote"],
+                        [
+                          { list: "ordered" },
+                          { list: "bullet" },
+                          { indent: "-1" },
+                          { indent: "+1" },
+                        ],
+                        ["link", "image", "video"],
+                        ["clean"],
+                      ],
+                    }}
                     {...field}
                     onChange={(content) => field.onChange(content)}
-                    className="h-[100px] mt-2 overflow-auto border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557] "
+                    className="mt-2 overflow-auto border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557] "
                   />
                 )}
               />
@@ -226,37 +209,38 @@ const CreatePost = () => {
           </div>
 
           <div className="">
-            <label className="mt-5 font-medium text-stone-600 dark:text-[#e0e0e0] text-sm">
-              Content
-            </label>
-            <Controller
-              name="content"
-              control={control}
-              rules={{ required: "Content field is required" }}
-              render={({ field }) => (
-                <ReactQuill
-                  {...field}
-                  onChange={(content) => field.onChange(content)}
-                  className="h-[100px] mt-2 overflow-auto  border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557] "
-                />
-              )}
-            />
-            {/* <Controller
+            <FormRow label="Content" error={errors?.content?.message}>
+              <Controller
                 name="content"
                 control={control}
-                defaultValue=""
                 rules={{ required: "Content field is required" }}
                 render={({ field }) => (
                   <ReactQuill
+                    modules={{
+                      toolbar: [
+                        [{ header: "1" }, { header: "2" }, { font: [] }],
+                        [{ size: [] }],
+                        ["bold", "italic", "underline", "strike", "blockquote"],
+                        [
+                          { list: "ordered" },
+                          { list: "bullet" },
+                          { indent: "-1" },
+                          { indent: "+1" },
+                        ],
+                        ["link", "image", "video"],
+                        ["clean"],
+                      ],
+                    }}
                     {...field}
                     onChange={(content) => field.onChange(content)}
-                    className="h-[200px] mt-2  border-stone-300 text-xl"
+                    className="mt-2 overflow-auto  border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557] "
                   />
                 )}
-              /> */}
+              />
+            </FormRow>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 mt-3">
             <Button
               name="Back"
               backgroundColor="bg-slate-100"
@@ -265,7 +249,7 @@ const CreatePost = () => {
               color="text-stone-600"
               marginBottom="mb-0"
               onClick={() => {
-                navigate("/admin/post");
+                navigate("/post");
                 dispatch({ type: "closeUserDropdown", payload: false });
               }}
             />

@@ -14,6 +14,7 @@ import FullPageLoaderSpinner from "../../ui/FullPageLoaderSpinner";
 import { useUser } from "../authentication/useUser";
 import NotFoundError from "../../ui/NotFoundError";
 import LoaderSpinner from "../../ui/LoaderSpinner";
+import { format } from "date-fns";
 
 const options = [
   { value: "Technology", label: "Technology" },
@@ -21,22 +22,13 @@ const options = [
   { value: "SmartPhone", label: "SmartPhone" },
   { value: "Gadget", label: "Gadget" },
 ];
-const customStyles = {
-  control: (provided) => ({
-    ...provided,
-    border: "1px solid #ced4da",
-    height: "45px",
-    marginTop: "3px",
-    borderRadius: "5px",
-  }),
-};
 const EditPost = () => {
   const { dispatch } = useUserDropdown();
   const navigate = useNavigate();
   const { data, isFetching, error } = useGetEditPostById();
   const { editPost, isEditing } = useEditPost();
   const { register, handleSubmit, formState, reset, control } = useForm({
-    values: { ...data },
+    values: { ...data, createdDate: format(data?.createdDate, "MM-dd-yyyy") },
   });
   const { errors } = formState;
   const { user } = useUser();
@@ -78,7 +70,7 @@ const EditPost = () => {
           </h1>
           <span
             className="flex items-center gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
-            onClick={() => navigate("/admin/post")}
+            onClick={() => navigate("/post")}
           >
             <p>Back</p>
             <HiArrowRight />
@@ -86,7 +78,7 @@ const EditPost = () => {
         </div>
         <form
           onSubmit={handleSubmit(onsubmit)}
-          className="bg-white px-4 py-5 rounded-md shadow-sm dark:bg-[#2D3748]"
+          className="bg-white px-4 py-5 space-y-2 rounded-md shadow-sm dark:bg-[#2D3748]"
         >
           <FormRow label="Blog Title" error={errors?.title?.message}>
             <input
@@ -95,7 +87,7 @@ const EditPost = () => {
               {...register("title", {
                 required: "Title field is required",
               })}
-              className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+              className={`dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
           <FormRow label="Image" error={errors?.image?.message}>
@@ -106,31 +98,31 @@ const EditPost = () => {
               {...register("image", {
                 required: data?.image ? false : "image field is required",
               })}
-              className={`file:bg-violet-50 file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm  focus:border-2 focus:outline-none border h-[55px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+              className={`file:bg-violet-50 file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm  focus:border-2 focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
           <FormRow label="Category" error={errors?.category?.message}>
-            <Controller
+            <select
               name="category"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...register("category", {
-                    required: "Category field is required",
-                  })}
-                  {...field}
-                  defaultInputValue={data.category}
-                  options={options}
-                  styles={customStyles}
-                  className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0]  h-[45px] mt-2 rounded-md`}
-                />
+              {...register("category", {
+                required: "Category field is required",
+              })}
+              className="dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400"
+            >
+              <option value={data?.category}>{data?.category}</option>
+              {options.map((item) =>
+                item.category !== data?.category ? (
+                  <option value={item.value}>{item.label}</option>
+                ) : (
+                  ""
+                )
               )}
-            />
+            </select>
           </FormRow>
-          <div className={`mb-5 flex flex-col`}>
+          <div className="mb-5 flex flex-col">
             <label
               htmlFor="createDate"
-              className="font-medium text-stone-500 dark:text-[#E2E8F0] text-sm"
+              className="font-medium text-stone-700 dark:text-[#E2E8F0] text-sm"
             >
               Created Date
             </label>
@@ -138,7 +130,6 @@ const EditPost = () => {
               name="createdDate"
               rules={{ required: "Created Date is required" }}
               control={control}
-              value={new Date()}
               render={({ field }) => (
                 <DatePicker
                   {...field}
@@ -146,7 +137,7 @@ const EditPost = () => {
                   placeholderText="dd-mm-yyyy"
                   dateFormat="dd-MM-yyyy"
                   onChange={(date) => field.onChange(date)}
-                  className="focus:outline-none border h-[50px] rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
+                  className="focus:outline-none mb-3 border h-[50px] rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#4A5568] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
                 />
               )}
             />
@@ -164,7 +155,7 @@ const EditPost = () => {
               {...register("author", {
                 required: "Author field is required",
               })}
-              className={`dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+              className={`dark:bg-[#4A5568] dark:border-[#4A5568] dark:text-[#CBD5E0] focus:border-2 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
             />
           </FormRow>
           <FormRow label="Summary" error={errors?.summary?.message}>
@@ -191,7 +182,7 @@ const EditPost = () => {
                   }}
                   {...field}
                   onChange={(content) => field.onChange(content)}
-                  className="h-[100px] mt-2 mb-[90px] xs:mb-[70px] sm:mb-10 border-stone-300"
+                  className="mt-2 overflow-auto  border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557]"
                 />
               )}
             />
@@ -220,23 +211,12 @@ const EditPost = () => {
                   }}
                   {...field}
                   onChange={(content) => field.onChange(content)}
-                  className="h-[200px] mt-2 mb-[90px] xs:mb-[70px] sm:mb-10 border-stone-300 text-xl disabled:opacity-50  disabled:bg-gray-100 disabled:cursor-wait disabled:border"
+                  className="mt-2 overflow-auto  border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557]"
                 />
               )}
             />
           </FormRow>
-          {/* <FormRow label="Content" error={errors?.content?.message}>
-          <textarea
-            height="150px"
-            type="text"
-            name="content"
-            disabled={isError ? false : isEditing}
-            {...register("content", {
-              required: "Content field is required",
-            })}
-            className={`disabled:opacity-50disabled:bg-gray-100 disabled:cursor-wait disabled:border dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] focus:border-2 disabled:border-gray-200  focus:outline-none border h-[150px] text-sm border-stone-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
-          />
-        </FormRow>  */}
+
           <div className="flex gap-3">
             <Button
               name="Back"
@@ -246,7 +226,7 @@ const EditPost = () => {
               color="text-stone-600"
               marginBottom="mb-0"
               onClick={() => {
-                navigate("/admin/post");
+                navigate("/post");
                 dispatch({ type: "closeUserDropdown", payload: false });
               }}
             />

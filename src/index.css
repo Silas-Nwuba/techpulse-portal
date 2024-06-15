@@ -168,15 +168,28 @@ blockquote p {
   .ql-editor p {
     color: #e2e8f0;
   }
+
   .ql-snow .ql-stroke {
     stroke: #eeeeee;
   }
+  .ql-snow .ql-fill {
+    fill: #e2e8f0;
+  }
+
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #4a5568 inset !important;
     -webkit-text-fill-color: #e2e2e2;
+  }
+  @keyframes skeleton {
+    0% {
+      background: #4a5568;
+    }
+    100% {
+      background: #494848;
+    }
   }
 }
 
@@ -190,16 +203,6 @@ input:-webkit-autofill:active {
 .skeleton {
   animation: skeleton 1s alternate linear infinite;
   opacity: 0.7;
-}
-&.dark {
-  @keyframes skeleton {
-    0% {
-      background: #383838;
-    }
-    100% {
-      background: #494848;
-    }
-  }
 }
 
 @keyframes skeleton {

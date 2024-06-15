@@ -8,22 +8,16 @@ import {
 import { AiOutlineDashboard } from "react-icons/ai";
 import { NavLink, useMatch } from "react-router-dom";
 
-const MainNav = ({ setIsSidebarOpen }) => {
+const MainNav = () => {
   const dashboardMatch = useMatch("/dashboard");
   const homeMatch = useMatch("/");
   const postMatch = useMatch("post");
   const commentMatch = useMatch("comment");
   const settingMatch = useMatch("settings");
-  const handleCloseSidebar = () => {
-    setIsSidebarOpen(false);
-    document.documentElement.style.overflowY = "auto";
-  };
-
   return (
-    <div className="mx-5  py-2 space-y-10 text-[15px] navLink">
+    <div className="mx-5 py-2 space-y-10 text-[15px] navLink">
       <NavLink
         to={"dashboard"}
-        onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] dark:hover:bg-#4a5568]   ${
           dashboardMatch ? "bg-stone-100 rounded-md font-medium" : ""
         }  dark:${
@@ -45,7 +39,6 @@ const MainNav = ({ setIsSidebarOpen }) => {
       </NavLink>
       <NavLink
         to={"/"}
-        onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
           homeMatch ? "bg-stone-100  font-medium rounded-md" : ""
         }  dark:${
@@ -67,7 +60,6 @@ const MainNav = ({ setIsSidebarOpen }) => {
       </NavLink>
       <NavLink
         to={"post"}
-        onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
           postMatch ? "bg-stone-100 font-medium rounded-md" : ""
         }  dark:${
@@ -91,7 +83,6 @@ const MainNav = ({ setIsSidebarOpen }) => {
 
       <NavLink
         to={"comment"}
-        onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
           commentMatch ? "bg-stone-100 font-medium rounded-md" : ""
         }  dark:${
@@ -113,7 +104,6 @@ const MainNav = ({ setIsSidebarOpen }) => {
       </NavLink>
       <NavLink
         to={"settings"}
-        onClick={handleCloseSidebar}
         className={`flex items-center gap-4 w-full py-[10px] ${
           settingMatch ? "bg-stone-100 font-medium rounded-md" : ""
         }  dark:${

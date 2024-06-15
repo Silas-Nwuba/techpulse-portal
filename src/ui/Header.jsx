@@ -2,10 +2,12 @@ import React from "react";
 import DarkModeToggle from "./DarkModeToggle";
 import Avatar from "./Avatar";
 import { HiOutlineBars3 } from "react-icons/hi2";
+import { useSidebarContext } from "../context/SidebarContext";
 
-const Header = ({ setSidebarOpen }) => {
-  const handleSidebar = () => {
-    setSidebarOpen(true);
+const Header = () => {
+  const { sidebar, dispatch } = useSidebarContext();
+  const handleMobileSidebar = () => {
+    dispatch({ type: "openSidebarMenu", payload: true });
     document.documentElement.style.overflowY = "hidden";
   };
   return (
@@ -15,7 +17,7 @@ const Header = ({ setSidebarOpen }) => {
       </h1>
       <div
         className="flex items-center gap-6 bg-gray-300 rounded-full w-[37px] h-[37px] hover:bg-slate-200 md:hidden ml-2 dark:bg-[#2D3748]"
-        onClick={handleSidebar}
+        onClick={handleMobileSidebar}
       >
         <HiOutlineBars3 className="text-[28px] w-20 cursor-pointer font-semibold dark:text-[#E2E8F0]" />
       </div>

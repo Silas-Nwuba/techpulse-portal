@@ -15,7 +15,7 @@ const PostContent = ({ post }) => {
   const { dispatch } = useUserDropdown();
   const handleEdit = () => {
     dispatch({ type: "closeUserDropdown", payload: false });
-    navigate(`/admin/post/edit/${post.id}`);
+    navigate(`/post/edit/${post.id}`);
   };
   const handleDelete = () => {
     dispatch({ type: "closeUserDropdown", payload: false });

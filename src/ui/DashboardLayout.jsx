@@ -4,11 +4,13 @@ import SideBar from "./SideBar";
 import { Outlet, useLocation } from "react-router-dom";
 import { useUser } from "../feature/authentication/useUser";
 import NotFoundError from "../ui/NotFoundError";
+import MobileSidebarMenu from "./MobileSidebarMenu";
+import { useSidebarContext } from "../context/SidebarContext";
 const DashboardLayout = () => {
   const { pathname } = useLocation();
   const mainContentRef = useRef(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { error } = useUser();
+  const { sidebar } = useSidebarContext();
 
   useEffect(() => {
     if (mainContentRef.current) {
@@ -21,11 +23,9 @@ const DashboardLayout = () => {
   }
   return (
     <div className="dashboard w-full">
-      <Header setSidebarOpen={setIsSidebarOpen} />
-      <SideBar
-        sidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
+      <Header />
+      <SideBar />
+      {sidebar && <MobileSidebarMenu />}
       <main
         className="overflow-y-auto overflow-x-hidden w-full main px-5  h-full"
         ref={mainContentRef}
@@ -35,5 +35,4 @@ const DashboardLayout = () => {
     </div>
   );
 };
-
 export default DashboardLayout;

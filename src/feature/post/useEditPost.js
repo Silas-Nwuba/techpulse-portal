@@ -10,7 +10,7 @@ const useEditPost = () => {
       toast.success("Post successfully edited", {
         id: "sucessId",
       });
-      window.location.href = "http://localhost:5173/admin/post";
+      window.location.href = "http://localhost:5173/post";
       queryClient.setQueryData(["post"], data);
       queryClient.invalidateQueries({
         queryKey: ["editPost"],

@@ -43,7 +43,7 @@ const UpdateUserPassword = () => {
                 errors?.password
                   ? "border-red-400 focus:border-red-400 focus:border"
                   : "focus:border-sky-400 focus:border-2"
-              } disabled:bg-gray-100  dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:cursor-wait disabled:border disabled:border-gray-200 focus:outline-none  border h-[50px] text-sm border-gray-300 rounded-md px-3 py-2 mt-1 w-full`}
+              } dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
           <FormRow
@@ -62,7 +62,7 @@ const UpdateUserPassword = () => {
                 errors?.confirmPassword
                   ? "border-red-400 focus:border-red-400 focus:border"
                   : "focus:border-sky-400 focus:border-2"
-              } disabled:bg-gray-100 disabled:cursor-wait dark:bg-[#4A5568] dark:border-[#CBD5E0] dark:text-[#CBD5E0] disabled:border disabled:border-gray-200 focus:outline-none  border h-[50px] text-sm border-gray-300 rounded-md px-3 py-2 mt-1 w-full`}
+              } dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
           <Button
