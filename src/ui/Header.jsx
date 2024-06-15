@@ -5,7 +5,7 @@ import { HiOutlineBars3 } from "react-icons/hi2";
 import { useSidebarContext } from "../context/SidebarContext";
 
 const Header = () => {
-  const { sidebar, dispatch } = useSidebarContext();
+  const { dispatch } = useSidebarContext();
   const handleMobileSidebar = () => {
     dispatch({ type: "openSidebarMenu", payload: true });
     document.documentElement.style.overflowY = "hidden";

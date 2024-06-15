@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import ReactQuill from "react-quill";
-import Select from "react-select";
 import Button from "../../ui/Button";
 import FormRow from "../../ui/FormRow";
 import useEditPost from "./useEditPost";
