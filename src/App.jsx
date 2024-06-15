@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { Toaster } from "react-hot-toast";
-import { DarkModeProvider, useDarkMode } from "./context/DarkModeContext";
+import { DarkModeProvider } from "./context/DarkModeContext";
 import { UserDropdownProvider } from "./context/UserDropdownContextApi";
 import DashboardLayout from "./ui/DashboardLayout";
 import Dashboard from "./Pages/Dashboard";
@@ -38,6 +37,15 @@ const App = () => {
             <UserDropdownProvider>
               <BrowserRouter>
                 <Routes>
+                  <Route path="/login" element={<Login />}></Route>
+                  <Route
+                    path="/resetpassword"
+                    element={<ResetPassword />}
+                  ></Route>
+                  <Route
+                    path="/updatepassword"
+                    element={<UpdatePassword />}
+                  ></Route>
                   <Route
                     element={
                       <ProtectedRoute>
@@ -64,16 +72,8 @@ const App = () => {
 
                     <Route path="/settings" element={<Setting />}></Route>
                   </Route>
-                  <Route path="/login" element={<Login />}></Route>
-                  <Route
-                    path="/resetpassword"
-                    element={<ResetPassword />}
-                  ></Route>
-                  <Route
-                    path="/updatepassword"
-                    element={<UpdatePassword />}
-                  ></Route>
-                  <Route path="*" element={<PageNotFound />}></Route>
+
+                  {/* <Route path="*" element={<PageNotFound />}></Route> */}
                 </Routes>
               </BrowserRouter>
             </UserDropdownProvider>
