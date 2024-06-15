@@ -45,7 +45,7 @@ const App = () => {
                       </ProtectedRoute>
                     }
                   >
-                    <Route index element={<Navigate to={"home"} />} />
+                    <Route index element={<Navigate to={"login"} />} />
                     <Route path="/dashboard" element={<Dashboard />}></Route>
                     <Route path="/post" element={<Post />}></Route>
                     <Route
