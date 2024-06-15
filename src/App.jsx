@@ -37,15 +37,6 @@ const App = () => {
             <UserDropdownProvider>
               <BrowserRouter>
                 <Routes>
-                  <Route path="/login" element={<Login />}></Route>
-                  <Route
-                    path="/resetpassword"
-                    element={<ResetPassword />}
-                  ></Route>
-                  <Route
-                    path="/updatepassword"
-                    element={<UpdatePassword />}
-                  ></Route>
                   <Route
                     element={
                       <ProtectedRoute>
@@ -73,7 +64,16 @@ const App = () => {
                     <Route path="/settings" element={<Setting />}></Route>
                   </Route>
 
-                  {/* <Route path="*" element={<PageNotFound />}></Route> */}
+                  <Route index path="/login" element={<Login />}></Route>
+                  <Route
+                    path="/resetpassword"
+                    element={<ResetPassword />}
+                  ></Route>
+                  <Route
+                    path="/updatepassword"
+                    element={<UpdatePassword />}
+                  ></Route>
+                  <Route path="*" element={<PageNotFound />}></Route>
                 </Routes>
               </BrowserRouter>
             </UserDropdownProvider>

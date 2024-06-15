@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <App />
     <ErrorBoundary
       FallbackComponent={ErrorFallback}
-      onReset={() => window.location.replace("/admin/dashboard")}
+      onReset={() => window.location.replace("/dashboard")}
     ></ErrorBoundary>
   </React.StrictMode>
 );
