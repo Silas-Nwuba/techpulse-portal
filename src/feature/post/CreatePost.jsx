@@ -18,31 +18,8 @@ const options = [
   { value: "", label: "Select" },
   { value: "Technology", label: "Technology" },
   { value: "Business", label: "Business" },
-  { value: "SmartPhone", label: "SmartPhone" },
   { value: "Gadget", label: "Gadget" },
 ];
-// const customStylesLight = {
-//   control: (provided) => ({
-//     ...provided,
-//     border: "1px solid #ced4da",
-//     height: "45px",
-//     marginTop: "4px",
-//     borderRadius: "5px",
-//     backgroundColor: "#ffffff",
-//   }),
-// };
-
-// const customStylesDark = {
-//   control: (provided) => ({
-//     ...provided,
-//     border: "1px solid #4a5568",
-//     height: "45px",
-//     marginTop: "3px",
-//     borderRadius: "5px",
-//     backgroundColor: "#4a5568",
-//     outLine: "none",
-//   }),
-// };
 const CreatePost = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState, reset, control } = useForm();
@@ -155,12 +132,6 @@ const CreatePost = () => {
                 />
               )}
             />
-
-            {/* <input
-              type="date"
-              defaultValue={createDate}
-              className="focus:outline-none border rounded-md p-3 mt-2 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
-            /> */}
           </div>
           <FormRow label="Author" error={errors?.author?.message}>
             <input
@@ -181,7 +152,7 @@ const CreatePost = () => {
                 name="summary"
                 control={control}
                 defaultValue=""
-                rules={{ required: "Summary field is required" }}
+                // rules={{ required: "Summary field is required" }}
                 render={({ field }) => (
                   <ReactQuill
                     modules={{

@@ -14,6 +14,7 @@ const useCreatePost = () => {
         id: "successId",
       });
       queryClient.invalidateQueries({ queryKey: ["post"] });
+      window.scrollTo({ top: 0 });
     },
     onError: (error) => {
       toast.error(error, {

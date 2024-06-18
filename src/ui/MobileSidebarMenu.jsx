@@ -23,8 +23,9 @@ const MobileSidebarMenu = () => {
     document.documentElement.style.overflowY = "auto";
   };
   return (
-    <div className="bg-white fixed top-0 dark:bg-[#2D3748] shadow-sm md:z-50 z-[20000] overflow-y-auto  min-h-screen  w-full md:block">
+    <div className="bg-white fixed top-0 dark:bg-[#2D3748] shadow-sm md:z-50 z-[20000]  min-h-screen  w-full md:block">
       <Logo textAlign="text-left" display="flex" showIcon="block" />
+      <div className="border border-stone-100 w-full dark:border-[#3b4557] mb-4"></div>
       <div className="mx-5  py-2 space-y-10 text-[15px] navLink">
         <NavLink
           to={"dashboard"}

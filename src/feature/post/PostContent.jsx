@@ -11,7 +11,7 @@ import { useUserDropdown } from "../../context/UserDropdownContextApi";
 const PostContent = ({ post }) => {
   const navigate = useNavigate();
   const { deletePost, isDeleting } = useDeletePost();
-  const maxLength = 50;
+  const maxLength = 70;
   const { dispatch } = useUserDropdown();
   const handleEdit = () => {
     dispatch({ type: "closeUserDropdown", payload: false });

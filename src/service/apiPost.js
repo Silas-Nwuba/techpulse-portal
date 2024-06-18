@@ -53,8 +53,8 @@ export const createPost = async (newPostData) => {
   }
   return data;
 };
-
 export const getEditPostById = async (id) => {
+  console.log(id);
   const { data, error } = await supabase
     .from("post")
     .select("*")

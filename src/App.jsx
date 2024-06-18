@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import { UserDropdownProvider } from "./context/UserDropdownContextApi";
 import DashboardLayout from "./ui/DashboardLayout";
+import "../src/App.css";
 import Dashboard from "./Pages/Dashboard";
 import Post from "./Pages/PostPage";
 import CommentPage from "./Pages/ComentPage";

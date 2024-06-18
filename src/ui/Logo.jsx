@@ -13,7 +13,7 @@ const Logo = ({display = "block", showIcon = "hidden"
  
   return (
     <div className={`flex md:${display} justify-between items-center px-5`}>
-      <Link to={"/login"} className="">
+      <Link to={"/login"} className="ml-5">
         {/* <img src="\image\logo 2.png" alt="logo" className="w-[30px] h-[30px]" /> */}
         <h1
           to={"/"}

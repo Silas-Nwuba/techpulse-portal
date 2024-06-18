@@ -18,7 +18,6 @@ import { format } from "date-fns";
 const options = [
   { value: "Technology", label: "Technology" },
   { value: "Business", label: "Business" },
-  { value: "SmartPhone", label: "SmartPhone" },
   { value: "Gadget", label: "Gadget" },
 ];
 const EditPost = () => {
@@ -27,7 +26,7 @@ const EditPost = () => {
   const { data, isFetching, error } = useGetEditPostById();
   const { editPost, isEditing } = useEditPost();
   const { register, handleSubmit, formState, reset, control } = useForm({
-    values: { ...data, createdDate: format(data?.createdDate, "MM-dd-yyyy") },
+    values: { ...data },
   });
   const { errors } = formState;
   const { user } = useUser();
@@ -77,7 +76,7 @@ const EditPost = () => {
         </div>
         <form
           onSubmit={handleSubmit(onsubmit)}
-          className="bg-white px-4 py-5 space-y-2 rounded-md shadow-sm dark:bg-[#2D3748]"
+          className="bg-white px-4 py-5 space-y-2 rounded-md shadow dark:bg-[#2D3748]"
         >
           <FormRow label="Blog Title" error={errors?.title?.message}>
             <input
@@ -103,19 +102,15 @@ const EditPost = () => {
           <FormRow label="Category" error={errors?.category?.message}>
             <select
               name="category"
+              defaultValue={data?.category}
               {...register("category", {
                 required: "Category field is required",
               })}
               className="dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400"
             >
-              <option value={data?.category}>{data?.category}</option>
-              {options.map((item) =>
-                item.category !== data?.category ? (
-                  <option value={item.value}>{item.label}</option>
-                ) : (
-                  ""
-                )
-              )}
+              {options.map((item) => (
+                <option value={item.value}>{item.label}</option>
+              ))}
             </select>
           </FormRow>
           <div className="mb-5 flex flex-col">
@@ -133,6 +128,7 @@ const EditPost = () => {
                 <DatePicker
                   {...field}
                   selected={field.value}
+                  defaultValue={format(data.createdDate, "MM-dd-yyyy")}
                   placeholderText="dd-mm-yyyy"
                   dateFormat="dd-MM-yyyy"
                   onChange={(date) => field.onChange(date)}
@@ -161,7 +157,7 @@ const EditPost = () => {
             <Controller
               name="summary"
               control={control}
-              rules={{ required: "Summary field is required" }}
+              // rules={{ required: "Summary field is required" }}
               render={({ field }) => (
                 <ReactQuill
                   modules={{
