@@ -32,18 +32,16 @@ blockquote p {
   display: inline;
 }
 
-.scrollBar,
 .quill::-webkit-scrollbar {
   width: 10px;
 }
 
-.scrollBar,
 .quill::-webkit-scrollbar-track {
   background: #f1f1f1;
   border: none;
   border-radius: 3px;
 }
-.scrollBar,
+
 .quill::-webkit-scrollbar-thumb {
   background: #dfdfdf;
   border-radius: 3px;
@@ -62,7 +60,7 @@ blockquote p {
     color: white;
   }
 
-  .main::-webkit-scrollbar {
+  /* .main::-webkit-scrollbar {
     width: 10px;
   }
 
@@ -75,7 +73,7 @@ blockquote p {
   .main::-webkit-scrollbar-thumb {
     background: #9c9c9cdd;
     border-radius: 3px;
-  }
+  } */
   .quill {
     height: 200px;
   }
@@ -129,18 +127,20 @@ blockquote p {
     color: #333;
   }
 
-  .main::-webkit-scrollbar {
+  /* For Chrome, Safari, and newer Edge */
+  /* ::-webkit-scrollbar {
+    width: auto;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #4f5f80;
+  }
+
+  ::-webkit-scrollbar-thumb {
     width: 10px;
-  }
-  .main::-webkit-scrollbar-track {
-    background: #3333;
-    border: none;
-    border-radius: 3px;
-  }
-  .main::-webkit-scrollbar-thumb {
-    background: #7989a3;
-    border-radius: 3px;
-  }
+    background-color: #dddd;
+  } */
+
   .quill::-webkit-scrollbar {
     width: 10px;
   }

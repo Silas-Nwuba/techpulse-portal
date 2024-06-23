@@ -27,7 +27,7 @@ const DashboardLayout = () => {
       <SideBar />
       {sidebar && <MobileSidebarMenu />}
       <main
-        className="overflow-y-auto overflow-x-hidden w-full main px-5  h-full"
+        className="overflow-y-auto overflow-x-hidden w-full main px-5 h-full"
         ref={mainContentRef}
       >
         <Outlet />

@@ -22,6 +22,7 @@ export const getAllPost = async () => {
   return data;
 };
 export const createPost = async (newPostData) => {
+  console.log(newPostData);
   const imageName = `${Math.random()}-${newPostData.image.name}`.replaceAll(
     "/",
     ""
@@ -33,7 +34,6 @@ export const createPost = async (newPostData) => {
       {
         ...newPostData,
         image: imagePath,
-        category: newPostData.category.value,
       },
     ])
     .select();

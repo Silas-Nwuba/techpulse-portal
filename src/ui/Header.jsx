@@ -3,7 +3,6 @@ import DarkModeToggle from "./DarkModeToggle";
 import Avatar from "./Avatar";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import { useSidebarContext } from "../context/SidebarContext";
-
 const Header = () => {
   const { dispatch } = useSidebarContext();
   const handleMobileSidebar = () => {

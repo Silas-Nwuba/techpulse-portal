@@ -38,8 +38,8 @@ const LoginForm = () => {
   }, [setPasswordType, isOpen]);
   return (
     <div className="w-full min-h-screen">
-      <div className="absolute top-2/4 md:top-[40%] left-2/4 transform -translate-y-2/4 -translate-x-2/4 w-full">
-        <h1 className="font-semibold text-2xl text-stone-700 dark:text-[#e0e0e0] text-center mb-3">
+      <div className="absolute top-[40%] left-2/4 transform -translate-y-2/4 -translate-x-2/4 w-full">
+        <h1 className="font-semibold text-2xl text-stone-700 dark:text-[#e0e0e0] text-center mb-5">
           Log In Admin
         </h1>
 
@@ -115,7 +115,11 @@ const LoginForm = () => {
               rounded="rounded-md"
               loading={isPending}
             >
-              <MiniLoaderSpinner />
+              <MiniLoaderSpinner
+                borderLeft={"border-l-gray-50"}
+                borderTop={"border-t-gray-50"}
+                borderRight={"border-r-gray-50"}
+              />
             </Button>
           </form>
           <Link

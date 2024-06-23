@@ -19,11 +19,13 @@ const options = [
   { value: "Technology", label: "Technology" },
   { value: "Business", label: "Business" },
   { value: "Gadget", label: "Gadget" },
+  { value: "Apps", label: "Apps" },
 ];
 const EditPost = () => {
   const { dispatch } = useUserDropdown();
   const navigate = useNavigate();
   const { data, isFetching, error } = useGetEditPostById();
+  console.log(data);
   const { editPost, isEditing } = useEditPost();
   const { register, handleSubmit, formState, reset, control } = useForm({
     values: { ...data },

@@ -47,12 +47,13 @@ const DarkModeToggle = () => {
                 error: {
                   duration: 5000,
                 },
+                className: "dark:bg-[#2D3748]",
                 style: {
                   fontSize: "15px",
                   padding: "16px 24px",
+                  color: isDarkMode ? "#eeeeee" : "",
+                  zIndex: "30000",
                   top: 0,
-                  backgroundColor: "#2D3748",
-                  color: "#E2E8F0",
                 },
               }}
             />

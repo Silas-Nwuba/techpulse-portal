@@ -19,8 +19,6 @@ import ResetPassword from "./Pages/ResetPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
 import ProtectedRoute from "../src/ui/ProtectedRoute";
 import { SidebarContextProvider } from "./context/SidebarContext";
-import ToastPopUp from "./ui/ToastPopUp";
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -65,7 +63,6 @@ const App = () => {
 
                     <Route path="/settings" element={<Setting />}></Route>
                   </Route>
-                  {/* / <Route index element={<Navigate to={"/login"} />} /> */}
 
                   <Route
                     path="/resetpassword"
@@ -79,7 +76,6 @@ const App = () => {
                 </Routes>
               </BrowserRouter>
             </UserDropdownProvider>
-            <ToastPopUp />
           </DarkModeProvider>
         </SidebarContextProvider>
       </QueryClientProvider>

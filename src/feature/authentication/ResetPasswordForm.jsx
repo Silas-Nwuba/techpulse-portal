@@ -63,7 +63,11 @@ const ResetPasswordForm = () => {
             marginTop="mt-4"
             loading={isReseting}
           >
-            <MiniLoaderSpinner />
+            <MiniLoaderSpinner
+              borderLeft={"border-l-gray-50"}
+              borderTop={"border-t-gray-50"}
+              borderRight={"border-r-gray-50"}
+            />
           </Button>
         </form>
         <Link to={"/admin/login"}>

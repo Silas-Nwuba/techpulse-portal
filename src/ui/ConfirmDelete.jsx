@@ -41,7 +41,11 @@ const ConfirmDelete = ({ isDeleting, closeModal, onConfirm }) => {
           onClick={onConfirm}
           loading={isDeleting}
         >
-          <MiniLoaderSpinner />
+          <MiniLoaderSpinner
+            borderLeft={"border-l-gray-50"}
+            borderTop={"border-t-gray-50"}
+            borderRight={"border-r-gray-50"}
+          />
         </Button>
       </div>
     </div>

@@ -19,6 +19,7 @@ const options = [
   { value: "Technology", label: "Technology" },
   { value: "Business", label: "Business" },
   { value: "Gadget", label: "Gadget" },
+  { value: "Apps", label: "Apps" },
 ];
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -34,7 +35,6 @@ const CreatePost = () => {
         ...data,
         image: data.image[0],
         title: data.title.charAt(0).toUpperCase() + data.title.slice(1),
-        // createdDate: format(createDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"),
       },
       {
         onSuccess: () => {

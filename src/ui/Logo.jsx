@@ -3,7 +3,7 @@ import { HiXMark } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { useSidebarContext } from "../context/SidebarContext";
 //prettier-ignore
-const Logo = ({display = "block", showIcon = "hidden"
+const Logo = ({display = "block", showIcon = "hidden", padding
 }) => {
   const {dispatch} = useSidebarContext()
   const handleSidebarClose = () => {
@@ -12,12 +12,12 @@ const Logo = ({display = "block", showIcon = "hidden"
   };
  
   return (
-    <div className={`flex md:${display} justify-between items-center px-5`}>
+    <div className={`flex md:${display} justify-between items-center px-5 ${padding}`}>
       <Link to={"/login"} className="ml-5">
         {/* <img src="\image\logo 2.png" alt="logo" className="w-[30px] h-[30px]" /> */}
         <h1
           to={"/"}
-          className={`font-semibold text-xl lg:text-2xl  text-[#007bff] text-center py-5 tracking-widest dark:text-[#e8edf3]`}
+          className={`font-semibold text-xl lg:text-2xl  text-[#007bff] text-center tracking-widest dark:text-[#e8edf3]`}
         >
           TechPulse
         </h1>

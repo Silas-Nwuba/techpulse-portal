@@ -58,6 +58,7 @@ const UserDropdown = () => {
             <MiniLoaderSpinner
               borderRight="border-r-[#007bff]"
               borderTop="border-t-[#007bff]"
+              borderLeft={"border-l-[#007bff]"}
             />
           ) : (
             <>

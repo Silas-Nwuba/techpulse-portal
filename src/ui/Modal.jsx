@@ -39,7 +39,7 @@ const Window = ({ children, name }) => {
     <OverLay>
       <div
         ref={ref}
-        className="bg-white w-[90%] sm:w-auto dark:bg-[#1A202C] rounded-md py-4 px-6 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-md z-50 transistion duration-300 ease-in-out"
+        className="bg-white w-[90%] sm:w-auto dark:bg-[#525f75] rounded-md py-4 px-6 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-md z-50 transistion duration-300 ease-in-out"
       >
         <div>{cloneElement(children, { closeModal: close })}</div>
       </div>
