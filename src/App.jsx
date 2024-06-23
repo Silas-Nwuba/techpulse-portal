@@ -19,6 +19,7 @@ import ResetPassword from "./Pages/ResetPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
 import ProtectedRoute from "../src/ui/ProtectedRoute";
 import { SidebarContextProvider } from "./context/SidebarContext";
+import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -63,7 +64,6 @@ const App = () => {
 
                     <Route path="/settings" element={<Setting />}></Route>
                   </Route>
-
                   <Route
                     path="/resetpassword"
                     element={<ResetPassword />}

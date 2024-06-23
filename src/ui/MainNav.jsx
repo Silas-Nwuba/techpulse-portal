@@ -15,7 +15,7 @@ const MainNav = () => {
   const commentMatch = useMatch("comment");
   const settingMatch = useMatch("settings");
   return (
-    <div className="mx-5 py-5 space-y-10 text-[15px] navLink">
+    <div className="mx-5 py-5 mt-3 space-y-10 text-[15px] navLink">
       <NavLink
         to={"dashboard"}
         className={`flex items-center gap-4 w-full py-[10px] dark:hover:bg-#4a5568]   ${

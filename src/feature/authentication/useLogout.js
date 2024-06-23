@@ -13,9 +13,6 @@ const useLogout = () => {
     onSuccess: () => {
       navigate("login", { replace: true });
       queryClient.removeQueries();
-      toast.success("Logged out successfully", {
-        id: "success",
-      });
       dispatch({ type: "closeUserDropdown", payload: false });
     },
     onError: (error) => {

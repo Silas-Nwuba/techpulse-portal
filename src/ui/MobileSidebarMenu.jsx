@@ -23,7 +23,7 @@ const MobileSidebarMenu = () => {
     document.documentElement.style.overflowY = "auto";
   };
   return (
-    <div className="bg-white fixed top-0 dark:bg-[#2D3748] shadow-sm md:z-50 z-[20000]  min-h-screen w-full md:block">
+    <div className="bg-white fixed top-0 h-screen  min-h-screen dark:bg-[#2D3748] shadow-sm md:z-50 z-[20000] w-full md:block">
       <Logo
         textAlign="text-left"
         display="flex"
@@ -31,7 +31,7 @@ const MobileSidebarMenu = () => {
         padding="py-3"
       />
       <div className="border border-stone-100 w-full dark:border-[#3b4557] mb-4"></div>
-      <div className="mx-5  py-2 space-y-10 text-[15px] navLink">
+      <div className="mx-5 mt-10 py-2 space-y-10 text-[15px] navLink ">
         <NavLink
           to={"dashboard"}
           onClick={handleCloseSidebar}
@@ -146,7 +146,7 @@ const MobileSidebarMenu = () => {
         </NavLink>
       </div>
       <Footer>
-        <span className="mb-3 mt-10 w-full">
+        <span className="mb-3 mt-40 w-full absolute bottom-0 ">
           <div className="border border-stone-100 w-full dark:border-[#3b4557]"></div>
           <p className="dark:text-[#CBD5E0] text-sm text-stone-700 pt-5 mx-7">
             &copy; {new Date().getFullYear()} TechPulse. All right reserved

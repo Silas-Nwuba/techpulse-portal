@@ -22,7 +22,7 @@ const PostContent = ({ post }) => {
     deletePost(post.id);
   };
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden mt-5">
       <img
         src={post.image}
         alt="postImage"

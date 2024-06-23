@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import useLogin from "./useLogin";
 import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 import Button from "../../ui/Button";
+import { Toaster } from "react-hot-toast";
 const LoginForm = () => {
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;

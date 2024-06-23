@@ -15,6 +15,8 @@ const useLogin = () => {
     onError: (error) => {
       if (error.message === "Failed to fetch") {
         toast.error("Please check internet connection", { id: "errorId" });
+      }
+      if (error.message === "Invalid login credentia") {
       } else toast.error(error.message, { id: "errorId" });
     },
   });
