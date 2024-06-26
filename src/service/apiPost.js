@@ -11,6 +11,7 @@ export const getPost = async ({ pageParam = 1 }) => {
   }
   return { data, count };
 };
+
 export const getAllPost = async () => {
   const { data, error } = await supabase
     .from("post")

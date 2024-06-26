@@ -13,7 +13,6 @@ export const usePost = () => {
   } = useInfiniteQuery({
     queryKey: ["post"],
     queryFn: getPost,
-    initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) => {
       if (
         !lastPage ||
