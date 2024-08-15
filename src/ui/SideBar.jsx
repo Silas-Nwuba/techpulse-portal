@@ -13,7 +13,7 @@ const SideBar = () => {
         <span className=" absolute bottom-0 mb-3 mt-10 w-full md:w-[240px]">
           <div className="border border-stone-100 w-full md:w-[240px] dark:border-[#3b4557]"></div>
           <p className="dark:text-[#CBD5E0] text-xs text-stone-700 pt-5 mx-3">
-            &copy; {new Date().getFullYear()} TechPulse. All right reserved
+            &copy; {new Date().getFullYear()} TechZonie. All right reserved
           </p>
         </span>
       </Footer>

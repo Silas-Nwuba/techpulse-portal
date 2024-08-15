@@ -22,6 +22,7 @@ export const getAllPost = async () => {
   }
   return data;
 };
+
 export const createPost = async (newPostData) => {
   console.log(newPostData);
   const imageName = `${Math.random()}-${newPostData.image.name}`.replaceAll(
@@ -41,6 +42,7 @@ export const createPost = async (newPostData) => {
   if (error) {
     throw new Error("Post could not be publish");
   }
+
   const { error: storageError } = await supabase.storage
     .from("image")
     .upload(imageName, newPostData.image, {
@@ -54,6 +56,7 @@ export const createPost = async (newPostData) => {
   }
   return data;
 };
+
 export const getEditPostById = async (id) => {
   console.log(id);
   const { data, error } = await supabase
@@ -64,6 +67,7 @@ export const getEditPostById = async (id) => {
   if (error) {
     throw new Error("Post data was not found");
   }
+
   return data;
 };
 export const editPost = async (newPostData, id) => {

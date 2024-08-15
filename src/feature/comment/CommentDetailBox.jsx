@@ -16,24 +16,20 @@ const CommentDetailBox = () => {
   const { data: comment, isLoading } = useGetCommentById();
   const { editComment, isEditingComment } = useEditComment();
   const { deleteComment, isDeleting } = useDeleteComment();
-  const { hours, minute, second, preiod } = formatTime(comment?.date);
+  const { hours, minute, preiod } = formatTime(comment?.date);
   useEffect(() => {
-    document.title = "CommentDetail | TechPulse";
+    document.title = "CommentDetail | TechZonie";
     return () => {
-      document.title = "Dashboard | TechPulse";
+      document.title = "Dashboard | TechZonie";
     };
   });
-
   if (isLoading) return <CommentDetailLoader />;
   return (
     <div className="mt-40 md:mt-10 mb-5">
-      <div className="flex justify-between items-center flex-wrap gap-2 md:gap-0">
-        <h1 className="text-xl font-semibold text-stone-500 dark:text-[#E2E8F0]">
-          Comment Id #{String(comment?.id).padStart(3, "00")}
-        </h1>
+      <div className="justify-end block md:hidden items-center flex-wrap gap-2 md:gap-0">
         <span
-          className="flex items-center gap-2 mr-2 text-[#007bff] dark:text-[#4299E1] cursor-pointer"
-          onClick={() => navigate(`/admin/comment`)}
+          className="flex items-center  gap-2 mr-2 text-[#007bff] dark:text-[#4299E1] cursor-pointer"
+          onClick={() => navigate(-1)}
         >
           <p>Back</p>
           <HiArrowRight />
@@ -53,11 +49,10 @@ const CommentDetailBox = () => {
             </h3>
           </div>
           <div className="gap-4 flex-wrap flex justify-between mx-0 md:mx-4 mt-2 md:mt-0 items-center mr-3">
-            <span className="text-[16px] text-stone-500 dark:text-[#E2E8F0]">
-              Date: {formatDate(comment?.date)}
-            </span>
-            <span className="dark:text-[#E2E8F0] text-stone-500">
-              Time: {hours === 0 ? 12 : hours}: {minute} : {second} {preiod}
+            <span className="text-[14px] text-stone-500 dark:text-[#E2E8F0]">
+              Date: {formatDate(comment?.date)}{" "}
+              {hours === 0 ? 12 : hours.toString().padStart("2", 0)}:{" "}
+              {minute.toString().padStart("2", 0)} {preiod}
             </span>
           </div>
         </div>
@@ -89,7 +84,7 @@ const CommentDetailBox = () => {
               hover="hover:bg-slate-200"
               hoverBorder="hover:border-slate-200"
               padding="p-2"
-              onClick={() => navigate("/admin/comment")}
+              onClick={() => navigate(-1)}
             />
             {comment?.status === "Pending" && (
               <Button

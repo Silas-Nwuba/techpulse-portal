@@ -6,24 +6,17 @@ import PostLoaderSpinner from "../../ui/PostLoaderSpinner";
 import { useUserDropdown } from "../../context/UserDropdownContextApi";
 import Error from "../../ui/Error";
 import { usePost } from "./usePost";
-import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
-import { useInView } from "react-intersection-observer";
-import Cursor from "quill/blots/cursor";
 const Post = () => {
   const navigate = useNavigate();
   //prettier-ignore
   const { data, isError,isLoading,fetchNextPage,hasNextPage, isFetchingNextPage} = usePost();
-  const { ref, inView } = useInView();
   const { dispatch } = useUserDropdown();
   useEffect(() => {
     document.title = "Post | TechPulse";
-    if (inView && hasNextPage) {
-      fetchNextPage();
-    }
     return () => {
       document.title = "Dashboard | TechPulse";
     };
-  }, [inView, hasNextPage, fetchNextPage]);
+  }, []);
 
   if (isLoading) return <PostLoaderSpinner />;
   if (isError) return <Error />;

@@ -15,9 +15,10 @@ export const formatDate = (date) => {
 };
 export const formatTime = (dateTime) => {
   const date = new Date(dateTime);
-  const hours = date.getUTCHours();
+  let hours = date.getUTCHours();
   const minute = date.getUTCMinutes();
   const second = date.getUTCSeconds();
-  let preiod = hours > 12 ? "Pm" : "Am";
+  hours = hours % 12 || 12;
+  const preiod = hours > 12 ? "Pm" : "Am";
   return { hours, minute, second, preiod };
 };

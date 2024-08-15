@@ -19,7 +19,6 @@ import ResetPassword from "./Pages/ResetPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
 import ProtectedRoute from "../src/ui/ProtectedRoute";
 import { SidebarContextProvider } from "./context/SidebarContext";
-import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -31,7 +30,7 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools initialIsOpen={true} />
         <SidebarContextProvider>
           <DarkModeProvider>
             <UserDropdownProvider>
@@ -58,7 +57,7 @@ const App = () => {
                     ></Route>
                     <Route path="/comment" element={<CommentPage />}></Route>
                     <Route
-                      path="/comment/:commentId"
+                      path="/comment/:id"
                       element={<CommentDetail />}
                     ></Route>
 

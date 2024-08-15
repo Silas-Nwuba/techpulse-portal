@@ -28,7 +28,7 @@ const Avatar = () => {
         <img
           src={user.user_metadata.avater || "avatar.webp"}
           alt={user.user_metadata.fullname}
-          className="w-[40px] h-[40px] rounded-full object-cover"
+          className="w-[40px] h-[40px] rounded-full object-cover  dark:opacity-80"
         />
       </span>
       {isUserDropdown && <UserDropdown />}

@@ -28,6 +28,7 @@ export const getCommentByPagination = async ({ filter, page }) => {
   return { data, count };
 };
 export const getCommentId = async (commentId) => {
+  console.log(commentId);
   const { data, error } = await supabase
     .from("comment")
     .select("*, post(*)")
@@ -36,6 +37,7 @@ export const getCommentId = async (commentId) => {
   if (error) {
     throw new Error("Comment cannot be found");
   }
+  console.log(data);
   return data;
 };
 

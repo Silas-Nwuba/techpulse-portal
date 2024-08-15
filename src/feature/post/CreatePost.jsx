@@ -15,11 +15,16 @@ import LoaderSpinner from "../../ui/LoaderSpinner";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 const options = [
+  { value: "latest post", label: "Lastest Post" },
+  { value: "top stories", label: "Top Stories" },
+  { value: "post", label: "Post" },
+];
+const category = [
   { value: "", label: "Select" },
-  { value: "Technology", label: "Technology" },
-  { value: "Business", label: "Business" },
-  { value: "Gadget", label: "Gadget" },
-  { value: "Apps", label: "Apps" },
+  { value: "technology", label: "Technology" },
+  { value: "business", label: "Business" },
+  { value: "gadget", label: "Gadget" },
+  { value: "social apps", label: "Social Apps" },
 ];
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -46,7 +51,6 @@ const CreatePost = () => {
       }
     );
   };
-
   useEffect(() => {
     document.title = "Create Post | TechPulse";
     return () => {
@@ -64,7 +68,7 @@ const CreatePost = () => {
             Create Post
           </h1>
           <span
-            className="flex items-center gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
+            className="flex items-center md:hidden gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
             onClick={() => navigate("/post")}
           >
             <p>Back</p> <HiArrowRight />
@@ -95,6 +99,21 @@ const CreatePost = () => {
               className={`file:bg-violet-50 file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm  focus:border-2 focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
+          <FormRow label={"Feature"} error={errors?.feature?.message}>
+            <select
+              name="feature"
+              {...register("feature", {
+                required: "Feature field is required",
+              })}
+              className="dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400"
+            >
+              {options.map((element, index) => (
+                <option key={index} value={element.value}>
+                  {element.label}
+                </option>
+              ))}
+            </select>
+          </FormRow>
           <FormRow label={"Category"} error={errors?.category?.message}>
             <select
               name="category"
@@ -103,7 +122,7 @@ const CreatePost = () => {
               })}
               className="dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400"
             >
-              {options.map((element, index) => (
+              {category.map((element, index) => (
                 <option key={index} value={element.value}>
                   {element.label}
                 </option>
@@ -133,10 +152,17 @@ const CreatePost = () => {
               )}
             />
           </div>
+          <FormRow label="Image Credit">
+            <input
+              type="text"
+              name="credit"
+              className={`dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+            />
+          </FormRow>
           <FormRow label="Author" error={errors?.author?.message}>
             <input
               type="text"
-              defaultValue={user?.user || "Ebuka"}
+              defaultValue={user?.user || "Admin"}
               name="author"
               disabled={isError ? false : isLoading}
               {...register("author", {
@@ -151,8 +177,6 @@ const CreatePost = () => {
               <Controller
                 name="summary"
                 control={control}
-                defaultValue=""
-                // rules={{ required: "Summary field is required" }}
                 render={({ field }) => (
                   <ReactQuill
                     modules={{
@@ -178,7 +202,6 @@ const CreatePost = () => {
               />
             </FormRow>
           </div>
-
           <div className="">
             <FormRow label="Content" error={errors?.content?.message}>
               <Controller
@@ -191,7 +214,14 @@ const CreatePost = () => {
                       toolbar: [
                         [{ header: "1" }, { header: "2" }, { font: [] }],
                         [{ size: [] }],
-                        ["bold", "italic", "underline", "strike", "blockquote"],
+                        [
+                          "bold",
+                          "italic",
+                          "underline",
+                          "strike",
+                          "blockquote",
+                          "color",
+                        ],
                         [
                           { list: "ordered" },
                           { list: "bullet" },
@@ -210,7 +240,6 @@ const CreatePost = () => {
               />
             </FormRow>
           </div>
-
           <div className="flex gap-3 mt-3">
             <Button
               name="Back"

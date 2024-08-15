@@ -10,6 +10,7 @@ import useDeleteComment from "./useDeleteComment";
 const CommentRow = ({ comment }) => {
   const navigate = useNavigate();
   const commentId = comment.id;
+  console.log(commentId);
   const maxNameLength = 15;
   const { deleteComment, isDeleting } = useDeleteComment();
   return (
@@ -33,13 +34,13 @@ const CommentRow = ({ comment }) => {
       <td className="px-6 py-4">
         {comment.status.charAt(0).toUpperCase() + comment.status.slice(1) ===
           "Pending" && (
-          <span className="py-[0.20em] bg-[#F6E05E] px-[0.7em] rounded-full text-white font-semibold text-[11px]">
+          <span className="py-[0.20em] bg-[#F6E05E] dark:bg-[#dfca54]  px-[0.7em] rounded-[5px] text-white font-medium text-[11px]">
             Pending
           </span>
         )}
         {comment.status.charAt(0).toUpperCase() + comment.status.slice(1) ===
           "Approved" && (
-          <span className="bg-[#48BB78] py-[0.20em] px-[0.7em] rounded-full text-white font-semibold text-[11px]">
+          <span className="bg-[#48BB78] py-[0.20em] px-[0.7em] rounded-md text-white font-semibold text-[11px]">
             Approved
           </span>
         )}
@@ -48,7 +49,7 @@ const CommentRow = ({ comment }) => {
         <span className="flex items-center gap-3  cursor-pointer">
           <span
             className="hover:bg-gray-100 p-1 rounded-full transition duration-300 ease-in-out dark:hover:bg-[#4A5568]"
-            onClick={() => navigate(`/admin/comment/${commentId}`)}
+            onClick={() => navigate(`/comment/${commentId}`)}
           >
             <HiEye className="text-[16px] text-sky-400 dark:text-[#4299E1]" />
           </span>
@@ -70,5 +71,4 @@ const CommentRow = ({ comment }) => {
     </Table.Row>
   );
 };
-
 export default CommentRow;

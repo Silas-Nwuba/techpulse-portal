@@ -3,10 +3,11 @@ import { getCommentId } from "../../service/apiComment";
 import { useParams } from "react-router-dom";
 
 const useGetCommentById = () => {
-  const { commentId } = useParams();
+  const { id } = useParams();
+
   const { data, error, isLoading } = useQuery({
     queryKey: ["comment"],
-    queryFn: () => getCommentId(commentId),
+    queryFn: () => getCommentId(id),
     retry: false,
   });
   return { data, error, isLoading };

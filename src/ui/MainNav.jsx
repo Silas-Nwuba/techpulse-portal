@@ -1,13 +1,12 @@
 import React from "react";
 import {
   HiOutlineHome,
-  HiOutlineChatBubbleLeft,
   HiOutlineCog6Tooth,
   HiOutlinePencilSquare,
+  HiOutlineSquares2X2,
+  HiOutlineChatBubbleLeftEllipsis,
 } from "react-icons/hi2";
-import { AiOutlineDashboard } from "react-icons/ai";
 import { NavLink, useMatch } from "react-router-dom";
-
 const MainNav = () => {
   const dashboardMatch = useMatch("/dashboard");
   const homeMatch = useMatch("/");
@@ -24,7 +23,7 @@ const MainNav = () => {
           dashboardMatch ? "bg-[#4A5568]" : ""
         } dark:focus:text-[#ffff] text-stone px-[0px] group hover:bg-stone-50  dark:hover:bg-[#4A5568]  hover:rounded-md hover:w-full transition ease-in-out duration-30`}
       >
-        <AiOutlineDashboard
+        <HiOutlineSquares2X2
           className={`text-xl ml-5 group group-hover:text-[#007bff] dark:group-hover:text-[#007bff] dark:${
             dashboardMatch ? "text-[#007bff]" : "text-[#CBD5E0]"
           } ${dashboardMatch ? "text-[#007bff]" : "text-stone-600"}`}
@@ -89,7 +88,7 @@ const MainNav = () => {
           commentMatch ? "bg-[#4A5568]" : ""
         }  text-stone px-[0px] group hover:bg-slate-50  dark:hover:bg-[#4A5568] dark: hover:rounded-md hover:w-full transition ease-in-out duration-30`}
       >
-        <HiOutlineChatBubbleLeft
+        <HiOutlineChatBubbleLeftEllipsis
           className={`text-xl ml-5 group group-hover:text-[#007bff]  dark:${
             commentMatch ? "text-[#007bff]" : "text-[#CBD5E0]"
           }  ${commentMatch ? "text-[#007bff]" : "text-stone-600 "}`}

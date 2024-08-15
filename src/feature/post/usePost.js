@@ -27,7 +27,6 @@ export const usePost = () => {
       return allPage.length + 1;
     },
   });
-
   return {
     data,
     isError,

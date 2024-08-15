@@ -11,7 +11,6 @@ const DashboardLayout = () => {
   const mainContentRef = useRef(null);
   const { error } = useUser();
   const { sidebar } = useSidebarContext();
-
   useEffect(() => {
     if (mainContentRef.current) {
       mainContentRef.current.scrollTop = 0;

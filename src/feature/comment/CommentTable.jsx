@@ -17,7 +17,7 @@ const CommentTable = () => {
   if (isLoading) return <FullPageLoaderSpinner />;
   if (error) return <Error />;
   return (
-    <div className="mt-40 md:mt-10 bg-white dark:bg-[#2D3748] shadow-sm rounded-sm  p-4 mb-10 w-full overflow-x-auto">
+    <div className="mt-40 md:mt-10 bg-white rounded-md dark:bg-[#2D3748] shadow-sm  p-4 mb-10 w-full overflow-x-auto">
       <TableOperation />
       <Table>
         <Table.Header>

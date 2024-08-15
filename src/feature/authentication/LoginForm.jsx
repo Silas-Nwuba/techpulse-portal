@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import useLogin from "./useLogin";
 import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 import Button from "../../ui/Button";
-import { Toaster } from "react-hot-toast";
 const LoginForm = () => {
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
@@ -133,7 +132,7 @@ const LoginForm = () => {
       </div>
       <div className="w-full dark:border-[#4A5568] text-center border-stone-300 border-t absolute bottom-0">
         <p className="py-2 px-3 text-stone-600 dark:text-stone-300 text-sm pt-4">
-          &copy; {new Date().getFullYear()} TechPulse. All right reserverd.
+          &copy; {new Date().getFullYear()} TechZonie. All right reserverd.
         </p>
       </div>
     </div>

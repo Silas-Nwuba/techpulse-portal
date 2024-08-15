@@ -59,21 +59,6 @@ blockquote p {
     background-color: #007bff;
     color: white;
   }
-
-  /* .main::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  .main::-webkit-scrollbar-track {
-    background: #dddd;
-    border: none;
-    border-radius: 3px;
-  }
-
-  .main::-webkit-scrollbar-thumb {
-    background: #9c9c9cdd;
-    border-radius: 3px;
-  } */
   .quill {
     height: 200px;
   }
@@ -126,21 +111,6 @@ blockquote p {
     background-color: #f0f0f0;
     color: #333;
   }
-
-  /* For Chrome, Safari, and newer Edge */
-  /* ::-webkit-scrollbar {
-    width: auto;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #4f5f80;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    width: 10px;
-    background-color: #dddd;
-  } */
-
   .quill::-webkit-scrollbar {
     width: 10px;
   }

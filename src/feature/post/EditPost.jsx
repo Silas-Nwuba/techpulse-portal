@@ -14,18 +14,22 @@ import { useUser } from "../authentication/useUser";
 import NotFoundError from "../../ui/NotFoundError";
 import LoaderSpinner from "../../ui/LoaderSpinner";
 import { format } from "date-fns";
-
 const options = [
-  { value: "Technology", label: "Technology" },
-  { value: "Business", label: "Business" },
-  { value: "Gadget", label: "Gadget" },
-  { value: "Apps", label: "Apps" },
+  { value: "latest post", label: "Lastest Post" },
+  { value: "top stories", label: "Top Stories" },
+  { value: "post", label: "Post" },
+];
+const category = [
+  { value: "", label: "Select" },
+  { value: "technology", label: "Technology" },
+  { value: "business", label: "Business" },
+  { value: "gadget", label: "Gadget" },
+  { value: "social apps", label: " Social Apps" },
 ];
 const EditPost = () => {
   const { dispatch } = useUserDropdown();
   const navigate = useNavigate();
   const { data, isFetching, error } = useGetEditPostById();
-  console.log(data);
   const { editPost, isEditing } = useEditPost();
   const { register, handleSubmit, formState, reset, control } = useForm({
     values: { ...data },
@@ -69,7 +73,7 @@ const EditPost = () => {
             Update Post
           </h1>
           <span
-            className="flex items-center gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
+            className="flex items-center md:hidden gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
             onClick={() => navigate("/post")}
           >
             <p>Back</p>
@@ -101,6 +105,23 @@ const EditPost = () => {
               className={`file:bg-violet-50 file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm  focus:border-2 focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
+
+          <FormRow label={"Feature"} error={errors?.feature?.message}>
+            <select
+              name="feature"
+              {...register("feature", {
+                required: "Feature field is required",
+              })}
+              className="dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400"
+            >
+              {options.map((element, index) => (
+                <option key={index} value={element.value}>
+                  {element.label}
+                </option>
+              ))}
+            </select>
+          </FormRow>
+
           <FormRow label="Category" error={errors?.category?.message}>
             <select
               name="category"
@@ -110,7 +131,7 @@ const EditPost = () => {
               })}
               className="dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400"
             >
-              {options.map((item) => (
+              {category.map((item) => (
                 <option value={item.value}>{item.label}</option>
               ))}
             </select>
@@ -144,6 +165,14 @@ const EditPost = () => {
               </small>
             )}
           </div>
+          <FormRow label="Image Credit">
+            <input
+              type="text"
+              name="credit"
+              className={`dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+            />
+          </FormRow>
+
           <FormRow label="Author" error={errors?.author?.message}>
             <input
               type="text"
@@ -159,7 +188,6 @@ const EditPost = () => {
             <Controller
               name="summary"
               control={control}
-              // rules={{ required: "Summary field is required" }}
               render={({ field }) => (
                 <ReactQuill
                   modules={{
