@@ -11,7 +11,7 @@ const UserDropdown = () => {
   const { logout, isLogout } = useLogout();
   if (isLoading)
     return (
-      <div className="bg-white dark:bg-[#2D3748] border-4 w-[250px] shadow md:shadow-xl rounded-md py-3 flex flex-col justify-start mr-10 z-[10000] ml-5 absolute right-0 top-[4.5rem] border-t-4 border-[#007bff] ">
+      <div className="bg-white dark:bg-[#2D3748]  w-[250px] border-gray-200 border-2 rounded-md py-3 flex flex-col justify-start mr-10 z-[10000] ml-5 absolute right-0 top-[4.5rem]">
         <MiniLoaderSpinner
           borderRight="border-r-[#007bff]"
           borderTop="border-t-[#007bff]"
@@ -19,8 +19,8 @@ const UserDropdown = () => {
       </div>
     );
   return (
-    <div className="bg-white dark:bg-[#2D3748] transition -translate-y-2 border-t-4 border-t-[#007bff] dark:border-t dark:border-t-[#2D3748] shadow-2xl rounded-md py-3 px-1 sm:px-0 flex flex-col justify-start mr-4 sm:mr-10 z-[30000] ml-5 absolute right-0 top-[4.5rem]  border-[#007bff] dark:border-[#CBD5E0]">
-      <div className="flex items-center justify-center gap-3 divide divide-stone-400 px-6  ">
+    <div className="bg-white dark:bg-[#2D3748] border border-gray-200 transition -translate-y-2  dark:border-[#3b4557] rounded-md py-3 px-1 sm:px-0 flex flex-col justify-start mr-4 sm:mr-10 z-[30000] ml-5 absolute right-0 top-[4.5rem]">
+      <div className="flex items-center justify-center gap-3 divide divide-gray-200 border-1 px-6  ">
         <span className="flex-shrink-0">
           <img
             src={user.user_metadata.avater}
@@ -64,7 +64,7 @@ const UserDropdown = () => {
             <>
               <PiSignOutBold className="font-semibold text-red-500 text-xl group-hover:text-red-500" />
               <li className=" text-red-500 text-sm group-hover:text-red">
-                Logout
+                Sign out
               </li>
             </>
           )}

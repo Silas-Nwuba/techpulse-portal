@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
-import { Link } from "react-router-dom";
-import { FaExclamationCircle } from "react-icons/fa";
 import { useResetPassword } from "./useResetPassword";
-import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
+import { NavLink } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 const ResetPasswordForm = () => {
   const { register, handleSubmit, formState, reset } = useForm();
@@ -20,68 +19,111 @@ const ResetPasswordForm = () => {
       }
     );
   };
-  useEffect(() => {
-    document.title = "Reset password - TechPulse";
-    return () => {
-      document.title = "Reset password - TechPulse";
-    };
-  });
+  const onerror = () => {};
+
   return (
-    <div className="flex flex-col min-h-screen mx-auto">
-      <h1 className="font-semibold mb-5 mt-[100px] text-[22px] dark:text-white  text-stone-600 sm:text-[24px] text-center ">
-        Reset Your Password
-      </h1>
-      <div className=" dark:bg-[#2D3748] bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md mx-auto">
-        <form
-          className="flex flex-col justify-center mt-4"
-          onSubmit={handleSubmit(onsubmit)}
-        >
-          <p className="text-[16px] text-stone-500 text-center dark:text-stone-300">
-            Enter the email address you registerd with.
-          </p>
+    <>
+      <div className="flex">
+        <div className="w-[50%]  relative hidden xl:block">
           <div>
-            <input
-              type="email"
-              name="email"
-              disabled={isReseting}
-              placeholder="Email address"
-              {...register("email", { required: "Enter address is required" })}
-              className="disabled:opacity-50 dark:text-stone-300 disabled:bg-gray-100  dark:bg-[#4A5568] disabled:cursor-wait text-left mt-5 dark:border-[#4A5568] disabled:border dark:focus:border disabled:border-gray-200 border text-sm border-slate-50 font-medium focus:border-2 focus:border-sky-500 w-full py-3 px-5 rounded-full bg-slate-50 placeholder:text-stone-400 placeholder:font-medium  outline-none focus:outline-none"
+            <img
+              src="image/login-image.jpeg"
+              alt=""
+              className="w-full h-screen"
             />
-            {errors?.email && (
-              <small className="text-red-500 text-sm flex items-center gap-2 pt-1 ml-2">
-                <FaExclamationCircle className="text-red-500" />
-                <span>{errors?.email?.message}</span>
-              </small>
-            )}
+            <div className="bg-stone-800 absolute top-0 left-0 opacity-60 w-full h-screen"></div>
           </div>
-          <Button
-            name={"Reset Password"}
-            rounded="rounded-full"
-            hover="hover-sky-600"
-            marginBottom="mb-1"
-            marginTop="mt-4"
-            loading={isReseting}
-          >
-            <MiniLoaderSpinner
-              borderLeft={"border-l-gray-50"}
-              borderTop={"border-t-gray-50"}
-              borderRight={"border-r-gray-50"}
-            />
-          </Button>
-        </form>
-        <Link to={"/admin/login"}>
-          <p className="text-sm text-[#007bff] pt-2 text-center font-medium">
-            Back to Login
-          </p>
-        </Link>
+          <div className="absolute top-[40%] px-[60px]">
+            <h1 className="text-[28px] font-semibold leading-9 text-stone-50">
+              The advancement of technology is the revolution of developement
+            </h1>
+            <p className="leading-[1.5] font-normal text-[15px]  text-stone-50 mt-2">
+              "TekCabal believes in the growth and the improvement of technology
+              by sharing business update and social app udpdate."
+            </p>
+          </div>
+        </div>
+
+        <div className="dark:bg-[#070d19] h-screen bg-[#fff] xl:w-[50%] w-full">
+          <div className="mt-[90px] xs:mt-[190px] mx-4 md:mt-[200px] xl:mt-[150px] md:mx-auto xl:mx-20 sm:w-[70%] w-[90%]">
+            <div className="leading-5">
+              <h1 className="font-bold text-[1.5rem] leading-[2rem] text-stone-900 dark:text-stone-100">
+                Forget Your Password
+              </h1>
+              <p className="font-normal text-[1rem] text-stone-600 mt-2 leading-[1.5rem] dark:text-[#94a3b8]">
+                Enter your email & instructions will be sent to you!
+              </p>
+            </div>
+
+            <form
+              onSubmit={handleSubmit(onsubmit, onerror)}
+              autoComplete="off"
+              className="mt-4 mb-5 w-full"
+            >
+              <div className="w-full">
+                <label
+                  htmlFor="email"
+                  className="leading-[1] font-normal text-stone-500 dark:text-[#94a3b8]"
+                >
+                  Email
+                </label>
+                <input
+                  placeholder="Email"
+                  type="email"
+                  name="email"
+                  disabled={isReseting}
+                  {...register("email", {
+                    required: "Email field is required",
+                    pattern: {
+                      value:
+                        /^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\.[a-zA-Z]{2,4}$/,
+                      message: "Your email is invalid",
+                    },
+                  })}
+                  className={` ${
+                    errors?.email?.message && "dark:border-red-600"
+                  } ${
+                    isReseting ? "dark:bg-[#485363]" : "bg-slate-100"
+                  } focus:border-[#5660d9] dark:focus:border-[#5660d9] focus:outline-none dark:bg-transparent bg-transparent dark:border-[#64748b] border px-3 text-[#64748b]  text-[.875rem] font-normal placeholder:font-normal border-gray-300 rounded-lg  mt-2 w-full h-[2.5rem]`}
+                />
+                {errors?.email && (
+                  <small className="text-red-500 text-[14px] flex items-center gap-2 mt-1">
+                    <span className="font-normal">
+                      {errors?.email?.message}
+                    </span>
+                  </small>
+                )}
+              </div>
+              <Button
+                width={"w-full"}
+                marginBottom="mb-0"
+                name={"Send Recovery Email"}
+                backgroundColor={`${
+                  isReseting ? `bg-[#5660d9]` : `bg-[#5660d9]`
+                }`}
+                hover="hover:bg-[#6772f0]"
+                rounded="rounded-[0.5rem]"
+                loading={isReseting}
+              >
+                <p>Loading...</p>
+              </Button>
+            </form>
+            <div className="text-center">
+              <h2 className="text-stone-500 dark:text-[#94a3b8] text-[16px] font-normal">
+                Forget it. Send me back to{" "}
+                <NavLink
+                  to={"/login"}
+                  className="text-[#5660d9] cursor-pointer font-medium"
+                >
+                  Sign In
+                </NavLink>
+              </h2>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="w-full text-center dark:border-[#4A5568] border-stone-200 border-t mt-[160px]">
-        <p className="py-2 px-3 text-stone-600 dark:text-stone-300 text-sm pt-4">
-          &copy; {new Date().getFullYear()} TechPulse. All right reserverd.
-        </p>
-      </div>
-    </div>
+      <Toaster />
+    </>
   );
 };
 

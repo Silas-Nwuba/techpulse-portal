@@ -6,14 +6,14 @@ import { useUserDropdown } from "../../context/UserDropdownContextApi";
 const useLogout = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const { dispatch } = useUserDropdown();
+  // const { dispatch } = useUserDropdown();
   const { mutate: logout, isPending: isLogout } = useMutation({
     mutationKey: ["user"],
     mutationFn: logoutApi,
     onSuccess: () => {
       navigate("login", { replace: true });
       queryClient.removeQueries();
-      dispatch({ type: "closeUserDropdown", payload: false });
+      // dispatch({ type: "closeUserDropdown", payload: false });
     },
     onError: (error) => {
       if (error.message === "Failed to fetch") {

@@ -1,9 +1,9 @@
 import React from "react";
 
-const MiniLoaderSpinner = ({ borderTop, borderRight, borderLeft }) => {
+const MiniLoaderSpinner = () => {
   return (
     <div
-      className={`border-transparent w-[1.6rem] h-[1.6rem] mx-auto ${borderRight} ${borderTop} ${borderLeft} rounded-full animate-spin border-4`}
+      className={`border-transparent w-[1.2rem] h-[1.2rem] mx-auto border-r-white border-t-white border-l-white   rounded-full animate-spin border-[3px]`}
     ></div>
   );
 };

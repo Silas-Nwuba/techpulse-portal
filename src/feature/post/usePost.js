@@ -23,7 +23,6 @@ export const usePost = () => {
       ) {
         return null;
       } else if (lastPage?.data.length === undefined)
-        console.log("error from usePost");
       return allPage.length + 1;
     },
   });

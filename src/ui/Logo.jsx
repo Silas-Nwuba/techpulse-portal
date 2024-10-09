@@ -9,24 +9,27 @@ const Logo = ({ display = "block", showIcon = "hidden", padding }) => {
     dispatch({ type: "closeSidebarMenu", payload: false });
     document.documentElement.style.overflowY = "auto";
   };
-
   return (
-    <div
-      className={`flex md:${display} justify-between items-center px-5 ${padding}`}
-    >
-      <Link to={"/login"} className="ml-5">
-        <h1
-          to={"/"}
-          className={`font-semibold uppercase text-xl lg:text-2xl  text-[#007bff] text-center tracking-widest dark:text-[#e8edf3]`}
-        >
-          TechZonie
-        </h1>
-      </Link>
-      <HiXMark
-        className={`text-2xl block font-semibold md:${showIcon} cursor-pointer dark:text-[#CBD5E0]`}
-        onClick={handleSidebarClose}
-      />
-    </div>
+    <>
+      <div
+        className={`flex md:${display} justify-between my-5 ml-7 px-2 ${padding}`}
+      >
+        <Link to={"/login"} className="ml-2 flex items-center gap-3">
+          <h1
+            to={"/"}
+            className={`text-xl lg:text-[24px] leading-[1.75rem] font-semibold tracking-wider text-[#6C4DE6] logo text-center dark:text-[#e3e3e3]`}
+          >
+            TekMatas
+          </h1>
+        </Link>
+        <HiXMark
+          className={`text-2xl block font-semibold md:${showIcon} cursor-pointer dark:text-[#E7E9EA]`}
+          onClick={handleSidebarClose}
+        />
+      </div>
+
+      <div className="dark:bg-[#172340] bg-slate-50 w-full h-[0.5px]"></div>
+    </>
   );
 };
 export default Logo;

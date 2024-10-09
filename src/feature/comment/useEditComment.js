@@ -25,5 +25,4 @@ const useEditComment = () => {
 
   return { editComment, isEditingComment };
 };
-
 export default useEditComment;

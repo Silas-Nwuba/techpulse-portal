@@ -7,6 +7,7 @@ const CommentDetail = () => {
   useEffect(() => {
     window.scrollTo({ top: 0 });
     dispatch({ type: "closeUserDropdown", payload: false });
+    document.title = "TekMatas | CommentDetails";
   }, [dispatch]);
   return <CommentDetailBox />;
 };

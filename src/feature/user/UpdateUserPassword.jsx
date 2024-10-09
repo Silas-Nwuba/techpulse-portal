@@ -1,6 +1,5 @@
 import React from "react";
 import FormRow from "../../ui/FormRow";
-import Button from "../../ui/Button";
 import { useForm } from "react-hook-form";
 import { useUpdateUserPassword } from "./useUpdateUserPassword";
 const UpdateUserPassword = () => {
@@ -21,16 +20,17 @@ const UpdateUserPassword = () => {
   const onerror = (error) => {};
   return (
     <>
-      <h1 className="text-[20px] text-stone-[#333333] font-semibold mb-2 mt-10  dark:text-[#E2E8F0] ">
+      <h1 className="text-[20px] text-stone-[#333333] font-medium mb-2 mt-10 w-full dark:text-[#d0d6e1]">
         Update Password
       </h1>
 
-      <div className="bg-white px-4 py-5 rounded-md shadow-sm mt-5 mb-5 dark:bg-[#2D3748]">
+      <div className="bg-white px-4 py-5 w-[81%] shadow-sm mt-5 dark:bg-[#0c1427] rounded-[5px] border-[#172340] border mb-10">
         <form onSubmit={handleSubmit(onsubmit, onerror)}>
           <FormRow label={"New Password"} error={errors?.password?.message}>
             <input
               type="password"
               name="password"
+              placeholder="Password"
               disabled={isLoadingPassword}
               {...register("password", {
                 required: "Password field is required",
@@ -39,37 +39,33 @@ const UpdateUserPassword = () => {
                   message: "Password must be atleast 8 characters",
                 },
               })}
-              className={`disabled:opacity-50 ${
-                errors?.password
-                  ? "border-red-400 focus:border-red-400 focus:border"
-                  : "focus:border-sky-400 focus:border-2"
-              } dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+              className={`disabled:opacity-50 dark:bg-[#0c1427] dark:border-[#172340] dark:text-[#CBD5E0] focus:outline-none dark:focus:border-[#3b4557] border text-sm border-gray-300 rounded-md p-3 mt-2 w-full`}
             />
           </FormRow>
           <FormRow
-            label={"Confirm New Password"}
+            label={"Confirm Password"}
             error={errors?.confirmPassword?.message}
           >
             <input
               type="password"
               disabled={isLoadingPassword}
               name="confirmPassword"
+              placeholder="Confirm Password"
               {...register("confirmPassword", {
                 validate: (value) =>
                   value === getValues().password || "Password need to match",
               })}
-              className={`disabled:opacity-50 ${
-                errors?.confirmPassword
-                  ? "border-red-400 focus:border-red-400 focus:border"
-                  : "focus:border-sky-400 focus:border-2"
-              } dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+              className={`disabled:opacity-50 dark:bg-[#0c1427] dark:border-[#172340] dark:text-[#CBD5E0] focus:outline-none dark:focus:border-[#3b4557] border text-sm border-gray-300 rounded-md p-3 mt-2 w-full `}
             />
           </FormRow>
-          <Button
-            name={"Update Password"}
-            hover="hover:bg-sky-600"
-            marginBottom="mb-1"
-          />
+          <div className="mt-3">
+            <button
+              type="submit"
+              className="bg-[#6C4DE6] dark:bg-[#6C4DE6]  dark:text-white text-white transition duration-500 ease-in-out  h-[30px] py-5  font-normal text-[16px] rounded-[5px] flex items-center justify-center px-3"
+            >
+              {isLoadingPassword ? "Loading..." : "Update"}
+            </button>
+          </div>
         </form>
       </div>
     </>

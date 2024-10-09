@@ -1,23 +1,24 @@
-import { useEffect, useRef } from "react";
-import { useUserDropdown } from "../context/UserDropdownContextApi";
+import { useEffect } from "react";
 
-const useOutsideClick = (close, listenCapture = true) => {
-  const { dispatch, isUserDropdown } = useUserDropdown();
-  const ref = useRef();
-  const dropdownRef = useRef(null);
+const useOutsideClick = (iconRef, excludeSelector, callback) => {
   useEffect(() => {
-    const handleOutsideClick = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
-        close();
-      }
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        dispatch({ type: "closeUserDropdown", payload: false });
+    const handleOutsideClick = (event) => {
+      if (
+        !event.target.closest(`${excludeSelector}`) &&
+        !iconRef.current.contains(event.target)
+      ) {
+        callback();
       }
     };
-    document.addEventListener("mousedown", handleOutsideClick, listenCapture);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
-  }, [dispatch, close, listenCapture, isUserDropdown]);
-
-  return { ref, dropdownRef };
+    const handleScroll = () => {
+      callback();
+    };
+    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [iconRef, excludeSelector, callback]);
 };
 export default useOutsideClick;

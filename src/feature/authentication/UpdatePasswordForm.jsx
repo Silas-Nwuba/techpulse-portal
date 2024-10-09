@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import Button from "../../ui/Button";
 import { FaExclamationCircle } from "react-icons/fa";
-import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 import { useUpdatePassword } from "./useUpdatePassword";
 const UpdatePaswordForm = () => {
   const { register, handleSubmit, formState, reset, getValues } = useForm();
@@ -18,12 +16,7 @@ const UpdatePaswordForm = () => {
       }
     );
   };
-  useEffect(() => {
-    document.title = "Update password - TechPulse";
-    return () => {
-      document.title = "Update password - TechPulse";
-    };
-  }, []);
+
   return (
     <div className="flex flex-col min-h-screen mx-auto">
       <h1 className="font-semibold mb-5 mt-[100px] text-center sm:text-[24px] text-[22px] text-stone-[#333333]">
@@ -71,26 +64,15 @@ const UpdatePaswordForm = () => {
               </small>
             )}
           </div>
-          <Button
-            name={"Update Password"}
-            rounded="rounded-full"
-            hover="hover-sky-600"
-            marginBottom="mb-1"
-            marginTop="mt-4"
-            loading={isUpdatingPassword}
-          >
-            <MiniLoaderSpinner
-              borderLeft={"border-l-gray-50"}
-              borderTop={"border-t-gray-50"}
-              borderRight={"border-r-gray-50"}
-            />
-          </Button>
+          <div className="mt-3">
+            <button
+              type="submit"
+              className="bg-[#6C4DE6] outline-none dark:bg-[#6C4DE6]  dark:text-white text-white transition duration-500 ease-in-out  h-[30px] py-5  font-normal text-[16px] rounded-[5px] flex items-center justify-center px-3"
+            >
+              {isUpdatingPassword ? "Loading..." : "Update"}
+            </button>
+          </div>
         </form>
-      </div>
-      <div className=" w-full text-center border-stone-200 border-t mt-[145px]">
-        <p className="py-2 px-3 text-stone-600 text-sm pt-7">
-          &copy; {new Date().getFullYear()} TechPulse. All right reserverd.
-        </p>
       </div>
     </div>
   );

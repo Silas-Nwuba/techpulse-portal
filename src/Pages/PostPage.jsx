@@ -6,6 +6,7 @@ const PostPage = () => {
   useEffect(() => {
     window.scrollTo({ top: 0 });
     dispatch({ type: "closeUserDropdown", payload: false });
+    document.title = "TekMatas | Post";
   }, [dispatch]);
   return <Post />;
 };

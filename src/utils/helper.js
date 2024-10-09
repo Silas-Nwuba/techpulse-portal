@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { getDate, getMonth, getYear } from "date-fns";
 //prettier-ignore
-const monthData = ["Jan","Feb","Mar","April","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"]
+const monthData = ["January","Feburay","March","April","May","June","July","August","Septenber","October","Novermber","December"]
 export const formatPostDate = (date) => {
   const day = getDate(new Date(date));
   const month = monthData[getMonth(new Date(date))];

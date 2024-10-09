@@ -4,8 +4,8 @@ import { deleteComment as deleteCommentApi } from "../../service/apiComment";
 import { useNavigate } from "react-router-dom";
 
 const useDeleteComment = () => {
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const {
     mutate: deleteComment,
     error,
@@ -16,10 +16,12 @@ const useDeleteComment = () => {
     onSuccess: () => {
       toast.success("Comment deleted successfully", { id: "sucessId" });
       queryClient.invalidateQueries({ active: "comment" });
-      navigate(-1);
+      navigate("/comment", { replace: true });
+    },
+    error: (error) => {
+      toast.success(error.message, { id: "sucessId" });
     },
   });
   return { deleteComment, error, isDeleting };
 };
-
 export default useDeleteComment;

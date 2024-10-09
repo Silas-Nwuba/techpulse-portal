@@ -7,12 +7,12 @@ const DarkModeToggle = () => {
   return (
     <>
       <span
-        className="bg-gray-100 dark:bg-[#2D3748] rounded-full w-[35px] h-[35px] flex flex-col justify-center items-center cursor-pointer hover:bg-slate-200 dark:hover:bg-[#4A5568]"
+        className="dark:hover:bg-[#2D3748] hover:bg-slate-50  rounded-full w-[35px] h-[35px] flex flex-col justify-center items-center cursor-pointer"
         onClick={() => toggleDarkMode((darkMode) => !darkMode)}
       >
         {!isDarkMode && (
           <>
-            <HiOutlineSun className="text-[22px] text-[#007bff] dark:text-[#4299E1]" />
+            <HiOutlineSun className="text-[24px] text-[#899BB1] dark:text-[#E7E9EA]" />
             <Toaster
               position="top-center"
               gutter={12}
@@ -26,7 +26,7 @@ const DarkModeToggle = () => {
                 },
                 style: {
                   fontSize: "15px",
-                  padding: "16px 24px",
+                  padding: "10px 24px",
                   top: 0,
                 },
               }}
@@ -35,7 +35,7 @@ const DarkModeToggle = () => {
         )}
         {isDarkMode && (
           <>
-            <HiOutlineMoon className="text-[22px] text-[#007bff] dark:text-[#4299E1]" />
+            <HiOutlineMoon className="text-[24px] text-[#899BB1] dark:text-[#E7E9EA]" />
             <Toaster
               position="top-center"
               gutter={12}
@@ -52,7 +52,7 @@ const DarkModeToggle = () => {
                   fontSize: "15px",
                   padding: "16px 24px",
                   color: isDarkMode ? "#eeeeee" : "",
-                  zIndex: "30000",
+                  zIndex: "100000",
                   top: 0,
                 },
               }}

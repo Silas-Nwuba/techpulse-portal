@@ -6,7 +6,6 @@ export const useResetPassword = () => {
   const { mutate: resetPassword, isPending: isReseting } = useMutation({
     mutationFn: resetPasswordApi,
     onSuccess: (data) => {
-      console.log(data);
       toast.success("Message has been sent to your email!", {
         id: "successId",
       });

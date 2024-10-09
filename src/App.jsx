@@ -7,10 +7,8 @@ import { UserDropdownProvider } from "./context/UserDropdownContextApi";
 import DashboardLayout from "./ui/DashboardLayout";
 import "../src/App.css";
 import Dashboard from "./Pages/Dashboard";
-import Post from "./Pages/PostPage";
 import CommentPage from "./Pages/ComentPage";
 import CommentDetail from "./Pages/CommentDetail";
-import CreatePostPage from "./Pages/CreatePost";
 import EditPostPage from "./Pages/EditPostPage";
 import PageNotFound from "./ui/PageNotFound";
 import Login from "./Pages/Login";
@@ -19,6 +17,12 @@ import ResetPassword from "./Pages/ResetPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
 import ProtectedRoute from "../src/ui/ProtectedRoute";
 import { SidebarContextProvider } from "./context/SidebarContext";
+import PostPage from "./Pages/PostPage";
+import AddPostPage from "./Pages/AddPostPage";
+import CategoryPage from "./Pages/CategoryPage";
+import TagPage from "./Pages/TagPage";
+import "easymde/dist/easymde.min.css";
+import ViewDetailsPage from "./Pages/ViewDetailsPage";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -46,18 +50,24 @@ const App = () => {
                     }
                   >
                     <Route path="/dashboard" element={<Dashboard />}></Route>
-                    <Route path="/post" element={<Post />}></Route>
-                    <Route
-                      path="/post/create"
-                      element={<CreatePostPage />}
-                    ></Route>
-                    <Route
-                      path="/post/edit/:id"
-                      element={<EditPostPage />}
-                    ></Route>
+                    <Route path="post">
+                      <Route path="allpost" element={<PostPage />}></Route>
+                      <Route path="add" element={<AddPostPage />}></Route>
+                      <Route path="category" element={<CategoryPage />}></Route>
+                      <Route path="tag" element={<TagPage />}></Route>
+                      <Route
+                        path="/post/edit/:id"
+                        element={<EditPostPage />}
+                      ></Route>
+
+                      <Route
+                        path="/post/view/:id"
+                        element={<ViewDetailsPage />}
+                      ></Route>
+                    </Route>
                     <Route path="/comment" element={<CommentPage />}></Route>
                     <Route
-                      path="/comment/:id"
+                      path="/comment/view/:id"
                       element={<CommentDetail />}
                     ></Route>
 

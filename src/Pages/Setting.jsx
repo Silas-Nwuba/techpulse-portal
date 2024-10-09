@@ -11,24 +11,36 @@ const Setting = () => {
   useEffect(() => {
     window.scrollTo({ top: 0 });
     dispatch({ type: "closeUserDropdown", payload: false });
-    document.title = "Settings | TechPulse";
-    return () => {
-      document.title = "Dashboard | TechPulse";
-    };
+    document.title = "TekMatas | Settings";
+    //  ;
   }, [dispatch]);
 
   return (
     <>
-      <div className="flex items-center justify-between mx-2 mt-[7rem] md:mt-10">
-        <span className="text-[20px] text-[#333333] font-semibold dark:text-[#E2E8F0] ">
-          Update User
-        </span>
+      <div className="flex item-center gap-2 mx-2 mt-[7rem] md:mt-10">
         <span
-          className="flex items-center gap-2 justify-end text-[#007bff] text-[16px] mr-2 cursor-pointer"
+          className="flex items-center gap-2 text-[#768191] dark:text-[#768191] cursor-pointer"
           onClick={() => navigate(-1)}
         >
-          <p>Back</p> <HiArrowRight />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
         </span>
+
+        <h1 className="text-[20px] text-[#333333] font-medium dark:text-[#d0d6e1]">
+          Update User
+        </h1>
       </div>
 
       <UpdateUserData />

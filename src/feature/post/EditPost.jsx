@@ -2,18 +2,16 @@ import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import ReactQuill from "react-quill";
-import Button from "../../ui/Button";
 import FormRow from "../../ui/FormRow";
 import useEditPost from "./useEditPost";
 import { useNavigate } from "react-router-dom";
-import { HiArrowRight } from "react-icons/hi2";
 import useGetEditPostById from "./useGetEditPostById";
-import { useUserDropdown } from "../../context/UserDropdownContextApi";
 import FullPageLoaderSpinner from "../../ui/FullPageLoaderSpinner";
 import { useUser } from "../authentication/useUser";
 import NotFoundError from "../../ui/NotFoundError";
 import LoaderSpinner from "../../ui/LoaderSpinner";
 import { format } from "date-fns";
+import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 const options = [
   { value: "latest post", label: "Lastest Post" },
   { value: "top stories", label: "Top Stories" },
@@ -27,7 +25,6 @@ const category = [
   { value: "social apps", label: " Social Apps" },
 ];
 const EditPost = () => {
-  const { dispatch } = useUserDropdown();
   const navigate = useNavigate();
   const { data, isFetching, error } = useGetEditPostById();
   const { editPost, isEditing } = useEditPost();
@@ -56,33 +53,45 @@ const EditPost = () => {
     );
   };
   useEffect(() => {
-    document.title = "Edit Post | TechPulse";
-    return () => {
-      document.title = "Dashboard | TechPulse";
-    };
+    document.title = "TekMatas | Edit Post";
+    window.scrollTo({ top: 0 });
   }, []);
 
   if (isFetching) return <FullPageLoaderSpinner />;
   if (error) return <NotFoundError />;
+
   return (
     <>
       {isEditing && <LoaderSpinner />}
-      <div className="md:mt-10 mt-[120px] mb-10">
-        <div className="flex items-center justify-between mb-5">
-          <h1 className="text-[18px] text-stone-600 font-semibold dark:text-[#CBD5E0]">
+      <div className="md:mt-10 mt-[120px] mb-10 w-[80%] ml-3">
+        <div className="flex items-center gap-2 mb-5">
+          <span
+            className="flex items-center gap-2 text-[#768191] dark:text-[#768191] cursor-pointer"
+            onClick={() => navigate(-1)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5 8.25 12l7.5-7.5"
+              />
+            </svg>
+          </span>
+
+          <h1 className="text-[22px] text-stone-[#000000] font-semibold dark:text-[#CBD5E0]">
             Update Post
           </h1>
-          <span
-            className="flex items-center md:hidden gap-2 text-[#007bff] text-[16px] mr-2 cursor-pointer"
-            onClick={() => navigate("/post")}
-          >
-            <p>Back</p>
-            <HiArrowRight />
-          </span>
         </div>
         <form
           onSubmit={handleSubmit(onsubmit)}
-          className="bg-white px-4 py-5 space-y-2 rounded-md shadow dark:bg-[#2D3748]"
+          className="bg-white px-4 py-5 space-y-2 rounded-[10px] dark:bg-[#0c1427]   border-[#172340] dark:border"
         >
           <FormRow label="Blog Title" error={errors?.title?.message}>
             <input
@@ -91,7 +100,7 @@ const EditPost = () => {
               {...register("title", {
                 required: "Title field is required",
               })}
-              className={`dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+              className={`dark:bg-[#0c1427] dark:disabled:bg-[#212a3a] dark:border-[#172340] dark:focus:border-[#3b4557] placeholder:text-[#d0d6e1] dark:text-[#d0d6e1] focus:outline-none  border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full`}
             />
           </FormRow>
           <FormRow label="Image" error={errors?.image?.message}>
@@ -102,7 +111,7 @@ const EditPost = () => {
               {...register("image", {
                 required: data?.image ? false : "image field is required",
               })}
-              className={`file:bg-violet-50 file:text-[#007bff] file:font-semibold file:rounded-full dark:file:dark:bg-[#2D3748]   dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] file:py-2 file:px-4  file:border-0 file:text-sm  focus:border-2 focus:outline-none border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+              className={`dark:bg-[#0c1427] file:bg-slate-100 file:text-stone-700 file:font-medium dark:focus:border-[#3b4557] dark:disabled:bg-[#212a3a] dark:border-[#172340] dark:file:bg-[#212a3a]  dark:text-[#d0d6e1] file:border-0 file:p-3 file:text-[12px] dark:file:text-[#d0d6e1] border  text-sm border-gray-300 rounded-[10px] mt-2 w-full`}
             />
           </FormRow>
 
@@ -112,7 +121,7 @@ const EditPost = () => {
               {...register("feature", {
                 required: "Feature field is required",
               })}
-              className="dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400"
+              className={`dark:bg-[#0c1427] dark:disabled:bg-[#212a3a] dark:border-[#172340] dark:focus:border-[#3b4557] placeholder:text-[#d0d6e1] dark:text-[#d0d6e1] focus:outline-none  border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full`}
             >
               {options.map((element, index) => (
                 <option key={index} value={element.value}>
@@ -129,7 +138,7 @@ const EditPost = () => {
               {...register("category", {
                 required: "Category field is required",
               })}
-              className="dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400"
+              className="dark:bg-[#0c1427] dark:border-[#172340] dark:disabled:bg-[#212a3a] dark:focus:border-[#3b4557]  dark:text-[#d0d6e1] focus:outline-none border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full focus:border-sky-400"
             >
               {category.map((item) => (
                 <option value={item.value}>{item.label}</option>
@@ -155,7 +164,7 @@ const EditPost = () => {
                   placeholderText="dd-mm-yyyy"
                   dateFormat="dd-MM-yyyy"
                   onChange={(date) => field.onChange(date)}
-                  className="focus:outline-none mb-3 border h-[50px] rounded-md p-3 mt-1 w-full border-stone-300  dark:bg-[#4A5568] dark:border-[#4A5568] dark:text-[#CBD5E0] focus:border-sky-400 focus:border-2 placeholder:text-stone-600"
+                  className="dark:bg-[#0c1427] dark:border-[#172340] dark:disabled:bg-[#212a3a] dark:focus:border-[#3b4557]  dark:text-[#d0d6e1] focus:outline-none border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full focus:border-sky-400"
                 />
               )}
             />
@@ -169,10 +178,9 @@ const EditPost = () => {
             <input
               type="text"
               name="credit"
-              className={`dark:bg-[#4A5568] dark:border-[#3b4557] dark:text-[#CBD5E0] focus:outline-none focus:border-2 border  text-sm border-gray-300 rounded-md p-3 mt-2 w-full focus:border-sky-400`}
+              className={`dark:bg-[#0c1427] dark:disabled:bg-[#212a3a] dark:border-[#172340] dark:focus:border-[#3b4557] placeholder:text-[#d0d6e1] dark:text-[#d0d6e1] focus:outline-none  border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full`}
             />
           </FormRow>
-
           <FormRow label="Author" error={errors?.author?.message}>
             <input
               type="text"
@@ -181,7 +189,7 @@ const EditPost = () => {
               {...register("author", {
                 required: "Author field is required",
               })}
-              className={`dark:bg-[#4A5568] dark:border-[#4A5568] dark:text-[#CBD5E0] focus:border-2 focus:outline-none border h-[50px] text-sm border-gray-300 rounded-md p-3 mt-1 w-full focus:border-sky-400`}
+              className={`dark:bg-[#0c1427] dark:focus:border-[#3b4557] disabled:bg-slate-50 dark:disabled:bg-[#212a3a] dark:border-[#172340]  dark:text-[#d0d6e1] focus:outline-none border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full focus:border-sky-400`}
             />
           </FormRow>
           <FormRow label="Summary" error={errors?.summary?.message}>
@@ -207,7 +215,7 @@ const EditPost = () => {
                   }}
                   {...field}
                   onChange={(content) => field.onChange(content)}
-                  className="mt-2 overflow-auto  border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557]"
+                  className="mt-2 overflow-auto  border-stone-300 dark:disabled:bg-[#212a3a] dark:bg-[#0c1427] dark:border-[#172340] dark:text-[#d0d6e1]"
                 />
               )}
             />
@@ -236,38 +244,22 @@ const EditPost = () => {
                   }}
                   {...field}
                   onChange={(content) => field.onChange(content)}
-                  className="mt-2 overflow-auto  border-stone-300 dark:bg-[#4A5568] dark:border-[#3b4557]"
+                  className="mt-2 overflow-auto  border-stone-300 dark:disabled:bg-[#212a3a] dark:bg-[#0c1427] dark:border-[#172340]  dark:text-[#d0d6e1] "
                 />
               )}
             />
           </FormRow>
-
-          <div className="flex gap-3">
-            <Button
-              name="Back"
-              backgroundColor="bg-slate-100"
-              width="w-[120px]"
-              hover="hover:bg-gray-200"
-              color="text-stone-600"
-              marginBottom="mb-0"
-              onClick={() => {
-                navigate("/post");
-                dispatch({ type: "closeUserDropdown", payload: false });
-              }}
-            />
-            <Button
-              name={"Update"}
-              width="w-[130px]"
-              backgroundColor="bg-[#007bff]"
-              hover="hover:bg-sky-500"
-              marginBottom="mb-0"
-              cursor={"cursor-pointer"}
-            />
+          <div className="mt-3">
+            <button
+              type="submit"
+              className="bg-[#6C4DE6] dark:bg-[#6C4DE6]  dark:text-white text-white w-[120px] transition duration-500 ease-in-out  h-[30px] py-5  font-normal text-[16px] rounded-[5px] flex items-center justify-center px-3"
+            >
+              {isEditing ? <MiniLoaderSpinner /> : "Update Post"}
+            </button>
           </div>
         </form>
       </div>
     </>
   );
 };
-
 export default EditPost;

@@ -16,15 +16,13 @@ export const getAllPost = async () => {
   const { data, error } = await supabase
     .from("post")
     .select("*")
-    .order("createdDate", { ascending: false });
+    .order("author", { ascending: false });
   if (error) {
     throw new Error("Please check internet connection");
   }
   return data;
 };
-
 export const createPost = async (newPostData) => {
-  console.log(newPostData);
   const imageName = `${Math.random()}-${newPostData.image.name}`.replaceAll(
     "/",
     ""
@@ -57,8 +55,19 @@ export const createPost = async (newPostData) => {
   return data;
 };
 
+export const getViewPostById = async (id) => {
+  const { data, error } = await supabase
+    .from("post")
+    .select("*")
+    .eq("id", id)
+    .single();
+  if (error) {
+    throw new Error("Post details data was not found");
+  }
+  return data;
+};
+
 export const getEditPostById = async (id) => {
-  console.log(id);
   const { data, error } = await supabase
     .from("post")
     .select("*")
@@ -67,9 +76,19 @@ export const getEditPostById = async (id) => {
   if (error) {
     throw new Error("Post data was not found");
   }
-
   return data;
 };
+export const filterCategories = async ({ filter }) => {
+  let query = supabase.from("post").select("*");
+  if (filter.value) query = query.eq(filter.field, filter.value);
+  const { data: post, error } = await query;
+
+  if (error) {
+    throw new Error("No results found");
+  }
+  return post;
+};
+
 export const editPost = async (newPostData, id) => {
   const hasImagePath = newPostData.image?.startsWith?.(supabaseUrl);
   const imageName = `${Math.random()}-${newPostData.image.name}`.replaceAll(
