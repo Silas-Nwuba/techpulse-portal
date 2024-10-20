@@ -12,22 +12,21 @@ import NotFoundError from "../../ui/NotFoundError";
 import LoaderSpinner from "../../ui/LoaderSpinner";
 import { format } from "date-fns";
 import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
+import { useGetAllCategory } from "../category/useGetAllCategory";
+import { useGetAllTag } from "../tag/useGetAllTag";
 const options = [
   { value: "latest post", label: "Lastest Post" },
   { value: "top stories", label: "Top Stories" },
   { value: "post", label: "Post" },
 ];
-const category = [
-  { value: "", label: "Select" },
-  { value: "technology", label: "Technology" },
-  { value: "business", label: "Business" },
-  { value: "gadget", label: "Gadget" },
-  { value: "social apps", label: " Social Apps" },
-];
+
 const EditPost = () => {
   const navigate = useNavigate();
   const { data, isFetching, error } = useGetEditPostById();
   const { editPost, isEditing } = useEditPost();
+  const { data: category, isLoading: isLoadingCategory } = useGetAllCategory();
+  const { data: tag, isLoading } = useGetAllTag();
+
   const { register, handleSubmit, formState, reset, control } = useForm({
     values: { ...data },
   });
@@ -63,7 +62,7 @@ const EditPost = () => {
   return (
     <>
       {isEditing && <LoaderSpinner />}
-      <div className="md:mt-10 mt-[120px] mb-10 w-[80%] ml-3">
+      <div className="md:mt-10 mt-[120px] mb-10 ml-3">
         <div className="flex items-center gap-2 mb-5">
           <span
             className="flex items-center gap-2 text-[#768191] dark:text-[#768191] cursor-pointer"
@@ -75,7 +74,7 @@ const EditPost = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6"
+              className="size-5"
             >
               <path
                 strokeLinecap="round"
@@ -91,7 +90,7 @@ const EditPost = () => {
         </div>
         <form
           onSubmit={handleSubmit(onsubmit)}
-          className="bg-white px-4 py-5 space-y-2 rounded-[10px] dark:bg-[#0c1427]   border-[#172340] dark:border"
+          className="bg-white px-4 py-5  w-[93%] xl:w-[85%] space-y-2 rounded-[10px] dark:bg-[#0c1427]"
         >
           <FormRow label="Blog Title" error={errors?.title?.message}>
             <input
@@ -145,6 +144,28 @@ const EditPost = () => {
               ))}
             </select>
           </FormRow>
+
+          <FormRow label={"Post Tag"} error={errors?.tag?.message}>
+            <select
+              name="tag"
+              disabled={isLoading || isLoadingCategory}
+              {...register("tag", {
+                required: "Tag field is required",
+              })}
+              className="dark:bg-[#0c1427] capitalize dark:border-[#172340] dark:disabled:bg-[#212a3a] dark:focus:border-[#3b4557] dark:text-[#d0d6e1] focus:outline-none border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full focus:border-sky-400"
+            >
+              {isLoadingCategory ? <option>Loadding..</option> : ""}
+              <option selected value="">
+                Select
+              </option>
+              {tag?.map((element, index) => (
+                <option key={index} value={element.name}>
+                  {element.name}
+                </option>
+              ))}
+            </select>
+          </FormRow>
+
           <div className="mb-5 flex flex-col">
             <label
               htmlFor="createDate"

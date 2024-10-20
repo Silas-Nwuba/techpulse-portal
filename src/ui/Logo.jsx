@@ -12,18 +12,18 @@ const Logo = ({ display = "block", showIcon = "hidden", padding }) => {
   return (
     <>
       <div
-        className={`flex md:${display} justify-between my-5 ml-7 px-2 ${padding}`}
+        className={`flex md:${display} justify-between mt-5 mb-[12px] ml-7 px-2 ${padding}`}
       >
         <Link to={"/login"} className="ml-2 flex items-center gap-3">
           <h1
             to={"/"}
-            className={`text-xl lg:text-[24px] leading-[1.75rem] font-semibold tracking-wider text-[#6C4DE6] logo text-center dark:text-[#e3e3e3]`}
+            className={`text-2xl  dark:text-[#6C4DE6] leading-[1.75rem] tracking-wider font-semibold  text-[#6C4DE6] logo text-center`}
           >
             TekMatas
           </h1>
         </Link>
         <HiXMark
-          className={`text-2xl block font-semibold md:${showIcon} cursor-pointer dark:text-[#E7E9EA]`}
+          className={`text-xl block font-semibold mr-3 text-[#8d8d8d] md:${showIcon} cursor-pointer dark:text-[#899BB1] xl:hidden`}
           onClick={handleSidebarClose}
         />
       </div>

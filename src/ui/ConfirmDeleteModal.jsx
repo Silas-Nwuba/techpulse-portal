@@ -2,15 +2,22 @@ import React, { useEffect } from "react";
 import { useDeletePost } from "../feature/post/useDeletePost";
 import MiniLoaderSpinner from "./MiniLoaderSpinner";
 import useDeleteComment from "../feature/comment/useDeleteComment";
+import { useDeleteCategory } from "../feature/category/useDeleteCategory";
 
-const ConfirmDeleteModal = ({ setShowModal, postId, commentId }) => {
+const ConfirmDeleteModal = ({
+  setShowModal,
+  postId,
+  commentId,
+  categoryId,
+}) => {
   const { deletePost, isDeleting: isDeletingPost } = useDeletePost();
   const { deleteComment, isDeleting: isDeletingComment } = useDeleteComment();
-
+  const { deleteCategory, isDeleting: isDeletingCategory } =
+    useDeleteCategory();
   const handleDelete = () => {
     if (postId) deletePost(postId);
     if (commentId) deleteComment(commentId);
-
+    if (categoryId) deleteCategory(categoryId);
     setTimeout(() => {
       setShowModal(false);
     }, 1000);
@@ -18,14 +25,12 @@ const ConfirmDeleteModal = ({ setShowModal, postId, commentId }) => {
   const handleClose = () => {
     setShowModal(false);
   };
-
   useEffect(() => {
     document.documentElement.style.overflowY = "hidden";
     return () => {
       document.documentElement.style.overflowY = "visible";
     };
   });
-
   return (
     <div className="bg-white xl:w-[24%] lg:w-[30%] md:w-[40%] sm:w-[50%] xs:w-[90%] dark:border-none z-[10000] border dark:bg-[#15142BFF] rounded-[10px] py-[10px] px-4 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-xl  transistion duration-300 ease-in-out">
       <div className="mt-5">
@@ -42,7 +47,7 @@ const ConfirmDeleteModal = ({ setShowModal, postId, commentId }) => {
           type="submit"
           className="bg-[#F91212] dark:text-white outline-none transition ease-in-out duration-300 rounded-full border-[0.5px] border-[#F91212] focus:outline-none cursor-pointer w-[90%] py-[12px] text-white font-medium leading-[19.36px] text-[16px]"
         >
-          {isDeletingPost || isDeletingComment ? (
+          {isDeletingPost || isDeletingComment || isDeletingCategory ? (
             <MiniLoaderSpinner />
           ) : (
             "Delete"

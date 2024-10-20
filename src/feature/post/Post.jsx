@@ -4,13 +4,15 @@ import Table from "../../ui/Table";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { formatDate, formatTime } from "../../utils/helper";
 import { useFilterPost } from "./useFilterPost";
-import Filters from "../../ui/Filters";
 import useOutsideClick from "../../hook/useOutsideClick";
 import { OverLay } from "../../ui/OverLay";
 import ConfirmDeleteModal from "../../ui/ConfirmDeleteModal";
 import { useGetallPost } from "./useGetallPost";
 import FullPageLoaderSpinner from "../../ui/FullPageLoaderSpinner";
 import Pagination from "../../ui/Pagination";
+import StatusDropdown from "../../ui/StatusDropdown";
+import CategoryDropdown from "../../ui/CategoryDropDown";
+import { FaPlus } from "react-icons/fa";
 
 const Post = () => {
   const [searchedInput, setSearchInput] = useState("");
@@ -59,13 +61,13 @@ const Post = () => {
           fiteredData?.length === 0 ? "No search results found" : ""
         );
       }
+      document.documentElement.style.overflowY = "auto";
     };
-    window.scrollTo({ top: 0 });
     handleSearch();
   }, [searchedInput, filterCategoryData, openDropdownIndex]);
   if (isLoading) return <FullPageLoaderSpinner />;
   return (
-    <div className="md:mt-[40px] mt-[120px]">
+    <div className="md:mt-[40px] mt-[120px] lg:ml-3">
       <div className="flex items-center gap-5  mt-5">
         <span
           className="flex items-center gap-2 text-[#768191] dark:text-[#768191] cursor-pointer"
@@ -77,7 +79,7 @@ const Post = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-7"
+            className="size-5"
           >
             <path
               strokeLinecap="round"
@@ -89,41 +91,65 @@ const Post = () => {
 
         <Link
           to={"/post/add"}
-          className="bg-[#6C4DE6] hover:bg-[#7771cc] dark:hover:bg-[#584fd4] transition duration-500 ease-in-out w-[130px] h-[20px] py-[22px] text-white font-medium text-[14px] rounded-[10px] flex items-center justify-center pr-2"
+          className="bg-[#6C4DE6] flex items-center gap-2 hover:bg-[#7771cc] dark:hover:bg-[#584fd4] transition duration-500 ease-in-out px-[20px] text-center py-[10px] text-white font-medium text-[14px] rounded-[5px]"
         >
-          New Post
+          <FaPlus /> New Post
         </Link>
       </div>
       <div
-        className={`bg-white dark:border dark:border-[#172340] rounded-[10px] mt-5 dark:bg-[#0c1427] p-4  w-[81%] `}
+        className={`bg-white rounded-[10px] mt-5 dark:bg-[#0c1427] p-4 w-[96%] xl:w-[85%] overflow-y-auto`}
       >
-        <div className="py-5 flex items-center justify-between">
+        <div className="py-2 lg:flex items-center justify-between">
           <h1 className="text-xl font-semibold dark:text-[#d0d6e1]">
             Post Overview
           </h1>
-          <div className="flex items-center gap-5">
+          <div className="md:flex items-center gap-5 my-4">
             <div className="relative">
               <input
                 type="text"
                 placeholder="Search by author name"
                 onChange={(e) => setSearchInput(e.target.value)}
-                className="border outline-none placeholder:text-[13px] placeholder:dark:text-[#b1b6c0] dark:text-[#d0d6e1] border-[#d0d6e1]  text-sm dark:bg-transparent dark:border-[#201f33]  placeholder:text-[#C1C1C1] rounded-[10px] px-3 py-[10px] w-[400px]"
+                className="border outline-none placeholder:text-[13px] placeholder:dark:text-[#b1b6c0] dark:text-[#d0d6e1] border-[#d0d6e1]  text-sm dark:bg-transparent dark:border-[#201f33]  placeholder:text-[#C1C1C1] rounded-[10px] px-3 py-[10px] w-full xl:w-[400px]"
               />
               <HiMagnifyingGlass className="text-lg text-[text-[#1D2235] cursor-pointer absolute top-3 right-5 dark:text-[#d0d6e1]" />
             </div>
-            <Filters
-              setOpenDropdownIndex={setOpenDropdownIndex}
-              isCategoryOpen={isCategoryOpen}
-              setCategoryOpen={setCategoryOpen}
-              isStatusOpen={isStatusOpen}
-              setStatusOpen={setStatusOpen}
-            />
+
+            <div className="flex gap-4 my-4">
+              <CategoryDropdown
+                setOpenDropdownIndex={setOpenDropdownIndex}
+                isCategoryOpen={isCategoryOpen}
+                setCategoryOpen={setCategoryOpen}
+              />
+              <StatusDropdown
+                setOpenDropdownIndex={setOpenDropdownIndex}
+                isStatusOpen={isStatusOpen}
+                setStatusOpen={setStatusOpen}
+              >
+                <ul className="list-none space-y-1 text-sm cursor-pointer dark:text-white">
+                  <li
+                    onClick={() => handleOptionClick("approved")}
+                    className="dark:hover:bg-[#2e2d52f1] hover:bg-slate-100 p-1 px-3"
+                  >
+                    Approved
+                  </li>
+                  <li
+                    onClick={() => handleOptionClick("pending")}
+                    className="dark:hover:bg-[#2e2d52f1] hover:bg-slate-100 p-1 px-3"
+                  >
+                    Pending
+                  </li>
+                </ul>
+              </StatusDropdown>
+            </div>
           </div>
         </div>
         <Table>
           <Table.Header>
-            <tr className="dark:border-b-[0.5px] font-medium dark:border-b-[#172340] dark:bg-[#363d4b] bg-[#FAFAFA]">
-              <th className="px-6 py-3 text-[text-[#1D2235] dark:text-[#d4def1]">
+            <tr className="font-medium">
+              <th
+                id="tre1"
+                className="px-6 py-3 text-[text-[#1D2235] dark:text-[#d4def1]"
+              >
                 Post Id
               </th>
               <th className="px-6 py-3 text-[text-[#1D2235] dark:text-[#d4def1]">
@@ -147,7 +173,10 @@ const Post = () => {
               <th className=" text-[text-[#1D2235] px-6 py-3 dark:text-[#d4def1]">
                 Status
               </th>
-              <th className="text-[#333333] px-6 py-3 dark:text-[#d4def1]">
+              <th
+                id="tre7"
+                className="text-[#333333] px-6 py-3 dark:text-[#d4def1]"
+              >
                 Action
               </th>
             </tr>
@@ -190,14 +219,14 @@ const Post = () => {
                       {data.status.charAt(0).toUpperCase() +
                         data.status.slice(1) ===
                         "Pending" && (
-                        <span className="dark:bg-[#f7b84b] bg-[#f7b84b] bg-opacity-15 dark:bg-opacity-10 text-[#f7b84b] py-[4px] w-[70px] text-center inline-block px-[4.6pxpx] leading-[1.4] rounded-[6px] font-medium text-[11px]">
+                        <span className="dark:bg-[#f7b84b] bg-[#f7b84b] bg-opacity-15 dark:bg-opacity-10 text-[#f7b84b] py-[4px] w-[70px] text-center inline-block px-[4.6pxpx] leading-[1.4] rounded-[5px] font-medium text-[11px]">
                           Pending
                         </span>
                       )}
                       {data.status.charAt(0).toUpperCase() +
                         data.status.slice(1) ===
                         "Approved" && (
-                        <span className="dark:bg-[#56ffaa] bg-[#4dc187] bg-opacity-15 dark:bg-opacity-10 text-[#4dc187] py-[4px] w-[70px] text-center inline-block px-[4.6pxpx] leading-[1.4] rounded-[6px] font-medium text-[11px]">
+                        <span className="dark:bg-[#56ffaa] bg-[#4dc187] bg-opacity-15 dark:bg-opacity-10 text-[#4dc187] py-[4px] w-[70px] text-center inline-block px-[4.6pxpx] leading-[1.4] rounded-[5px] font-medium text-[11px]">
                           Approved
                         </span>
                       )}

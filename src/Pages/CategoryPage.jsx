@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Category from "../ui/Category";
+import Category from "../feature/category/Category";
 
 const CategoryPage = () => {
   useEffect(() => {

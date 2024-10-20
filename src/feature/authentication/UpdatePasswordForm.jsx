@@ -22,7 +22,7 @@ const UpdatePaswordForm = () => {
       <h1 className="font-semibold mb-5 mt-[100px] text-center sm:text-[24px] text-[22px] text-stone-[#333333]">
         Update Your Password
       </h1>
-      <div className="bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-md mx-auto">
+      <div className="bg-white shadow-sm w-[90%] sm:w-[70%] md:w-[50%] xl:w-[35%] py-6 px-4 rounded-[10px] mx-auto">
         <form
           className="flex flex-col justify-center mt-1"
           onSubmit={handleSubmit(onsubmit)}

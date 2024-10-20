@@ -11,16 +11,7 @@ const Filters = ({
 }) => {
   return (
     <>
-      <CategoryDropdown
-        setOpenDropdownIndex={setOpenDropdownIndex}
-        isCategoryOpen={isCategoryOpen}
-        setCategoryOpen={setCategoryOpen}
-      />
-      <StatusDropdown
-        setOpenDropdownIndex={setOpenDropdownIndex}
-        isStatusOpen={isStatusOpen}
-        setStatusOpen={setStatusOpen}
-      />
+      <CategoryDropdown />
     </>
   );
 };

@@ -7,6 +7,7 @@ import { useGetCookie } from "../feature/cookie/useGetCookieByDate";
 import { useDarkMode } from "../context/DarkModeContext";
 import FullPageLoaderSpinner from "../ui/FullPageLoaderSpinner";
 import { useComment } from "../feature/comment/useComment";
+import { useGetAllCategory } from "../feature/category/useGetAllCategory";
 
 const CustomTooltip = ({ payload, label, active }) => {
   const { isDarkMode } = useDarkMode();
@@ -47,6 +48,7 @@ const Dashboard = () => {
   const { data, isLoading } = useGetallPost();
   const { isLoading: isComment } = useComment();
   const { isPending: isCookie } = useGetCookie();
+  const { isLoading: isCategory } = useGetAllCategory();
 
   const tech = data?.filter(
     (post) => post.category === "technology" || post.category === "gadget"
@@ -118,7 +120,6 @@ const Dashboard = () => {
     { label: "Nov", total: 402, essential: 17 },
     { label: "Dec", total: 305, essential: 32 },
   ];
-
   useEffect(() => {
     document.title = "TekMatas | Dashboard";
     return () => {
@@ -126,26 +127,26 @@ const Dashboard = () => {
     };
   }, []);
 
-  if (isLoading || isComment || isCookie) return <FullPageLoaderSpinner />;
-
+  if (isLoading || isComment || isCookie || isCategory)
+    return <FullPageLoaderSpinner />;
   return (
-    <div className="mb-10 md:mb-0 w-[calc(100%-250px)]">
+    <div className="mb-10 md:mb-0 w-[90%] sm:w-[95%] xl:w-[calc(100%-230px)] ml-3">
       <div className="mb-10">
-        <h1 className="text-[#000000] text-[1.5rem] md:text-[32px] font-semibold mt-[120px] md:mt-[40px] dark:text-[#E7E9EA] ">
+        <h1 className="text-[#000000] text-[1.7rem] md:text-[32px] font-semibold mt-[120px] md:mt-[40px] dark:text-[#E7E9EA] ">
           Hello, Admin
         </h1>
         <p className="text-[#000000] dark:text-[#d0d6e1] font-normal leading-6 text-[14px]">
-          This is your blog report so far.
+          This is your blog analytics report so far.
         </p>
       </div>
 
       <Stats />
-      <div className="grid grid-cols-3 gap-10">
-        <div className="mt-10 dark:bg-[#0c1427] bg-white  border-[white]  dark:border-[#172340] border p-3 col-span-2 rounded-md">
+      <div className="grid lg:grid-cols-3 lg:gap-10">
+        <div className="mt-10 dark:bg-[#0c1427] bg-white shadow-sm p-3 col-span-2 rounded-[10px]">
           <span className="leading-[10px]">
-            <h2 className="text-[16px] leading-[16.94px] text-[#000000] font-semibold dark:text-[#E7E9EA] my-5 px-3">
+            <h1 className="text-[1.125rem] leading-[16.94px] text-[#000000] font-semibold dark:text-[#E7E9EA] my-5 px-3">
               Vistors Overview
-            </h2>
+            </h1>
           </span>
           <div className="mt-10">
             <ResponsiveContainer width={"100%"} height={300}>
@@ -187,9 +188,9 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="dark:bg-[#0c1427] bg-[white]  dark:border-[#172340] p-3 col-span-1 rounded-md mt-10">
+        <div className="dark:bg-[#0c1427] bg-[white]  shadow-sm  dark:border-[#172340] p-3 col-span-2 lg:col-span-1 rounded-[10px] mt-10">
           <span>
-            <h2 className="text-[15px] text-[#000000] leading-[16.94px] font-semibold dark:text-[#E7E9EA] mt-5 px-3">
+            <h2 className="text-[1.125rem] text-[#000000] leading-[16.94px] font-semibold dark:text-[#E7E9EA] mt-5 px-3">
               Category Summary
             </h2>
           </span>
@@ -226,5 +227,4 @@ const Dashboard = () => {
     </div>
   );
 };
-
 export default Dashboard;

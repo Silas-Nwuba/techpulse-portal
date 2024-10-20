@@ -11,7 +11,6 @@ const LoginForm = () => {
   const inputRef = useRef(null);
   const handleToggleInput = () => {
     const input = inputRef.current.querySelector("input");
-
     if (inputRef.current && input.type === "password") {
       setInputType("text");
     } else setInputType("password");
@@ -35,10 +34,10 @@ const LoginForm = () => {
   }, []);
   return (
     <div>
-      <div className="dark:bg-[#070d19] h-screen bg-slate-50 xl:w-[100%] w-full mx-auto relative">
-        <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 xl:mt-[0px] border-gray-200 bg-white border sm:w-[30%] md:w-[60%] w-[90%] xl:w-[30%] dark:bg-[#0c1427] dark:border-[#172340] dark:border px-10 py-5 rounded-[10px]">
+      <div className="dark:bg-[#070d19] h-screen bg-slate-50  w-full mx-auto relative">
+        <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 xl:mt-[0px] border-gray-200 bg-white border  sm:w-[60%] md:w-[50%] w-[90%] xl:w-[30%] dark:bg-[#0c1427] dark:border-[#172340] dark:border px-10 py-5 rounded-[10px]">
           <div className="leading-5">
-            <h1 className="font-bold text-[1.5em]  md:text-[2rem] xl:text-[2.15em]  leading-[3rem]  text-stone-900 dark:text-stone-100">
+            <h1 className="font-bold text-[1.5em] md:text-[2rem] xl:text-[2.15em]  leading-[3rem]  text-stone-900 dark:text-stone-100">
               Sign In
             </h1>
           </div>
@@ -50,12 +49,6 @@ const LoginForm = () => {
             className="mt-5 mb-10 w-full"
           >
             <div className="w-full">
-              {/* <label
-                htmlFor="email"
-                className="leading-[1] font-normal text-[#000000] dark:text-[#94a3b8]"
-              >
-                Email
-              </label> */}
               <input
                 placeholder="Email"
                 type="email"
@@ -81,12 +74,6 @@ const LoginForm = () => {
               )}
             </div>
             <div className="relative mt-4" ref={inputRef}>
-              {/* <label
-                htmlFor="password"
-                className="leading-[1] font-normal text-[#000000] dark:text-[#94a3b8]"
-              >
-                Password
-              </label> */}
               <input
                 name="password"
                 placeholder="Password"
@@ -104,7 +91,7 @@ const LoginForm = () => {
                   errors?.email?.message && "dark:border-red-600"
                 } ${
                   isPending ? "dark:bg-[#485363]" : "bg-slate-100"
-                } focus:border-[#5660d9] dark:focus:border-[#5660d9] dark:bg-transparent border-gray-300 placeholder:text-[16px]  focus:outline-none dark:border-[#172340] dark:text-[#64748b]  border px-3 py-4 text-sm rounded-[10px] bg-transparent  mt-2 w-full`}
+                } focus:border-[#5660d9] dark:focus:border-[#5660d9] dark:bg-transparent border-gray-300 placeholder:text-[16px]  focus:outline-none dark:border-[#172340] dark:text-[#64748b] border px-3 py-4 text-sm rounded-[10px] bg-transparent  mt-2 w-full`}
               />
               <span
                 className="absolute top-[25px] right-5 cursor-pointer"
@@ -154,16 +141,16 @@ const LoginForm = () => {
                 </small>
               )}
             </div>
-            <div className="flex  items-center justify-between my-5">
+            <div className="flex flex-wrap gap-2 items-center justify-between my-5 ">
               <div className="flex gap-2 items-center">
                 <input type="checkbox" name="rememberMe" checked />
                 <span className="dark:text-[#94a3b8]">Remember me</span>
               </div>
-              <NavLink to="/resetpassword" className="text-[#6C4DE6] text-sm ">
+              <NavLink to="/resetpassword" className="text-[#6C4DE6] text-sm">
                 Forget Password?
               </NavLink>
             </div>
-            <button className="bg-[#6C4DE6] hover:bg-[#464ea7] w-full transition duration-500 ease-in-out  py-2 text-white font-medium text-[16px] rounded-md flex items-center justify-center pr-2">
+            <button className="bg-[#6C4DE6] hover:bg-[#464ea7] mb-4 w-full transition duration-500 ease-in-out py-2 text-white font-medium text-[16px] rounded-md flex items-center justify-center pr-2">
               {isPending ? "Processing.." : "Sign In"}
             </button>
           </form>

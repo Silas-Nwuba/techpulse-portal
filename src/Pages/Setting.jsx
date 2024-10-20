@@ -17,7 +17,7 @@ const Setting = () => {
 
   return (
     <>
-      <div className="flex item-center gap-2 mx-2 mt-[7rem] md:mt-10">
+      <div className="flex item-center gap-2 mx-2 mt-[7rem] md:mt-10 ml-3">
         <span
           className="flex items-center gap-2 text-[#768191] dark:text-[#768191] cursor-pointer"
           onClick={() => navigate(-1)}
@@ -28,7 +28,7 @@ const Setting = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6"
+            className="size-5"
           >
             <path
               strokeLinecap="round"

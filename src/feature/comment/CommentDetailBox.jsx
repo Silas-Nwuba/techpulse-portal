@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useGetCommentById from "./useGetCommentById";
-import { formatDate, formatTime } from "../../utils/helper";
+import { formatDate } from "../../utils/helper";
 import CommentDetailLoader from "../../ui/CommentDetailLoader";
 import { OverLay } from "../../ui/OverLay";
 import ConfirmDeleteModal from "../../ui/ConfirmDeleteModal";

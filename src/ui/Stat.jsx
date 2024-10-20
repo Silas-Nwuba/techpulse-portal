@@ -3,14 +3,14 @@ import React from "react";
 const Stat = ({color,name,data,percentbg,percentcolor,percent,children}) => {
 
   return (
-    <div className="bg-white border-[white]  dark:bg-[#0c1427] border dark:border-[#172340] rounded-md py-5 md:py-3 w-[100%]">
+    <div className="bg-white shadow-sm  dark:bg-[#0c1427]  rounded-[10px] py-5 md:py-3 w-[100%]">
       <h1 className="text-[#000000] capitalize dark:text-[#E7E9EA] font-semibold text-[.875rem] md:text-[16px] my-3 ml-5">
         {name}
       </h1>
       <div className=" flex justify-between items-center px-5 gap-2 w-full">
         <div className="flex gap-2 ">
           <span
-            className={`${color} bg-opacity-10  dark:bg-opacity-40 rounded-full  p-3 opacity-100`}
+            className={`${color} dark:bg-opacity-40 rounded-full  p-3`}
             >
             {children}
           </span>

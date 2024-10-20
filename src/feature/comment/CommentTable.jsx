@@ -51,11 +51,11 @@ const CommentTable = () => {
   }, [comments]);
   if (isLoading) return <FullPageLoaderSpinner />;
   return (
-    <div className="mt-40 md:mt-10 ">
-      <div className="w-full md:w-[81%] shadow-sm bg-white dark:border dark:border-[#172340] rounded-[10px] dark:bg-[#0c1427] p-4 mb-10  overflow-x-auto">
-        <div className="flex items-end justify-between my-5 mb-6">
+    <div className="mt-20 md:mt-10 ml-3">
+      <div className="md:w-[85%] shadow-sm bg-white  mt-5 dark:bg-[#0c1427] p-4 w-[96%] xl:w-[85%] overflow-y-auto rounded-[10px] mb-10 overflow-x-auto">
+        <div className="flex  flex-wrap gap-5 items-end justify-between my-5 mb-6">
           <h1 className="text-xl font-semibold dark:text-[#d0d6e1]">
-            Manage Comment
+            Comment Overview
           </h1>
           <StatusDropdown
             isStatusOpen={isStatusOpen}
@@ -64,9 +64,10 @@ const CommentTable = () => {
         </div>
         <Table>
           <Table.Header>
-            <tr className="dark:border-b-[0.5px] font-medium dark:border-b-[#172340] dark:bg-[#363d4b] bg-[#FAFAFA]">
+            <tr className="font-medium">
               <th
                 scope="col"
+                id="tre1"
                 className="px-6 py-3 text-[text-[#1D2235] dark:text-[#d4def1]"
               >
                 S/N
@@ -98,6 +99,7 @@ const CommentTable = () => {
               </th>
               <th
                 scope="col"
+                id="tre7"
                 className="px-6 py-3 text-[text-[#1D2235] dark:text-[#d4def1]"
               >
                 Action

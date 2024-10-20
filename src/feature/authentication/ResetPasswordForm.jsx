@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import Button from "../../ui/Button";
+// import Button from "../../ui/Button";
 import { useResetPassword } from "./useResetPassword";
 import { NavLink } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -94,7 +94,7 @@ const ResetPasswordForm = () => {
                   </small>
                 )}
               </div>
-              <Button
+              {/* <Button
                 width={"w-full"}
                 marginBottom="mb-0"
                 name={"Send Recovery Email"}
@@ -106,7 +106,7 @@ const ResetPasswordForm = () => {
                 loading={isReseting}
               >
                 <p>Loading...</p>
-              </Button>
+              </Button> */}
             </form>
             <div className="text-center">
               <h2 className="text-stone-500 dark:text-[#94a3b8] text-[16px] font-normal">

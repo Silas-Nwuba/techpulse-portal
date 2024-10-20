@@ -28,9 +28,9 @@ const MainNav = () => {
           }}
           className={` ${
             dashboardMatch
-              ? "bg-[#6C4DE6] group group-hover:text-[#E7E9EA] rounded-full w-[70%]"
+              ? "bg-[#6C4DE6] group group-hover:text-[#E7E9EA] rounded-[10px] w-[70%]"
               : "dark:hover:bg-[#F7F9F916] hover:bg-[#0F14191A]"
-          } w-[90%] group dark:group-hover:text-white flex items-center group-hover:text-[#000000]  gap-2  py-[12px] rounded-full  px-[0px] transition ease-in-out duration-500`}
+          } w-[90%] group dark:group-hover:text-white flex items-center group-hover:text-[#000000]  gap-2  py-[12px] rounded-[10px]  px-[0px] transition ease-in-out duration-500`}
         >
           <HiOutlineSquares2X2
             className={`w-5 h-5 ml-5 transition  group dark:group-hover:text-white group-hover:text-[#000000] duration-300 ease-in-out ${
@@ -53,8 +53,8 @@ const MainNav = () => {
           <div
             className={`${
               activeLink === true
-                ? "dark:bg-[#F7F9F916] bg-[#0F14191A] rounded-full w-[90%] dark:group-hover:text-white group-hover:text-white  flex items-center py-[12px] justify-between cursor-pointer"
-                : "flex items-center justify-between cursor-pointer rounded-full dark:group-hover:text-white w-[90%] group py-[12px]  group-hover:text-white transition duration-500 ease-in-out "
+                ? "dark:bg-[#F7F9F916] bg-[#0F14191A] rounded-[10px] w-[90%] dark:group-hover:text-white group-hover:text-white  flex items-center py-[12px] justify-between cursor-pointer"
+                : "flex items-center justify-between cursor-pointer rounded-[10px] dark:group-hover:text-white w-[90%] group py-[12px]  group-hover:text-white transition duration-500 ease-in-out "
             } dark:hover:bg-[#F7F9F916] hover:bg-[#0F14191A] group-hover:text-[#000000] `}
             onClick={checkActiveLink}
           >
@@ -85,7 +85,7 @@ const MainNav = () => {
               className={`${
                 activeLink
                   ? "text-[#000000] dark:text-[#E7E9EA] size-[18px] mr-4"
-                  : "size-[18px] mr-4 text-black group-hover:text-[#000000]  dark:group-hover:text-white dark:text-[#edf0f7] transition duration-300 ease-in-out"
+                  : "size-[18px] mr-4 text-black group-hover:text-[#000000]  dark:group-hover:text-white dark:text-[#768191] transition duration-300 ease-in-out"
               } `}
               onClick={checkActiveLink}
             >
@@ -142,9 +142,9 @@ const MainNav = () => {
           }}
           className={` ${
             commentMatch
-              ? "bg-[#6C4DE6]  rounded-full w-[70%]"
+              ? "bg-[#6C4DE6]  rounded-[10px] w-[70%]"
               : "hover:bg-[#0F14191A] dark:hover:bg-[#F7F9F916]"
-          } w-[90%] group dark:group-hover:text-white flex items-center group  gap-2  py-[12px] rounded-full  px-[0px] transition ease-in-out duration-500`}
+          } w-[90%] group dark:group-hover:text-white flex items-center group  gap-2  py-[12px] rounded-[10px]  px-[0px] transition ease-in-out duration-500`}
         >
           <HiOutlineChatBubbleLeftEllipsis
             className={`w-5 h-5 ml-5 group transition font-medium  group dark:group-hover:text-white group-hover:text-[#000000]  duration-300 ease-in-out ${
@@ -170,9 +170,9 @@ const MainNav = () => {
           }}
           className={` ${
             settingMatch
-              ? "bg-[#6C4DE6] rounded-full w-[70%]"
+              ? "bg-[#6C4DE6] rounded-[10px] w-[70%]"
               : "hover:bg-[#0F14191A] dark:hover:bg-[#F7F9F916]"
-          } w-[90%] group dark:group-hover:text-white flex items-center group  gap-2  py-[12px] rounded-full  px-[0px] transition ease-in-out duration-500`}
+          } w-[90%] group dark:group-hover:text-white flex items-center group  gap-2  py-[12px] rounded-[10px]  px-[0px] transition ease-in-out duration-500`}
         >
           <HiOutlineCog6Tooth
             className={`w-5 h-5 ml-5 group transition text-[#899BB1]  group dark:group-hover:text-white group-hover:text-[#000000] duration-300 ease-in-out ${

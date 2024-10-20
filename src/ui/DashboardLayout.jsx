@@ -6,6 +6,7 @@ import { useUser } from "../feature/authentication/useUser";
 import NotFoundError from "../ui/NotFoundError";
 import MobileSidebarMenu from "./MobileSidebarMenu";
 import { useSidebarContext } from "../context/SidebarContext";
+import { OverLay } from "./OverLay";
 const DashboardLayout = () => {
   const { pathname } = useLocation();
   const mainContentRef = useRef(null);
@@ -25,17 +26,21 @@ const DashboardLayout = () => {
       <SideBar />
       <div>
         <Header />
-        {sidebar && <MobileSidebarMenu />}
+        {sidebar && (
+          <OverLay>
+            <MobileSidebarMenu />
+          </OverLay>
+        )}
 
         <main
-          className="overflow-y-auto overflow-x-hidden w-full xl:px-10 dark:bg-[#070d19] ml-[240px] mt-[60px]  flex flex-col min-h-screen"
+          className="overflow-y-auto overflow-x-hidden w-full xl:px-10 dark:bg-[#070d19]  xs:ml-2  md:mt-20 xl:ml-[200px]  flex flex-col min-h-screen"
           ref={mainContentRef}
         >
           <Outlet />
         </main>
         <footer className="dark:border-t-[#172340] border-t-[#e6e2e2ee] py-3 mt-14 border border-b-0 border-l-0 border-r-0 w-full">
-          <p className="dark:text-[#d0d6e1] text-[14px] ml-[280px]">
-            Copyright {new Date().getFullYear()} TekMatas All right reserved
+          <p className="dark:text-[#d0d6e1] text-[14px] xl:ml-[280px] ml-5">
+            Copyright {new Date().getFullYear()} TekMatas
           </p>
         </footer>
       </div>

@@ -6,14 +6,14 @@ import { formatNumber } from "../../utils/formatNumber";
 import { useGetCookie } from "../cookie/useGetCookieByDate";
 import { useGetallPost } from "../post/useGetallPost";
 import { comment } from "postcss";
+import { useGetAllCategory } from "../category/useGetAllCategory";
 const Stats = () => {
   const { comments } = useComment();
   const { data: post } = useGetallPost();
-  //prettier-ignore
-  const { data: cookies, } = useGetCookie();
-
+  const { data: cookies } = useGetCookie();
+  const { data: category } = useGetAllCategory();
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 md:grid-cols-2 lg:grid-cols-4 col-span-1 md:mt-5 w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 md:grid-cols-3 lg:grid-cols-4 col-span-1 md:mt-5 w-full">
       <Stat
         name="Total Vistors"
         color="bg-[#EE3232]"
@@ -28,7 +28,7 @@ const Stats = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6 text-[#EE3232] opacity-100 dark:opacity-80"
+          className="size-6 text-[#FFFFFF] opacity-100 dark:opacity-80"
         >
           <path
             strokeLinecap="round"
@@ -38,17 +38,17 @@ const Stats = () => {
         </svg>
       </Stat>
       <Stat
-        name="Posts"
+        name="Total Posts"
         color="bg-[#228488]"
         data={formatNumber(post?.length)}
         percentbg={"bg-[#f97316]"}
         percentcolor={"text-[#f97316]"}
         percent={`${Math.floor((post?.length / 1000) * 100)} %`}
       >
-        <HiOutlinePencilSquare className="text-2xl font-semibold text-[#36d3d8] opacity-100 dark:opacity-80" />
+        <HiOutlinePencilSquare className="text-2xl font-semibold text-[#FFFFFF] opacity-100 dark:opacity-80" />
       </Stat>
       <Stat
-        name="Comments"
+        name="Total Comments"
         color="bg-green-400"
         data={formatNumber(comments?.length)}
         percentbg={"bg-[#6571ff]"}
@@ -61,7 +61,7 @@ const Stats = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6 text-2xl text-green-400 opacity-100 dark:opacity-80"
+          className="size-6 text-2xl text-[#FFFFFF] opacity-100 dark:opacity-80"
         >
           <path
             strokeLinecap="round"
@@ -71,26 +71,22 @@ const Stats = () => {
         </svg>
       </Stat>
       <Stat
-        name="Views"
+        name="Total Category"
         color="bg-yellow-400"
-        data={formatNumber(comments?.length)}
+        data={formatNumber(category?.length)}
         percentbg={"bg-green-500"}
         percentcolor={"text-green-500"}
-        percent={`${Math.floor((comment?.length / 1000) * 100)} %`}
+        percent={`${Math.floor((category?.length / 1000) * 100)} %`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-6 text-2xl text-yellow-400 opacity-100 dark:opacity-80"
+          width="24"
+          height="24"
+          fill="currentColor"
+          className="size-6 text-2xl text-[#FFFFFF] opacity-100 dark:opacity-80"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
-          />
+          <path d="M20.7 7.3l-5.4-5.4c-.4-.4-1-.4-1.4 0l-10 10c-.4.4-.4 1 0 1.4l5.4 5.4c.4.4 1 .4 1.4 0l10-10c.4-.4.4-1 0-1.4zM12.8 10.5l-5.6-5.6 2.8-2.8 5.6 5.6-2.8 2.8zm-2.4 2.4l2.8-2.8 5.6 5.6-2.8 2.8-5.6-5.6zM4 20h16v2H4v-2z" />
         </svg>
       </Stat>
     </div>

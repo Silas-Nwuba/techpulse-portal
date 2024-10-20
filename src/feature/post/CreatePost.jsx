@@ -10,23 +10,23 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
+import { useGetAllCategory } from "../category/useGetAllCategory";
+import { useGetAllTag } from "../tag/useGetAllTag";
 const options = [
   { value: "latest post", label: "Lastest Post" },
   { value: "top stories", label: "Top Stories" },
   { value: "post", label: "Post" },
 ];
-const category = [
-  { value: "", label: "Select" },
-  { value: "technology", label: "Technology" },
-  { value: "business", label: "Business" },
-  { value: "gadget", label: "Gadget" },
-  { value: "social apps", label: "Social Apps" },
-];
+
 const CreatePost = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState, reset, control } = useForm();
   const { errors } = formState;
   const { createPost, isCreating: isLoading } = useCreatePost();
+  const { data, isLoading: isLoadingCategory } = useGetAllCategory();
+  const { data: tag } = useGetAllTag();
+  console.log(tag);
+
   const onsubmit = (data) => {
     createPost(
       {
@@ -49,8 +49,7 @@ const CreatePost = () => {
   }, []);
   return (
     <>
-      {/* {isLoading && <LoaderSpinner />} */}
-      <div className="mt-[120px] md:mt-12 mb-5 w-[90%]">
+      <div className="mt-[120px] md:mt-12 mb-5  ml-3">
         <div className="flex items-center gap-2 mb-5">
           <span
             className="flex items-center gap-2 text-[#768191] dark:text-[#768191] cursor-pointer"
@@ -62,7 +61,7 @@ const CreatePost = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6"
+              className="size-5"
             >
               <path
                 strokeLinecap="round"
@@ -72,13 +71,13 @@ const CreatePost = () => {
             </svg>
           </span>
           <h1 className="text-[22px] text-stone-[#000000] font-semibold dark:text-[#CBD5E0]">
-            Add New Post
+            Add Post
           </h1>
         </div>
         <form
           onSubmit={handleSubmit(onsubmit)}
           autoComplete="off"
-          className="bg-white w-[90%] px-6 py-8 rounded-[5px]  dark:bg-[#0c1427] border-[#172340] dark:border"
+          className="bg-white w-[93%] xl:w-[85%] px-6 py-8 rounded-[10px]  dark:bg-[#0c1427]"
         >
           <FormRow label="Blog Title" error={errors?.title?.message}>
             <input
@@ -113,19 +112,45 @@ const CreatePost = () => {
           <FormRow label={"Category"} error={errors?.category?.message}>
             <select
               name="category"
-              disabled={isLoading}
+              disabled={isLoading || isLoadingCategory}
               {...register("category", {
                 required: "Category field is required",
               })}
-              className="dark:bg-[#0c1427] dark:border-[#172340] dark:disabled:bg-[#212a3a] dark:focus:border-[#3b4557]  dark:text-[#d0d6e1] focus:outline-none border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full focus:border-sky-400"
+              className="dark:bg-[#0c1427] capitalize dark:border-[#172340] dark:disabled:bg-[#212a3a] dark:focus:border-[#3b4557] dark:text-[#d0d6e1] focus:outline-none border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full focus:border-sky-400"
             >
-              {category.map((element, index) => (
-                <option key={index} value={element.value}>
-                  {element.label}
+              {isLoadingCategory ? <option>Loadding..</option> : ""}
+              <option selected value={""}>
+                Select
+              </option>
+              {data?.map((element, index) => (
+                <option key={index} value={element.category}>
+                  {element.category}
                 </option>
               ))}
             </select>
           </FormRow>
+
+          <FormRow label={"Post Tag"} error={errors?.tag?.message}>
+            <select
+              name="tag"
+              disabled={isLoading || isLoadingCategory}
+              {...register("tag", {
+                required: "Tag field is required",
+              })}
+              className="dark:bg-[#0c1427] capitalize dark:border-[#172340] dark:disabled:bg-[#212a3a] dark:focus:border-[#3b4557] dark:text-[#d0d6e1] focus:outline-none border  text-sm border-gray-300 rounded-[10px] p-3 mt-2 w-full focus:border-sky-400"
+            >
+              {isLoadingCategory ? <option>Loadding..</option> : ""}
+              <option selected value={""}>
+                Select
+              </option>
+              {tag?.map((element, index) => (
+                <option key={index} value={element.name}>
+                  {element.name}
+                </option>
+              ))}
+            </select>
+          </FormRow>
+
           <div className={`mb-5 flex flex-col`}>
             <label
               htmlFor="date"

@@ -1,7 +1,6 @@
-import { format } from "date-fns";
 import { getDate, getMonth, getYear } from "date-fns";
 //prettier-ignore
-const monthData = ["January","Feburay","March","April","May","June","July","August","Septenber","October","Novermber","December"]
+const monthData = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"]
 export const formatPostDate = (date) => {
   const day = getDate(new Date(date));
   const month = monthData[getMonth(new Date(date))];
@@ -11,7 +10,11 @@ export const formatPostDate = (date) => {
 };
 
 export const formatDate = (date) => {
-  return format(date?.substring(0, 10), "dd-MM-yyyy");
+  const dataFormat = new Date(date);
+  const month = monthData[dataFormat.getMonth() + 1];
+  const day = dataFormat.getDate();
+  const year = dataFormat.getFullYear();
+  return ` ${day} ${month}, ${year}`;
 };
 export const formatTime = (dateTime) => {
   const date = new Date(dateTime);

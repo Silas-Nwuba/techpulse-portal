@@ -19,12 +19,12 @@ const UpdateUserPassword = () => {
   };
   const onerror = (error) => {};
   return (
-    <>
+    <div className="ml-3">
       <h1 className="text-[20px] text-stone-[#333333] font-medium mb-2 mt-10 w-full dark:text-[#d0d6e1]">
         Update Password
       </h1>
 
-      <div className="bg-white px-4 py-5 w-[81%] shadow-sm mt-5 dark:bg-[#0c1427] rounded-[5px] border-[#172340] border mb-10">
+      <div className="bg-white px-4 py-5 w-[93%] xl:w-[85%]  shadow-sm mt-5 dark:bg-[#0c1427] rounded-[10px]  mb-10">
         <form onSubmit={handleSubmit(onsubmit, onerror)}>
           <FormRow label={"New Password"} error={errors?.password?.message}>
             <input
@@ -68,7 +68,7 @@ const UpdateUserPassword = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

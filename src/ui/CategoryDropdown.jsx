@@ -39,12 +39,12 @@ const CategoryDropdown = ({
       <button
         ref={iconRef}
         type="buttom"
-        className="border text-sm font-normal bg-[#6C4DE6] text-white  border-[#6C4DE6]  dark:text-white dark:border-[#6C4DE6] px-3 py-2 rounded-[10px] w-[110px] flex items-center gap-3"
+        className="border text-sm font-normal dark:text-[#d0d6e1] border-[#d0d6e1] text-[#000000] dark:border-[#201f33] px-3 py-2 rounded-[10px] w-[110px] flex items-center gap-3"
         lassName="flex justify-between items-center w-40 border dark:border-[#172340] rounded-md py-2"
         onClick={handleButtonClick}
       >
         Category
-        <HiOutlineChevronDown className="text-white group-hover:text-white text-sm dark:text-white group" />
+        <HiOutlineChevronDown className=" group-hover:text-white text-sm dark:text-[#d0d6e1] group" />
       </button>
       {isCategoryOpen && (
         <div className="dropdown-menu bg-white border border-[#cecdcdee] dark:border-[#2c3342] z-[20000] dark:bg-[#1a2236] shadow-sm  w-[180px] rounded-md absolute top-11 py-2">

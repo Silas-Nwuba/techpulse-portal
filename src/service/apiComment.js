@@ -37,7 +37,6 @@ export const getCommentId = async (commentId) => {
   if (error) {
     throw new Error("Comment cannot be found");
   }
-  console.log(data);
   return data;
 };
 

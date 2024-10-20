@@ -13,9 +13,9 @@ const useEditPost = () => {
       queryClient.invalidateQueries({
         queryKey: ["editPost"],
       });
-      // toast.success("Post successfully edited", {
-      //   id: "sucess1",
-      // });
+      toast.success("Post successfully edited", {
+        id: "sucess1",
+      });
     },
     onError: (error) => {
       toast.error(error.message, {

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import FormRow from "../../ui/FormRow";
-import Button from "../../ui/Button";
 import { useUser } from "../authentication/useUser";
 import { useUpdateUserData } from "./useUpdateUserData";
-import MiniLoaderSpinner from "../../ui/MiniLoaderSpinner";
 const UpdateUserData = () => {
   const {
     user: {
@@ -28,7 +26,7 @@ const UpdateUserData = () => {
     );
   };
   return (
-    <div className="bg-white px-4 py-5 w-[81%] shadow-sm mt-5 dark:border dark:border-[#172340] rounded-md dark:bg-[#0c1427] ">
+    <div className="ml-3 bg-white px-4 py-5  w-[93%] xl:w-[85%] shadow-sm mt-5  rounded-[10px] dark:bg-[#0c1427] ">
       <form onSubmit={handleSubmit} className=" px-2">
         <FormRow label={"Full Name"}>
           <input

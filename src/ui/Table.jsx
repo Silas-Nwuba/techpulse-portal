@@ -8,14 +8,14 @@ const Table = ({ children }) => {
 };
 const Header = ({ children }) => {
   return (
-    <thead className="text-[13px] font-normal capitalize dark:border-b-[0.5px] border border-slate-50 dark:border-0 dark:border-b-[#172340] dark:bg-[#363d4b] bg-slate-50">
+    <thead className="text-[13px]  font-normal capitalize dark:border-b-[0.5px] border border-slate-50 dark:border-0 dark:border-b-[#172340] dark:bg-[#363d4b] bg-slate-50">
       {children}
     </thead>
   );
 };
 const Row = ({ children }) => {
   return (
-    <tr className="text-[14px] px-[.85rem] py-[.85rem] dark:hover:bg-opacity-[0.2] transition-all font-normal dark:text-[#ced4da]">
+    <tr className="text-[15px] px-[.85rem] py-[.85rem] dark:hover:bg-opacity-[0.2] transition-all font-normal dark:text-[#ced4da]">
       {children}
     </tr>
   );
@@ -28,7 +28,7 @@ const Body = ({ data, render }) => {
       </tbody>
     );
   return (
-    <tbody className="dark:text-white whitespace-nowrap">
+    <tbody className="dark:text-white whitespace-nowrap overflow-x-hidden">
       {data.map(render)}
     </tbody>
   );

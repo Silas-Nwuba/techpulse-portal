@@ -123,7 +123,6 @@ export const editPost = async (newPostData, id) => {
   }
   return data;
 };
-
 export const deletePost = async (id) => {
   const { data, error } = await supabase.from("post").delete().eq("id", id);
   if (error) {

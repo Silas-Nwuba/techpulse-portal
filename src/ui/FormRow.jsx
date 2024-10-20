@@ -9,9 +9,8 @@ const FormRow = ({ label, children, error }) => {
         >
           {label}
         </label>
-        <span className="text-red-600  dark:text-[#d0d6e1]">*</span>
+        <span className="text-red-600 dark:text-[#d0d6e1]">*</span>
       </div>
-
       {children}
       <small className="text-red-500 text-sm  dark:text-[#E53E3E] py-2">
         {error}

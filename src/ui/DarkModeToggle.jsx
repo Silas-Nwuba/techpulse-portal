@@ -12,7 +12,7 @@ const DarkModeToggle = () => {
       >
         {!isDarkMode && (
           <>
-            <HiOutlineSun className="text-[24px] text-[#899BB1] dark:text-[#E7E9EA]" />
+            <HiOutlineSun className="text-[24px] text-[#000000] dark:text-[#7987a1]" />
             <Toaster
               position="top-center"
               gutter={12}
@@ -35,7 +35,7 @@ const DarkModeToggle = () => {
         )}
         {isDarkMode && (
           <>
-            <HiOutlineMoon className="text-[24px] text-[#899BB1] dark:text-[#E7E9EA]" />
+            <HiOutlineMoon className="text-[24px] text-[#000000] dark:text-[#7987a1]" />
             <Toaster
               position="top-center"
               gutter={12}
